@@ -1,10 +1,10 @@
 ---
 layout: page
 title: About me
-subtitle: Why you'd want to go on a date with me
+subtitle: Graphics Researcher x Unity Engineer x Snowboarder x Game Development
 ---
 
-## Who I am?
+## Yuhang Huang (nikoloside)
 
 Yuhang Huang is a Doctoral Student at the University of Tokyo. He was a game engineer of computer graphics animation at the DeNA. His research interests include computer graphics, computer animation, deep learning, fracture simulation, media art, and neural rendering, especially focus on creating the framework of AI-based real-time and realistic procedural fracturing animation.
 
