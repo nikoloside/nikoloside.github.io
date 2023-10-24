@@ -5,22 +5,21 @@ subtitle: Who am I?
 ---
 
 
-- <img src="https://raw.githubusercontent.com/FortAwesome/Font-Awesome/6.x/svgs/solid/crown.svg" width="50" height="50">
- Research
+- <span class="fas fa-atom"></span> Research
 15%
 
-- Unity <span class="fa fa-briefcase about-icon"></span>
+- <span class="fab fa-unity"></span> Unity 
 35%
 
-- C++
+- <span class="fas fa-bug"></span> C++
 60%
 
-- CoC TRPG Scenario
+- <span class="fas fa-dice-d20"></span> CoC TRPG Scenario
 15%
 
-- Party Game Dev and Media Art
+- <span class="fas fa-ghost"></span> Party Game Dev and Media Art
 30%
 
-- Snowboarding
+- <span class="fas fa-snowboarding"></span> Snowboarding
 25%
 
