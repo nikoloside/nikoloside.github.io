@@ -1,25 +1,25 @@
 ---
 layout: page
-title: Skills x Hobbies x Focus
-subtitle: Who I am.
+title: Skills x Focus
+subtitle: Who am I?
 ---
 
 
-Research
+- Research
 15%
 
-Unity
+- Unity
 35%
 
-C++
+- C++
 60%
 
-CoC TRPG Scenario
+- CoC TRPG Scenario
 15%
 
-Party Game Dev and Media Art
+- Party Game Dev and Media Art
 30%
 
-Snowboarding
+- Snowboarding
 25%
 
