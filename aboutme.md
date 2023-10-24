@@ -30,3 +30,32 @@ WIP
 
 - Tokyo Institute of Technology
     - BSc in Machine Learning, 2013 ~ 2017
+
+## Experience
+
+### DeNA
+- Game Engineer & Graphics Engineer
+- Apr 2019 – Sept 2021 Tokyo, Japan
+- Responsibilities include:
+    - Smartphone Game Logic Development
+    - Smartphone Game UI Development
+    - Game CI Framework
+    - Computer Graphics / Animation
+ 
+ 
+### Recruit Holdings
+- Data Scientist Internship
+- Recruit Holdings
+- Aug 2017 – Sep 2017 Tokyo, Japan
+- Document scoring task with Machine Learning and Natural Language Processing.
+ 
+### IBM
+- IT Specialist Internship
+- Aug 2017 – Aug 2017 Tokyo, Japan
+- Workshop about Agile Development.
+ 
+
+### Super One Inc.
+- Front Development Engineer - Part-time
+- Jul 2014 – Jun 2016 Tokyo, Japan
+- HTML5/javascript development for Primary School Digital Textbook.
