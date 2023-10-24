@@ -1,7 +1,7 @@
 ---
 layout: page
 title: About me
-subtitle: Graphics Researcher x Unity Engineer x Snowboarder x Game Development
+subtitle: Graphics Researcher x Unity Engineer x Snowboarder x Game Developer
 ---
 
 # Yuhang Huang (nikoloside)
