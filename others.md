@@ -5,10 +5,11 @@ subtitle: Who am I?
 ---
 
 
-- Research
+- <img src="https://raw.githubusercontent.com/FortAwesome/Font-Awesome/6.x/svgs/solid/crown.svg" width="50" height="50">
+ Research
 15%
 
-- Unity
+- Unity <span class="fa fa-briefcase about-icon"></span>
 35%
 
 - C++
