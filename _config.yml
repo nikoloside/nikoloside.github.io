@@ -21,8 +21,8 @@ author: Some Person
 
 navbar-links:
   nikoloside: "aboutme"
-  Projects:
-    - DeepFracture: "https://nikoloside.github.io/deepfracture"
+  My Projects:
+    - Deep Fracture: "https://nikoloside.github.io/deepfracture"
   Publications: "publications"
   Skills x Focus: "others"
 
@@ -252,7 +252,7 @@ date_format: "%B %-d, %Y"
 #################################################################################
 
 # Output options (more information on Jekyll's site)
-timezone: "America/Toronto"
+timezone: "Asia/Tokyo"
 markdown: kramdown
 highlighter: rouge
 permalink: /:year-:month-:day-:title/
