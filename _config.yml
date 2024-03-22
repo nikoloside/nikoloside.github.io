@@ -21,8 +21,8 @@ author: Some Person
 
 navbar-links:
   nikoloside: "aboutme"
-  My Projects:
-    - Deep Fracture: "https://nikoloside.github.io/deepfracture"
+  # My Projects:
+  #   - Deep Fracture: "https://nikoloside.github.io/deepfracture"
   Publications: "publications"
   Skills x Focus: "others"
 
