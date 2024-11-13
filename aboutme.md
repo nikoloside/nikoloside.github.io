@@ -22,7 +22,6 @@ WIP
 
 ## Education
 
-
 #### The University of Tokyo
 
 #### The University of Tokyo
