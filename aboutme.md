@@ -23,6 +23,7 @@ WIP
 ## Education
 
 #### The University of Tokyo
+- PhD program in Computer Graphics, 2021 ~ Now
 
 #### The University of Tokyo
 - MEng in Computer Graphics, 2017 ~ 2019
