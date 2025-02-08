@@ -5,7 +5,7 @@ subtitle: These days
 ---
 
 ## Journals
-- Yuhang Huang, Takashi Kanai: “DeepFracture: A Generative Approach for Predicting Brittle Fractures with Neural Discrete Representation Learning”, Computer Graphics Forum, accepted.
+- Yuhang Huang, Takashi Kanai: “DeepFracture: A Generative Approach for Predicting Brittle Fractures with Neural Discrete Representation Learning”, Computer Graphics Forum, e70002, 15 pages, (February 2025).
 - Yuhang Huang, Yonghang Yu, Takashi Kanai, “Predicting Brittle Fracture Surface Shape From a Versatile Database”, Computer Animation and Virtual Worlds, Volume 30, Issue 6, e1865, 19 pages (November/December 2019).
 
 ## Papers
