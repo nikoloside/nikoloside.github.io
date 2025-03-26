@@ -13,10 +13,10 @@ Hello! I’m Niko, and my journey began in game development where I specialized 
 My passion for this work stems from personal experience. Observing my family’s experiences (my grandmother) with senior care highlighted the critical need for AI and robotics systems that can understand spatial contexts while maintaining privacy and security. By enhancing 3D environmental understanding, these systems can provide more dignified senior care, improving safety, mobility, and quality of life.
 
 Drawing on my expertise in simulation systems and my vision for practical AI applications, I seek collaborations at the intersection of deep learning, physics simulation, and human-centric technology development.
+My experience at IoT company have shown me the transformative potential of 3DCG and Game Engine techniques beyond the gaming industry, motivating me to pursue spatial ai in real world. I envision a future where we create an AI spatial system for the senior care industry, enabling privacy-first monitoring for elders’ elegant caregiving life without imaging cameras.
+I aspire to enhance spatial intelligence through the integration of game engine, opmization technique, simulation, 3d representation, and deep learning.
 
 The gif below shows the side project of trajectory extraction from noisy point clouds using K-Means Clustering and Kalman Filter.
 
 ![alt text](/assets/img/stable-trajectory.gif)
-
-
 
