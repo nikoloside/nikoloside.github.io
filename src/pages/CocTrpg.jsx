@@ -26,7 +26,7 @@ const CocTrpg = () => {
     {
       id: 2,
       name: '最果ての境界線',
-      englishName: 'Eitenning the borderline',
+      englishName: 'Enlightening the borderline',
       image: borderline,
       imageSm: borderlineSm,
       citation: null,

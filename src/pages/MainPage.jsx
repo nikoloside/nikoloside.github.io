@@ -9,6 +9,10 @@ import photo from '../assets/photo.png'
 import deepfracture from '../assets/research/deepfracture.png'
 import fracture2d from '../assets/research/2d-fracture.png'
 import dataDrivenFracture from '../assets/research/data-driven-fracture.png'
+import butlrLogo from '../assets/butlr-logo.png'
+import denaLogo from '../assets/dena-logo.svg'
+import utokyoLogo from '../assets/utokyo-logo.png'
+import scienceTokyoLogo from '../assets/science-tokyo-logo.png'
 
 const MainPage = () => {
   const homeRef = useRef(null)
@@ -170,7 +174,9 @@ const MainPage = () => {
                 </div>
                 <div className="card-content">
                   <div className="education-item">
-                    <div className="education-icon">🎓</div>
+                    <div className="education-icon">
+                      <img src={utokyoLogo} alt="University of Tokyo" style={{ width: '64px', height: '64px', objectFit: 'contain' }} />
+                    </div>
                     <div className="education-details">
                       <h3>The University of Tokyo</h3>
                       <p className="education-degree">PhD program in Computer Graphics</p>
@@ -178,7 +184,9 @@ const MainPage = () => {
                     </div>
                   </div>
                   <div className="education-item">
-                    <div className="education-icon">🎓</div>
+                    <div className="education-icon">
+                      <img src={utokyoLogo} alt="University of Tokyo" style={{ width: '64px', height: '64px', objectFit: 'contain' }} />
+                    </div>
                     <div className="education-details">
                       <h3>The University of Tokyo</h3>
                       <p className="education-degree">M.Sc. in Computer Graphics</p>
@@ -186,7 +194,9 @@ const MainPage = () => {
                     </div>
                   </div>
                   <div className="education-item">
-                    <div className="education-icon">🎓</div>
+                    <div className="education-icon">
+                      <img src={scienceTokyoLogo} alt="Science Tokyo" style={{ width: '64px', height: '64px', objectFit: 'contain' }} />
+                    </div>
                     <div className="education-details">
                       <h3>The Institute of Science Tokyo (Science Tokyo)</h3>
                       <p className="education-degree">B.Eng. in Machine Learning</p>
@@ -202,7 +212,9 @@ const MainPage = () => {
                 </div>
                 <div className="card-content">
                   <div className="experience-item">
-                    <div className="experience-icon">💼</div>
+                    <div className="experience-icon">
+                      <img src={butlrLogo} alt="Butlr" style={{ width: '48px', height: '48px', objectFit: 'contain' }} />
+                    </div>
                     <div className="experience-details">
                       <h3>Butlr · Contract</h3>
                       <p className="experience-title">Tech Lead in JP, Unity Engineer in Global</p>
@@ -216,7 +228,9 @@ const MainPage = () => {
                     </div>
                   </div>
                   <div className="experience-item">
-                    <div className="experience-icon">💼</div>
+                    <div className="experience-icon">
+                      <img src={denaLogo} alt="DeNA" style={{ width: '48px', height: '48px', objectFit: 'contain' }} />
+                    </div>
                     <div className="experience-details">
                       <h3>DeNA · Permanent</h3>
                       <p className="experience-title">Software Development Engineer (CG, Game Play)</p>
