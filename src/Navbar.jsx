@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
+import icon from './assets/icon.jpg'
 
 const Navbar = () => {
   const location = useLocation()
@@ -52,7 +53,7 @@ const Navbar = () => {
     <nav className="navbar">
       <div className="nav-content">
         <Link to="/" className="nav-logo">
-          <img src="/src/assets/icon.jpg" alt="Logo" className="nav-icon" />
+          <img src={icon} alt="Logo" className="nav-icon" />
           Niko Huang
         </Link>
 

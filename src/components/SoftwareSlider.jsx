@@ -1,5 +1,11 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import mechanicalDesign from '../assets/software/mechanical-design.png'
+import simulation2shape from '../assets/software/simulation2shape.png'
+import demoTebp from '../assets/software/demo-tebp.jpg'
+import stableTrajectory from '../assets/software/stable-trajectory.gif'
+import akbAutovoter from '../assets/software/akb-autovoter.gif'
+import studio from '../assets/software/studio.jpeg'
 
 const SoftwareSlider = () => {
   const [currentIndex, setCurrentIndex] = useState(0)
@@ -8,39 +14,39 @@ const SoftwareSlider = () => {
     {
       id: 'mechanical-design',
       title: 'iPhone Touch System with x-y plane',
-      image: '/src/assets/software/mechanical-design.png',
+      image: mechanicalDesign,
       description: 'Concept sketch of mechanical design demonstration for x-y plane touching system'
     },
     {
       id: 'simulation2shape',
       title: 'Sim2Shape',
-      image: '/src/assets/software/simulation2shape.png',
+      image: simulation2shape,
       description: 'Concept sketch of physical shape morphing for 3D Printing'
     },
     {
       id: 'demo-tebp',
       title: 'Demo-TEBP (DeepFracture)',
-      image: '/src/assets/software/demo-tebp.jpg',
+      image: demoTebp,
       description: 'Deep learning based fracture animation (The Eye of Breaking Perception.)',
       url: 'https://github.com/nikoloside/TEBP'
     },
     {
       id: 'trajectory',
       title: 'Trajectory Optimization',
-      image: '/src/assets/software/stable-trajectory.gif',
+      image: stableTrajectory,
       description: 'Trajectory analysis and visualization system via K-means per frame and Kalman Filter Optimization'
     },
     {
       id: 'akb-autovoter',
       title: 'AKB-Autovoter',
-      image: '/src/assets/software/akb-autovoter.gif',
+      image: akbAutovoter,
       description: 'Automated voting system for AKB Sousenkyo pipeline',
       url: 'https://www.youtube.com/@%E3%83%94%E3%83%AA%E8%BE%9B%E5%BC%A5'
     },
     {
       id: 'studio',
       title: 'Studio-Spatial Visualizer',
-      image: '/src/assets/software/studio.jpeg',
+      image: studio,
       description: 'Spatial analytics and visualization metrics system'
     }
   ]

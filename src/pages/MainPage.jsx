@@ -5,6 +5,10 @@ import { faGithub, faInstagram } from '@fortawesome/free-brands-svg-icons'
 import { faXTwitter } from '@fortawesome/free-brands-svg-icons'
 import { faEnvira } from '@fortawesome/free-brands-svg-icons'
 import SoftwareSlider from '../components/SoftwareSlider'
+import photo from '../assets/photo.png'
+import deepfracture from '../assets/research/deepfracture.png'
+import fracture2d from '../assets/research/2d-fracture.png'
+import dataDrivenFracture from '../assets/research/data-driven-fracture.png'
 
 const MainPage = () => {
   const homeRef = useRef(null)
@@ -40,7 +44,7 @@ const MainPage = () => {
           className="home-content"
         >
           <div className="home-left">
-            <img src="/src/assets/photo.png" alt="Niko Huang" className="profile-photo" />
+            <img src={photo} alt="Niko Huang" className="profile-photo" />
           </div>
           <div className="home-right">
             <h1>Niko Huang</h1>
@@ -82,7 +86,7 @@ const MainPage = () => {
             <div className="projects-content">
               <div className="project-item">
                 <div className="project-image">
-                  <img src="/src/assets/research/deepfracture.png" alt="DeepFracture Project" />
+                  <img src={deepfracture} alt="DeepFracture Project" />
                 </div>
                 <div className="project-info">
                   <h2>DeepFracture: A Generative Approach for Predicting Brittle Fractures with Neural Discrete Representation Learning</h2>
@@ -97,7 +101,7 @@ const MainPage = () => {
 
               <div className="project-item">
                 <div className="project-image">
-                  <img src="/src/assets/research/2d-fracture.png" alt="2D Fracture Project" />
+                  <img src={fracture2d} alt="2D Fracture Project" />
                 </div>
                 <div className="project-info">
                   <h2>Towards Brittle Fracture Simulation Based on Deep Learning - Fracture Shape Prediction of Plane Objects Using Conditional GANs -</h2>
@@ -112,7 +116,7 @@ const MainPage = () => {
 
               <div className="project-item">
                 <div className="project-image">
-                  <img src="/src/assets/research/data-driven-fracture.png" alt="Data-Driven Fracture Project" />
+                  <img src={dataDrivenFracture} alt="Data-Driven Fracture Project" />
                 </div>
                 <div className="project-info">
                   <h2>Predicting Brittle Fracture Surface Shape From a Versatile Database</h2>
