@@ -6,6 +6,7 @@ import demoTebp from '../assets/software/demo-tebp.jpg'
 import stableTrajectory from '../assets/software/stable-trajectory.gif'
 import akbAutovoter from '../assets/software/akb-autovoter.gif'
 import studio from '../assets/software/studio.jpeg'
+import icon from '../assets/icon.jpg'
 
 const SoftwareSlider = () => {
   const [currentIndex, setCurrentIndex] = useState(0)
@@ -105,7 +106,7 @@ const SoftwareSlider = () => {
                       alt={softwareProjects[currentIndex].title}
                       className="slider-image"
                       onError={(e) => {
-                        e.target.src = '/src/assets/icon.jpg' // Fallback to existing icon
+                        e.target.src = icon // Fallback to existing icon
                       }}
                     />
                   </a>
@@ -115,7 +116,7 @@ const SoftwareSlider = () => {
                     alt={softwareProjects[currentIndex].title}
                     className="slider-image"
                     onError={(e) => {
-                      e.target.src = '/src/assets/icon.jpg' // Fallback to existing icon
+                      e.target.src = icon // Fallback to existing icon
                     }}
                   />
                 )}
