@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom'
+import { HashRouter as Router, Routes, Route, useLocation } from 'react-router-dom'
 import { AnimatePresence } from 'framer-motion'
 import { useEffect } from 'react'
 import Navbar from './Navbar'
@@ -33,6 +33,7 @@ function App() {
             <Route path="/" element={<MainPage />} />
             <Route path="/demos" element={<Demos />} />
             <Route path="/coc-trpg" element={<CocTrpg />} />
+            <Route path="/:section" element={<MainPage />} />
           </Routes>
         </AnimatePresence>
       </div>

@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
+import { useParams } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGithub, faInstagram } from '@fortawesome/free-brands-svg-icons'
 import { faXTwitter } from '@fortawesome/free-brands-svg-icons'
@@ -15,6 +16,7 @@ import utokyoLogo from '../assets/utokyo-logo.png'
 import scienceTokyoLogo from '../assets/science-tokyo-logo.png'
 
 const MainPage = () => {
+  const { section } = useParams()
   const homeRef = useRef(null)
   const projectsRef = useRef(null)
   const aboutRef = useRef(null)
@@ -36,6 +38,25 @@ const MainPage = () => {
     window.addEventListener('keypress', handleKeyPress)
     return () => window.removeEventListener('keypress', handleKeyPress)
   }, [])
+
+  // Handle section parameter for navigation
+  useEffect(() => {
+    if (section) {
+      const element = document.getElementById(section)
+      if (element) {
+        setTimeout(() => {
+          const navbarHeight = 60
+          const elementPosition = element.getBoundingClientRect().top
+          const offsetPosition = elementPosition + window.pageYOffset - navbarHeight
+
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+          })
+        }, 100) // Small delay to ensure page is loaded
+      }
+    }
+  }, [section])
 
   return (
     <div className="main-page">
@@ -229,7 +250,7 @@ const MainPage = () => {
                   </div>
                   <div className="experience-item">
                     <div className="experience-icon">
-                      <img src={denaLogo} alt="DeNA" style={{ width: '48px', height: '48px', objectFit: 'contain' }} />
+                      <img src={denaLogo} alt="DeNA" style={{ width: '48px', height: '64px', objectFit: 'contain' }} />
                     </div>
                     <div className="experience-details">
                       <h3>DeNA · Permanent</h3>

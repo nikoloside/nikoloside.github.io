@@ -34,8 +34,8 @@ const Navbar = () => {
         })
       }
     } else {
-      // If not on main page, navigate to main page with hash
-      window.location.href = `/#${sectionId}`
+      // If not on main page, navigate to main page first, then scroll to section
+      window.location.href = `/#/${sectionId}`
     }
     // Close mobile menu after navigation
     setIsMobileMenuOpen(false)
@@ -129,7 +129,13 @@ const Navbar = () => {
                 Demos
               </Link>
               
-              <Link to="/coc-trpg" className={location.pathname === '/coc-trpg' ? 'active' : ''}>
+              <Link to="/coc-trpg" 
+                className={location.pathname === '/coc-trpg' ? 'active' : ''}
+                onClick={() => {
+                  // Scroll to top when navigating to CoC TRPG
+                  window.scrollTo({ top: 0, behavior: 'smooth' })
+                }}
+              >
                 CoC TRPG
               </Link>
             </div>
@@ -182,7 +188,13 @@ const Navbar = () => {
             >
               Demos
             </Link>
-            <Link to="/coc-trpg" className={location.pathname === '/coc-trpg' ? 'active' : ''}>
+            <Link to="/coc-trpg" 
+              className={location.pathname === '/coc-trpg' ? 'active' : ''}
+              onClick={() => {
+                // Scroll to top when navigating to CoC TRPG
+                window.scrollTo({ top: 0, behavior: 'smooth' })
+              }}
+            >
               CoC TRPG
             </Link>
           </div>
