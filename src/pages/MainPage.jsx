@@ -184,7 +184,7 @@ const MainPage = () => {
                     His research focuses on multi-phase 3D representations using multiple-phase implicit functions and multiple-phase eplicit voxel based representation, combining deep learning and physics-based simulation to build real-time systems for fracture and cutting animation. His broader interests include physical simulation, neural geometry processing, 3D deep learning, IoT, and spatial 3D intelligence.
                   </p>
                   <p>
-                    Motivated by personal experiences in senior care, he aims to develop AI and robotics systems that interpret spatial environments while preserving privacy. He is currently leading the SpaceRAG project etc.
+                    Motivated by personal experiences in senior care, he aims to develop AI and robotics systems that interpret spatial environments while preserving privacy. He would plan to focus on the SpaceRAG project etc in the next step.
                   </p>
                 </div>
               </div>
