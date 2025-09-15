@@ -44,7 +44,7 @@ const Navbar = () => {
   useEffect(() => {
     const handleScroll = () => {
       if (location.pathname === '/') {
-        const sections = ['home', 'projects', 'about', 'publications']
+        const sections = ['home', 'my-story', 'projects', 'about', 'publications']
         const navbarHeight = 60
 
         for (let i = sections.length - 1; i >= 0; i--) {
@@ -87,8 +87,8 @@ const Navbar = () => {
             
             <div className={`mobile-menu ${isMobileMenuOpen ? 'open' : ''}`}>
               <button 
-                onClick={() => scrollToSection('home')} 
-                className={location.pathname === '/' && activeSection === 'home' ? 'active' : ''}
+                onClick={() => scrollToSection('my-story')} 
+                className={location.pathname === '/' && (activeSection === 'home' || activeSection === 'my-story') ? 'active' : ''}
               >
                 Home
               </button>
@@ -144,8 +144,8 @@ const Navbar = () => {
           // Desktop menu
           <div className="nav-links">
             <button 
-              onClick={() => scrollToSection('home')} 
-              className={location.pathname === '/' && activeSection === 'home' ? 'active' : ''}
+              onClick={() => scrollToSection('my-story')} 
+              className={location.pathname === '/' && (activeSection === 'home' || activeSection === 'my-story') ? 'active' : ''}
             >
               Home
             </button>
