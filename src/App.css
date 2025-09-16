@@ -822,7 +822,7 @@ body {
   }
   
   .content-section {
-    padding: 1rem;
+    padding: 0rem;
     margin: 0;
     width: 100%;
   }
@@ -1009,7 +1009,7 @@ body {
 }
 
 .card-content {
-  padding: 1rem;
+  padding: 0rem;
   background: none;
 }
 
