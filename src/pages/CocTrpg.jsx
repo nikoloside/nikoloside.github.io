@@ -32,7 +32,7 @@ const CocTrpg = () => {
       imageSm: borderlineSm,
       citation: null,
       players: '2~4 people',
-      keywords: '異世界 SciFiction Science and Democracy Customized Rules'
+      keywords: '異世界 SciFiction Science and Democracy Customized Rules, Original Story'
     },
     {
       id: 3,
@@ -42,7 +42,7 @@ const CocTrpg = () => {
       imageSm: kaguraSm,
       citation: 'https://kozushima.com/',
       players: '3~4 people',
-      keywords: 'PvP, murder mystery, Travel in Japan, Fake folklore'
+      keywords: 'PvP, murder mystery, Travel in Japan, Fake folklore, Original Story'
     },
     {
       id: 4,
@@ -143,7 +143,7 @@ const CocTrpg = () => {
           >
             <h2>About the Game</h2>
             <p>
-              Welcome to our gallery showcasing CoC Game Introductions. All games are prepared by the site owner in special editions. Besides the original stories written by Niko Huang, other stories can be found through the citation links.
+              Welcome to our gallery showcasing CoC Game Introductions. All games are prepared by the site owner in special editions. Besides the original stories written by Niko Huang, other stories were written by other authors and can be found through the citation links.
             </p>
             <p>
               We will open-source the original stories once they are ready (Others' stories can be found through the citation links individually). We will also provide TBD demos as online game-play in the future(Only for the Original Stories).
