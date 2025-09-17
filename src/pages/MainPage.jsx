@@ -197,7 +197,10 @@ const MainPage = () => {
             Before pursuing his Ph.D., he was employed as a game engineer at <a href="https://dena.com/jp/" target="_blank" rel="noopener noreferrer">DeNA</a>, where he specialized in real-time graphics. Subsequently, he took on the role of tech lead at <a href="https://butlr.io/" target="_blank" rel="noopener noreferrer">Butlr Japan</a>, focusing on the development of sensing systems for spatial analytics.
           </p>
           <p>
-            His research focuses on multi-phase 3D representations using multiple-phase implicit functions and multiple-phase eplicit voxel based representation, combining deep learning and physics-based simulation to build real-time systems for fracture and cutting animation. His broader interests include physical simulation, neural geometry processing, 3D deep learning, IoT, AI in Game Interaction, and spatial 3D intelligence.
+            His research focuses on multi-phase 3D representations using multiple-phase implicit functions and multiple-phase eplicit voxel based representation, combining deep learning and physics-based simulation to build real-time systems for fracture and cutting animation. 
+          </p>
+          <p>
+            His broader interests include computer graphics, computer animation, neural geometry processing, IoT, human computer interaction in game and AI, and spatial 3D intelligence.
           </p>
           {/* <p>
             Motivated by personal experiences in senior care, he aims to develop AI and robotics systems that interpret spatial environments while preserving privacy.
