@@ -1,6 +1,7 @@
 import { Canvas } from '@react-three/fiber'
 import { OrbitControls, Text } from '@react-three/drei'
 import { motion } from 'framer-motion'
+import { useEffect } from 'react'
 
 const Scene = () => {
   return (
@@ -26,6 +27,11 @@ const Scene = () => {
 }
 
 const Demos = () => {
+  // Update page title for analytics
+  useEffect(() => {
+    document.title = "3D Demos - Niko Huang"
+  }, [])
+
   return (
     <motion.div
       initial={{ opacity: 0 }}

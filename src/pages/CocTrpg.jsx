@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import agias from '../assets/cocgame/agias.jpg'
 import agiasSm from '../assets/cocgame/agias-sm.jpg'
 import borderline from '../assets/cocgame/borderline.jpg'
@@ -12,6 +12,48 @@ import worldModel from '../assets/cocgame/world-model.png'
 
 const CocTrpg = () => {
   const [selectedImage, setSelectedImage] = useState(null)
+  const [likeCount, setLikeCount] = useState(0)
+  const [hasLiked, setHasLiked] = useState(false)
+
+  // Update page title for analytics
+  useEffect(() => {
+    document.title = "TRPG x World Model - Niko Huang"
+  }, [])
+
+  // Load like count from localStorage
+  useEffect(() => {
+    const savedLikeCount = localStorage.getItem('trpg_like_count')
+    const savedHasLiked = localStorage.getItem('trpg_has_liked')
+    
+    if (savedLikeCount) {
+      setLikeCount(parseInt(savedLikeCount, 10))
+    }
+    
+    if (savedHasLiked === 'true') {
+      setHasLiked(true)
+    }
+  }, [])
+
+  const handleLike = () => {
+    if (!hasLiked) {
+      const newCount = likeCount + 1
+      setLikeCount(newCount)
+      setHasLiked(true)
+      
+      // Save to localStorage
+      localStorage.setItem('trpg_like_count', newCount.toString())
+      localStorage.setItem('trpg_has_liked', 'true')
+      
+      // Track like event in Google Analytics
+      if (typeof window.gtag !== 'undefined') {
+        window.gtag('event', 'like', {
+          event_category: 'engagement',
+          event_label: 'TRPG Page',
+          value: newCount
+        })
+      }
+    }
+  }
 
   const galleryItems = [
     {
@@ -109,19 +151,20 @@ const CocTrpg = () => {
             <div className="world-model-content">
               <div className="world-model-text">
                 <p>
-                  TRPG x World Model is a concept of collaboration between TRPG and AI LLM-Based World Model. We are exploring the potential of TRPG and World Model to create a new way to play games.
+                  TRPG x World Model is a gameplay concept that combines tabletop role-playing games with AI world models. 
+                  The goal is to allow players to interact with the world using natural language and obtain robust game experience and story progression.
                 </p>
-                
+
                 <div className="concept-details">
-                  <h3>1. Game World Schema</h3>
+                  <h3>World Representation</h3>
                   <p>
-                    Our system uses a structured Game World Schema to define game rules, entities, and relationships.
+                    Use a structured world representation to organize characters, places, objects, and rules, making game rule-based logics progression traceable and retrievable.
                   </p>
 
-                  <h3>2. AI-based LLM-to-GameWorld Engine</h3>
+                  <h3>Narrative-to-GameWorld Engine</h3>
                   <p>
-                    The AI-based LLM-to-GameWorld engine acts as a translator, converting natural language descriptions and player actions into structured game state updates, enabling seamless communication between players and the game world.
-                  s</p>
+                    A language-to-world interface is responsible for converting the player/host's natural language into compliant status updates and action feedback, keeping the narrative consistent with the rules.
+                  </p>
                 </div>
               </div>
               
@@ -131,6 +174,22 @@ const CocTrpg = () => {
                   alt="TRPG x World Model Architecture" 
                   className="world-model-img"
                 />
+              </div>
+            </div>
+            
+            <div className="like-section">
+              <button 
+                className={`like-button ${hasLiked ? 'liked' : ''}`}
+                onClick={handleLike}
+                disabled={hasLiked}
+              >
+                <span className="like-icon">{hasLiked ? '❤️' : '🤍'}</span>
+                <span className="like-text">
+                  {hasLiked ? 'Liked!' : 'Like this concept'}
+                </span>
+              </button>
+              <div className="like-count">
+                {likeCount} {likeCount === 1 ? 'person' : 'people'} liked this
               </div>
             </div>
           </motion.section>

@@ -26,6 +26,16 @@ const MainPage = () => {
   const [showAllResearch, setShowAllResearch] = useState(false)
   const [showAllExperience, setShowAllExperience] = useState(false)
 
+  // Update page title for analytics
+  useEffect(() => {
+    const baseTitle = "Niko Huang - Ph.D. Candidate in Computer Graphics"
+    if (section) {
+      document.title = `${baseTitle} - ${section}`
+    } else {
+      document.title = baseTitle
+    }
+  }, [section])
+
   const newsData = [
     {
       date: "2025.09",
@@ -137,6 +147,17 @@ const MainPage = () => {
           })
         }, 100) // Small delay to ensure page is loaded
       }
+    }
+  }, [section])
+
+  // Track section views for Google Analytics
+  useEffect(() => {
+    if (typeof window.gtag !== 'undefined' && section) {
+      window.gtag('event', 'section_view', {
+        section_name: section,
+        page_title: `Main Page - ${section}`,
+        page_location: window.location.href
+      })
     }
   }, [section])
 

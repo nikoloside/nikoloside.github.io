@@ -2193,6 +2193,76 @@ body {
   transform: scale(1.02);
 }
 
+/* Like button styling */
+.like-section {
+  margin-top: 2rem;
+  text-align: center;
+  padding: 1rem;
+  background: rgba(248, 249, 250, 0.5);
+  border-radius: 8px;
+  border-top: 1px solid #e9ecef;
+}
+
+.like-button {
+  background: linear-gradient(135deg, #6c757d 0%, #495057 100%);
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0 auto;
+  box-shadow: 0 2px 8px rgba(108, 117, 125, 0.2);
+}
+
+.like-button:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(108, 117, 125, 0.3);
+}
+
+.like-button:disabled {
+  background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+  cursor: not-allowed;
+  transform: none;
+}
+
+.like-button.liked {
+  background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+  animation: likeAnimation 0.4s ease;
+}
+
+@keyframes likeAnimation {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+.like-icon {
+  font-size: 16px;
+  transition: transform 0.3s ease;
+}
+
+.like-button:hover:not(:disabled) .like-icon {
+  transform: scale(1.2);
+}
+
+.like-text {
+  font-family: 'Inter', sans-serif;
+}
+
+.like-count {
+  margin-top: 6px;
+  font-size: 11px;
+  color: #6c757d;
+  font-style: italic;
+  opacity: 0.8;
+}
+
 /* Responsive design for world model section */
 @media (max-width: 768px) {
   .world-model-content {
@@ -2207,6 +2277,11 @@ body {
   
   .world-model-img {
     max-width: 80%;
+  }
+  
+  .like-button {
+    padding: 10px 20px;
+    font-size: 13px;
   }
 }
 

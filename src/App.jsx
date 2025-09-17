@@ -13,8 +13,20 @@ function PageTracker() {
   
   useEffect(() => {
     if (typeof window.gtag !== 'undefined') {
+      // Get the full path including hash for single-page app routing
+      const pagePath = location.pathname + location.search + location.hash
+      
+      // Send page view event
+      window.gtag('event', 'page_view', {
+        page_title: document.title,
+        page_location: window.location.href,
+        page_path: pagePath
+      })
+      
+      // Also update the config
       window.gtag('config', 'G-8FJ3FS3HFB', {
-        page_path: location.pathname + location.search
+        page_path: pagePath,
+        page_title: document.title
       })
     }
   }, [location])
