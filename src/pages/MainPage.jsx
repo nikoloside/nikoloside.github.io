@@ -22,6 +22,9 @@ const MainPage = () => {
   const aboutRef = useRef(null)
   const publicationsRef = useRef(null)
   const [showAllNews, setShowAllNews] = useState(false)
+  const [showAllPublications, setShowAllPublications] = useState(false)
+  const [showAllResearch, setShowAllResearch] = useState(false)
+  const [showAllExperience, setShowAllExperience] = useState(false)
 
   const newsData = [
     {
@@ -213,7 +216,7 @@ const MainPage = () => {
             <h2>News</h2>
             <div className="news-content">
               {displayedNews.map((news, index) => (
-                <div key={index} className="news-item">
+                <div key={index} className={`news-item ${index >= 3 ? 'conditional-content animate-content' : ''}`}>
                   <p className="news-date">{news.date}</p>
                   <div className="news-text">
                     {news.text.split('![').map((part, partIndex) => {
@@ -288,20 +291,31 @@ const MainPage = () => {
                 </div>
               </div>
 
-              <div className="project-item">
-                <div className="project-image">
-                  <img src={dataDrivenFracture} alt="Data-Driven Fracture Project" />
-                </div>
-                <div className="project-info">
-                  <h2>Predicting Brittle Fracture Surface Shape From a Versatile Database</h2>
-                  <p className="project-meta">2017.04-</p>
-                  <p className="project-authors">Yuhang Huang, Yonghang Yu, Takashi Kanai</p>
-                  <p className="project-venue">Computer Animation and Virtual Worlds, (November 2019). Siggraph Asia 2017 Workshop: Data-Driven Animation Techniques (D2AT)</p>
-                  <div className="project-links">
-                    <a href="https://graphics.c.u-tokyo.ac.jp/hp/en/archives/1802" className="project-link">Project Page</a>
+              {showAllResearch && (
+                <div className="project-item conditional-content animate-content">
+                  <div className="project-image">
+                    <img src={dataDrivenFracture} alt="Data-Driven Fracture Project" />
+                  </div>
+                  <div className="project-info">
+                    <h2>Predicting Brittle Fracture Surface Shape From a Versatile Database</h2>
+                    <p className="project-meta">2017.04-</p>
+                    <p className="project-authors">Yuhang Huang, Yonghang Yu, Takashi Kanai</p>
+                    <p className="project-venue">Computer Animation and Virtual Worlds, (November 2019). Siggraph Asia 2017 Workshop: Data-Driven Animation Techniques (D2AT)</p>
+                    <div className="project-links">
+                      <a href="https://graphics.c.u-tokyo.ac.jp/hp/en/archives/1802" className="project-link">Project Page</a>
+                    </div>
                   </div>
                 </div>
-              </div>
+              )}
+            </div>
+            
+            <div className="research-read-more">
+              <button 
+                className="read-more-btn"
+                onClick={() => setShowAllResearch(!showAllResearch)}
+              >
+                {showAllResearch ? 'Show Less' : 'All Research Projects'}
+              </button>
             </div>
           </div>
         </motion.div>
@@ -324,6 +338,14 @@ const MainPage = () => {
               <li><strong>The Institute of Science Tokyo (Science Tokyo)</strong> - B.Eng. in Machine Learning (2013 ~ 2017)</li>
             </ul>
 
+            <h3>Fellowships</h3>
+            <ul>
+              <li><strong>World-leading Innovative Graduate Study Program Codesigning Future Society</strong> (2022-present)</li>
+              <li><strong>JST Support for Pioneering Research Initiated by the Next Generation</strong> (2023-2024)</li>
+            </ul>
+
+            {showAllExperience && (
+                <div className="conditional-content animate-content">
             <h3>Experience</h3>
             <ul>
               <li><strong>Butlr · Contract</strong> - Tech Lead in JP, Unity Engineer in Global (2020.4-2022.4)
@@ -347,6 +369,17 @@ const MainPage = () => {
                 </ul>
               </li>
             </ul>
+              </div>
+            )}
+            
+            <div className="experience-read-more">
+              <button 
+                className="read-more-btn"
+                onClick={() => setShowAllExperience(!showAllExperience)}
+              >
+                {showAllExperience ? 'Show Less' : 'All Experience'}
+              </button>
+            </div>
           </div>
         </motion.div>
       </section>
@@ -373,40 +406,55 @@ const MainPage = () => {
               <li>Yonghang Yu, Yuhang Huang, Takashi Kanai, "Data-Driven Approach for Simulating Brittle Fracture Surfaces", ACM SIGGRAPH ASIA 2017 Workshop: Data-Driven Animation Techniques (D2AT), 8 pages, Bangkok, Thailand (November/December 2017).</li>
             </ul>
 
-            <h3>Posters</h3>
-            <ul>
-              <li>Yuhang Huang, Takashi Kanai: "Brittle Fracture Animation with VQ-VAE-Based Generative Method", 23rd ACM SIGGRAPH / Eurographics Symposium on Computer Animation (SCA2024) Posters, No.3, pp.1-2 (Montreal Canada, 21-23 August), 2024.</li>
-            </ul>
+            {showAllPublications && (
+              <div className="conditional-content animate-content">
+                <h3>Posters</h3>
+                <ul>
+                  <li>Yuhang Huang, Takashi Kanai: "Brittle Fracture Animation with VQ-VAE-Based Generative Method", 23rd ACM SIGGRAPH / Eurographics Symposium on Computer Animation (SCA2024) Posters, No.3, pp.1-2 (Montreal Canada, 21-23 August), 2024.</li>
+                </ul>
 
-            <h3>Domestic Conference & Journal</h3>
-            <ul>
-              <li>黄 宇航, 金井 崇: "敵対的生成ネットワークを用いた任意3次元形状の脆性破壊予測", Visual Computing 2023, 東京, 9月, No.35, 2023. (査読付き)</li>
-              <li>黄 宇航，金井 崇: "深層学習ベース脆性破壊シミュレーションに向けて – 条件付きGAN による平面オブジェクトの破壊形状予測 –"，画像電子学会誌，Vol.50, No.4 (ビジュアルコンピューティング特集号), pp.558-567, 2021. (査読付き)</li>
-            </ul>
+                <h3>Domestic Conference & Journal</h3>
+                <ul>
+                  <li>黄 宇航, 金井 崇: "境界最遠点を正規化基準とする距離場設計による破片形状学習", Visual Computing 2025, 東京, 9月, No.22, 2025. (査読付き)</li>
+                  <li>黄 宇航, 金井 崇: "敵対的生成ネットワークを用いた任意3次元形状の脆性破壊予測", Visual Computing 2023, 東京, 9月, No.35, 2023. (査読付き)</li>
+                  <li>黄 宇航，金井 崇: "深層学習ベース脆性破壊シミュレーションに向けて – 条件付きGAN による平面オブジェクトの破壊形状予測 –"，画像電子学会誌，Vol.50, No.4 (ビジュアルコンピューティング特集号), pp.558-567, 2021. (査読付き)</li>
+                </ul>
 
-            <h3>Domestic Workshop & Posters & Invited talks</h3>
-            <ul>
-              <li>黄 宇航, 金井 崇: "事前学習による特定カテゴリの任意形状における破壊形状予測", 画像電子学会 ビジュアルコンピューティングワークショップ 2024, 太宰府, 福岡, 11月, 2024. (査読なし)</li>
-              <li>黄 宇航, 金井 崇: "VQ-VAEによるニューラル離散3次元破壊形状学習", Visual Computing 2024 ポスター, P39, 東京, 9月, 2024. (査読なし)</li>
-              <li>黄 宇航, 金井 崇: "特徴ベクトルからの破壊形状の予測に関する研究", 画像電子学会 ビジュアルコンピューティングワークショップ 2023, 葉山， 神奈川, 12月, 2023. (査読なし)</li>
-              <li>黄 宇航, 金井 崇: "3D-GANによる破壊分割形状予測結果における形状再構築手法の検討", 画像電子学会 ビジュアルコンピューティングワークショップ 2022, 諏訪湖，長野, 11月, 2022. (査読なし)</li>
-              <li>黄 宇航, 金井 崇: "3D-GANを用いた破壊形状生成にもとづく脆性破壊シミュレーション", Visual Computing 2022 ポスター, P11, 京都, 10月, 2022. (査読なし)</li>
-              <li>黄 宇航，于 永航，金井 崇: "データ駆動法による脆性破壊曲面生成シミュレーション", 画像電子学会 ビジュアルコンピューティングワークショップ 2017, 登別, 12月, 2017. (査読なし)</li>
-            </ul>
+                <h3>Domestic Workshop & Posters & Invited talks</h3>
+                <ul>
+                  <li>黄 宇航, 金井 崇: "DeepFracture: A Generative Approach for Predicting Brittle Fractures with Neural Discrete Representation Learning", Visual Computing 2025 招待講演, 東京, 9月, No.9, 2025.</li>
+                  <li>黄 宇航, 金井 崇: "事前学習による特定カテゴリの任意形状における破壊形状予測", 画像電子学会 ビジュアルコンピューティングワークショップ 2024, 太宰府, 福岡, 11月, 2024. (査読なし)</li>
+                  <li>黄 宇航, 金井 崇: "VQ-VAEによるニューラル離散3次元破壊形状学習", Visual Computing 2024 ポスター, P39, 東京, 9月, 2024. (査読なし)</li>
+                  <li>黄 宇航, 金井 崇: "特徴ベクトルからの破壊形状の予測に関する研究", 画像電子学会 ビジュアルコンピューティングワークショップ 2023, 葉山， 神奈川, 12月, 2023. (査読なし)</li>
+                  <li>黄 宇航, 金井 崇: "3D-GANによる破壊分割形状予測結果における形状再構築手法の検討", 画像電子学会 ビジュアルコンピューティングワークショップ 2022, 諏訪湖，長野, 11月, 2022. (査読なし)</li>
+                  <li>黄 宇航, 金井 崇: "3D-GANを用いた破壊形状生成にもとづく脆性破壊シミュレーション", Visual Computing 2022 ポスター, P11, 京都, 10月, 2022. (査読なし)</li>
+                  <li>黄 宇航，于 永航，金井 崇: "データ駆動法による脆性破壊曲面生成シミュレーション", 画像電子学会 ビジュアルコンピューティングワークショップ 2017, 登別, 12月, 2017. (査読なし)</li>
+                </ul>
 
-            <h3>Awards</h3>
-            <ul>
-              <li><strong>VC Research Insentive Awards VC2025</strong> (2025.09) - 境界最遠点を正規化基準とする距離場設計による破片形状学習</li>
-              <li><strong>JST SpringGX Doctoral Scholarship</strong> (2023-2024) - Next Generation Researcher Challenging Research Program (SPRING) University of Tokyo "Leading Human Resource Development for Green Transformation (GX)"</li>
-              <li><strong>VC Posters Awards VC+VCC2022</strong> (2022.10) - Brittle fracture simulation based on the generation of fracture shapes using 3D-GAN</li>
-              <li><strong>JSPS WINGS-CFS Fellowship</strong> (2022-2023) - World-leading Innovative Graduate Study Program Codesigning Future Society (WINGS-CFS Fellowship)</li>
-              <li><strong>OpenCV AI Competition 2021 Phase 1 Finalists</strong> (2021.1) - Member of a team chosen as finalists from over 1400 submissions in OpenCV AI Competition 2021.</li>
-            </ul>
+                <h3>Awards</h3>
+                <ul>
+                  <li><strong>VC Research Insentive Awards VC2025</strong> (2025.09) - 境界最遠点を正規化基準とする距離場設計による破片形状学習</li>
+                  <li><strong>JST SpringGX Doctoral Scholarship</strong> (2023-2024) - Next Generation Researcher Challenging Research Program (SPRING) University of Tokyo "Leading Human Resource Development for Green Transformation (GX)"</li>
+                  <li><strong>VC Posters Awards VC+VCC2022</strong> (2022.10) - Brittle fracture simulation based on the generation of fracture shapes using 3D-GAN</li>
+                  <li><strong>JSPS WINGS-CFS Fellowship</strong> (2022-2023) - World-leading Innovative Graduate Study Program Codesigning Future Society (WINGS-CFS Fellowship)</li>
+                  <li><strong>OpenCV AI Competition 2021 Phase 1 Finalists</strong> (2021.1) - Member of a team chosen as finalists from over 1400 submissions in OpenCV AI Competition 2021.</li>
+                </ul>
 
-            <h3>Talks & News</h3>
-            <ul>
-              <li>"NIKKEI Business Daily" - Why Chinese AI Talent is in Japanese Startups. (2023.6)</li>
-            </ul>
+                <h3>Talks & News</h3>
+                <ul>
+                  <li>"NIKKEI Business Daily" - Why Chinese AI Talent is in Japanese Startups. (2023.6)</li>
+                </ul>
+              </div>
+            )}
+
+            <div className="publications-read-more">
+              <button 
+                className="read-more-btn"
+                onClick={() => setShowAllPublications(!showAllPublications)}
+              >
+                {showAllPublications ? 'Show Less' : 'All Publications'}
+              </button>
+            </div>
           </div>
         </motion.div>
         </section>

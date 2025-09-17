@@ -364,7 +364,7 @@ body {
 }
 
 .section {
-  min-height: 80vh;
+  min-height: auto;
   padding: 2rem 0;
   display: flex;
   flex-direction: column;
@@ -2027,6 +2027,92 @@ body {
   background: var(--primary-color);
   transform: translateY(-1px);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.publications-read-more {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.research-read-more {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.experience-read-more {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.news-read-more {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+
+/* Animation classes for smooth transitions */
+.animate-content {
+  animation: fadeInUp 0.5s ease-out;
+}
+
+.animate-content-out {
+  animation: fadeOutDown 0.3s ease-in;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeOutDown {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+}
+
+/* Smooth transitions for conditional content */
+.conditional-content {
+  transition: all 0.4s ease-in-out;
+  overflow: hidden;
+}
+
+/* Button hover animations */
+.read-more-btn {
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.read-more-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.read-more-btn:hover::before {
+  left: 100%;
 }
 
 .markdown-content {
