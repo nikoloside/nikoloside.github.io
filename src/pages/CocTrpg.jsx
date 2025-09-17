@@ -8,6 +8,7 @@ import kagura from '../assets/cocgame/kagura.jpg'
 import kaguraSm from '../assets/cocgame/kagura-sm.jpg'
 import magura from '../assets/cocgame/magura.jpg'
 import maguraSm from '../assets/cocgame/magura-sm.jpg'
+import worldModel from '../assets/cocgame/world-model.png'
 
 const CocTrpg = () => {
   const [selectedImage, setSelectedImage] = useState(null)
@@ -84,7 +85,7 @@ const CocTrpg = () => {
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="game-title"
           >
-            CoC TRPG
+            TRPG x World Model
           </motion.h1>
           <motion.p 
             className="subtitle"
@@ -97,6 +98,43 @@ const CocTrpg = () => {
         </div>
 
         <div className="game-content">
+
+          
+          <motion.section 
+              className="game-info world-model-section"
+              initial={{ x: -100, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+            >
+            <div className="world-model-content">
+              <div className="world-model-text">
+                <p>
+                  TRPG x World Model is a concept of collaboration between TRPG and AI LLM-Based World Model. We are exploring the potential of TRPG and World Model to create a new way to play games.
+                </p>
+                
+                <div className="concept-details">
+                  <h3>1. Game World Schema</h3>
+                  <p>
+                    Our system uses a structured Game World Schema to define game rules, entities, and relationships.
+                  </p>
+
+                  <h3>2. AI-based LLM-to-GameWorld Engine</h3>
+                  <p>
+                    The AI-based LLM-to-GameWorld engine acts as a translator, converting natural language descriptions and player actions into structured game state updates, enabling seamless communication between players and the game world.
+                  s</p>
+                </div>
+              </div>
+              
+              <div className="world-model-image">
+                <img 
+                  src={worldModel} 
+                  alt="TRPG x World Model Architecture" 
+                  className="world-model-img"
+                />
+              </div>
+            </div>
+          </motion.section>
+
           <motion.section 
             className="game-info"
             initial={{ x: -100, opacity: 0 }}
@@ -108,7 +146,7 @@ const CocTrpg = () => {
               Welcome to our gallery showcasing CoC Game Introductions. All games are prepared by the site owner in special editions. Besides the original stories written by Niko Huang, other stories can be found through the citation links.
             </p>
             <p>
-              We will open-source the original stories once they are ready (Others' stories can be found through the citation links individually). We will also provide customized rule books and assets that can be used in the game.
+              We will open-source the original stories once they are ready (Others' stories can be found through the citation links individually). We will also provide TBD demos as online game-play in the future(Only for the Original Stories).
             </p>
           </motion.section>
 
@@ -193,46 +231,12 @@ const CocTrpg = () => {
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.8, delay: 1.2 }}
           >
-            <h2>Customized Rules</h2>
+            <h2>Demos</h2>
             <div className="tbd-content">
               <p>TBD</p>
             </div>
           </motion.section>
 
-          <motion.section 
-            className="additional-assets"
-            initial={{ y: 50, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.8, delay: 1.4 }}
-          >
-            <h2>Additional Assets</h2>
-            <div className="tbd-content">
-              <p>TBD</p>
-            </div>
-          </motion.section>
-
-          <motion.section 
-            className="game-rules"
-            initial={{ y: 50, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.8, delay: 1.6 }}
-          >
-            <h2>Game Rules</h2>
-            <div className="rules-list">
-              <div className="rule-item">
-                <h4>Basic Rules</h4>
-                <p>Learn the fundamental mechanics of the game</p>
-              </div>
-              <div className="rule-item">
-                <h4>Character Skills</h4>
-                <p>Understanding investigator abilities and skills</p>
-              </div>
-              <div className="rule-item">
-                <h4>Combat System</h4>
-                <p>How to handle conflicts and combat situations</p>
-              </div>
-            </div>
-          </motion.section>
         </div>
       </div>
 

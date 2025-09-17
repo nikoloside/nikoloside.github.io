@@ -136,7 +136,7 @@ const Navbar = () => {
                   window.scrollTo({ top: 0, behavior: 'smooth' })
                 }}
               >
-                CoC TRPG
+                TRPG x World Model
               </Link>
             </div>
           </div>
@@ -195,7 +195,7 @@ const Navbar = () => {
                 window.scrollTo({ top: 0, behavior: 'smooth' })
               }}
             >
-              CoC TRPG
+              TRPG x World Model
             </Link>
           </div>
         )}

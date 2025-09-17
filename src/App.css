@@ -2115,6 +2115,101 @@ body {
   left: 100%;
 }
 
+/* Concept details styling for TRPG page */
+.concept-details {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+  border-left: 4px solid var(--secondary-color);
+}
+
+.concept-details h3 {
+  color: var(--secondary-color);
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+  margin-top: 2rem;
+  font-weight: 600;
+}
+
+.concept-details h3:first-child {
+  margin-top: 0;
+}
+
+.concept-details p {
+  margin-bottom: 1rem;
+  line-height: 1.7;
+  color: #333;
+}
+
+.concept-details ul {
+  margin: 1rem 0;
+  padding-left: 1.5rem;
+}
+
+.concept-details li {
+  margin-bottom: 0.8rem;
+  line-height: 1.6;
+  color: #555;
+}
+
+.concept-details strong {
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+/* World Model section layout */
+.world-model-section {
+  margin-bottom: 3rem;
+}
+
+.world-model-content {
+  display: flex;
+  gap: 3rem;
+  align-items: flex-start;
+}
+
+.world-model-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.world-model-image {
+  flex: 0 0 300px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.world-model-img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.world-model-img:hover {
+  transform: scale(1.02);
+}
+
+/* Responsive design for world model section */
+@media (max-width: 768px) {
+  .world-model-content {
+    flex-direction: column;
+    gap: 2rem;
+  }
+  
+  .world-model-image {
+    flex: none;
+    width: 100%;
+  }
+  
+  .world-model-img {
+    max-width: 80%;
+  }
+}
+
 .markdown-content {
   max-width: 100%;
   margin: 0;
