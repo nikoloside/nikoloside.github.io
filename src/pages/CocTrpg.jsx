@@ -188,9 +188,6 @@ const CocTrpg = () => {
                   {hasLiked ? 'Liked!' : 'Like this concept'}
                 </span>
               </button>
-              <div className="like-count">
-                {likeCount} {likeCount === 1 ? 'person' : 'people'} liked this
-              </div>
             </div>
           </motion.section>
 
