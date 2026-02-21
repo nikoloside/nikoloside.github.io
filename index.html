@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Niko Huang — Portfolio</title>
+  <link rel="icon" type="image/jpeg" href="./assets/icon-BO8uqT9S.jpg" />
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -59,21 +60,27 @@
       transform: translateY(0);
     }
 
-    /* Text Enhancement on Hover */
+    /* Text Enhancement on Hover - Bright green only */
     .text-glow-light {
-      filter: brightness(1.6) contrast(1.1);
-      transition: filter 0.2s ease;
+      color: #CAFF04 !important;
+      transition: color 0.15s ease;
     }
 
     .text-glow-dark {
-      text-shadow: 0 0 8px rgba(255, 255, 255, 0.9), 0 0 16px rgba(255, 255, 255, 0.6);
-      transition: text-shadow 0.2s ease;
+      color: #CAFF04 !important;
+      text-shadow: 0 0 10px rgba(202, 255, 4, 0.5);
+      transition: color 0.15s ease, text-shadow 0.15s ease;
     }
 
     /* Hover effect for text elements */
     h1:hover, h2:hover, h3:hover, h4:hover, h5:hover, h6:hover,
-    p:hover, a:hover, span:hover, button:hover {
+    p:hover, span:hover {
       cursor: default;
+    }
+
+    /* Clickable elements */
+    a:hover, button:hover {
+      cursor: pointer;
     }
 
     /* Modal Animation */
@@ -96,24 +103,26 @@
   </style>
 </head>
 <body class="h-full font-inter overflow-hidden">
+  <!-- Grid Effect Canvas -->
+  <canvas id="gridCanvas" class="fixed top-0 left-0 w-full h-full pointer-events-none -z-10"></canvas>
+
   <!-- Main Container with Scroll Snap -->
-  <div class="snap-container relative z-20">
-
-  <!-- Grid Effect Canvas (Top Layer) -->
-  <canvas id="gridCanvas" class="fixed top-0 left-0 w-full h-full pointer-events-none z-50"></canvas>
-
+  <div class="snap-container relative">
     <!-- Section 1: Hero with Header -->
     <section class="snap-section w-full h-screen bg-[var(--bg-dark)] flex flex-col fade-in-section">
       <!-- Header -->
       <header class="w-full bg-[var(--bg-dark)] px-20 py-5 flex items-center justify-between flex-shrink-0">
-        <div class="text-[var(--neon)] font-jetbrains text-sm font-bold tracking-wide">
-          &gt;. Niko Huang
+        <div class="flex items-center gap-3">
+          <img src="./assets/icon-BO8uqT9S.jpg" alt="Niko Huang" class="w-8 h-8 rounded-full object-cover" />
+          <div class="text-[var(--neon)] font-jetbrains text-sm font-bold tracking-wide">
+            &gt;. Niko Huang
+          </div>
         </div>
         <nav class="flex items-center gap-8">
           <a href="#hero" class="text-[var(--text-white)] font-jetbrains text-[11px] font-medium tracking-[0.2em] hover:text-[var(--neon)] transition-colors">HOME</a>
           <a href="#projects" class="text-[var(--text-gray)] font-jetbrains text-[11px] font-medium tracking-[0.2em] hover:text-[var(--neon)] transition-colors">PROJECT</a>
           <a href="#publications" class="text-[var(--text-gray)] font-jetbrains text-[11px] font-medium tracking-[0.2em] hover:text-[var(--neon)] transition-colors">PUBLICATION</a>
-          <a href="https://worldline.ai" class="bg-[var(--neon)] text-[var(--bg-dark)] font-jetbrains text-[10px] font-bold tracking-wide px-3 py-1 hover:opacity-90 transition-opacity">WorldLine</a>
+          <span class="bg-[var(--neon)] text-[var(--bg-dark)] font-jetbrains text-[10px] font-bold tracking-wide px-3 py-1 opacity-50 cursor-not-allowed">WorldLine</span>
         </nav>
       </header>
 
@@ -128,7 +137,7 @@
           </h1>
           <div class="w-[60px] h-[3px] bg-[var(--neon)]"></div>
           <p class="text-[var(--text-gray)] font-inter text-sm font-light leading-[1.7] max-w-2xl">
-            Founder of WorldLine, an agentic system for games with Persistent Narrative World Representation.<br><br>
+            Founder of WorldLine, an agentic AI system that creates persistent and evolving narrative worlds as games.<br><br>
             Previously Game Engineer at DeNA, IoT Full-Stack at Butlr.<br>
             Earned Ph.D. in Computer Graphics at the University of Tokyo, advised by Prof. Takashi Kanai. Focusing on computer graphics, physics-based animation, and multi-phase SDF 3D representation for fracture patterns.
           </p>
@@ -136,11 +145,11 @@
             <a href="https://github.com/nikoloside" target="_blank" class="text-[var(--text-gray)] font-jetbrains text-[11px] hover:text-[var(--neon)] transition-colors">GitHub</a>
             <a href="https://twitter.com/nikoloside" target="_blank" class="text-[var(--text-gray)] font-jetbrains text-[11px] hover:text-[var(--neon)] transition-colors">Twitter</a>
             <a href="https://www.threads.net/@nikoloside" target="_blank" class="text-[var(--text-gray)] font-jetbrains text-[11px] hover:text-[var(--neon)] transition-colors">Threads</a>
-            <a href="https://www.xiaohongshu.com/user/profile/nikoloside" target="_blank" class="text-[var(--text-gray)] font-jetbrains text-[11px] hover:text-[var(--neon)] transition-colors">RED</a>
-            <a href="https://www.linkedin.com/in/nikoloside" target="_blank" class="text-[var(--text-gray)] font-jetbrains text-[11px] hover:text-[var(--neon)] transition-colors">LinkedIn</a>
+            <a href="https://xhslink.com/m/2zkz2aYpuTZ" target="_blank" class="text-[var(--text-gray)] font-jetbrains text-[11px] hover:text-[var(--neon)] transition-colors">RED</a>
+            <a href="https://www.linkedin.com/in/nikolos-huang" target="_blank" class="text-[var(--text-gray)] font-jetbrains text-[11px] hover:text-[var(--neon)] transition-colors">LinkedIn</a>
           </div>
         </div>
-        <div class="w-80 h-80 flex items-center justify-center bg-cover bg-center rounded-lg overflow-hidden">
+        <div class="w-80 h-80 flex items-center justify-center rounded-lg overflow-hidden relative z-[60]">
           <img src="./assets/icon-BO8uqT9S.jpg" alt="Niko Huang" class="w-full h-full object-cover" />
         </div>
       </div>
@@ -153,24 +162,24 @@
       </h2>
       <div class="w-full flex flex-col mb-8 max-h-[60vh] overflow-y-auto">
         <div class="w-full flex gap-6 py-3 border-b border-[rgba(10,10,15,0.125)]">
+          <div class="w-[70px] text-[var(--bg-dark)] font-jetbrains text-[10px] font-bold tracking-wide flex-shrink-0">2026.01</div>
+          <div class="flex-1 text-[var(--bg-dark)] font-inter text-[13px] font-medium leading-[1.5]">🎓 Became PhD candidate and will graduate in March 2026.</div>
+        </div>
+        <div class="w-full flex gap-6 py-3 border-b border-[rgba(10,10,15,0.125)]">
           <div class="w-[70px] text-[var(--bg-dark)] font-jetbrains text-[10px] font-bold tracking-wide flex-shrink-0">2025.09</div>
-          <div class="flex-1 text-[var(--bg-dark)] font-inter text-[13px] font-medium leading-[1.5]">VC Research Incentive Awards VC2025 — Distance Field Design for Fragment Shape Learning.</div>
+          <div class="flex-1 text-[var(--bg-dark)] font-inter text-[13px] font-medium leading-[1.5]">🏆 Received VC Research Incentive Awards VC2025 for research on "境界最遠点を正規化基準とする距離場設計による破片形状学習" (Distance Field Design with Far-From-Boundary Normalization for Fragment Shape Learning).</div>
         </div>
         <div class="w-full flex gap-6 py-3 border-b border-[rgba(10,10,15,0.125)]">
           <div class="w-[70px] text-[var(--bg-dark)] font-jetbrains text-[10px] font-bold tracking-wide flex-shrink-0">2025.08</div>
-          <div class="flex-1 text-[var(--bg-dark)] font-inter text-[13px] font-medium leading-[1.5]">DeepFracture GitHub awarded GRSI Replicability Stamp. Released HuggingFace Model & Dataset.</div>
+          <div class="flex-1 text-[var(--bg-dark)] font-inter text-[13px] font-medium leading-[1.5]">📄 DeepFracture GitHub has been awarded the GRSI Replicability Stamp Replicability Stamp, and released the Hugging Face Model 🤗 and Dataset 🔗.</div>
         </div>
         <div class="w-full flex gap-6 py-3 border-b border-[rgba(10,10,15,0.125)]">
           <div class="w-[70px] text-[var(--bg-dark)] font-jetbrains text-[10px] font-bold tracking-wide flex-shrink-0">2025.02</div>
-          <div class="flex-1 text-[var(--bg-dark)] font-inter text-[13px] font-medium leading-[1.5]">DeepFracture accepted to Computer Graphics Forum.</div>
-        </div>
-        <div class="w-full flex gap-6 py-3 border-b border-[rgba(10,10,15,0.125)]">
-          <div class="w-[70px] text-[var(--bg-dark)] font-jetbrains text-[10px] font-bold tracking-wide flex-shrink-0">2024.08</div>
-          <div class="flex-1 text-[var(--bg-dark)] font-inter text-[13px] font-medium leading-[1.5]">Poster at SCA 2024, Montreal — VQ-VAE-Based Brittle Fracture Animation.</div>
+          <div class="flex-1 text-[var(--bg-dark)] font-inter text-[13px] font-medium leading-[1.5]">📄 DeepFracture paper accepted to Computer Graphics Forum (February 2025).</div>
         </div>
         <div class="w-full flex gap-6 py-3">
-          <div class="w-[70px] text-[var(--bg-dark)] font-jetbrains text-[10px] font-bold tracking-wide flex-shrink-0">2023.06</div>
-          <div class="flex-1 text-[var(--bg-dark)] font-inter text-[13px] font-medium leading-[1.5]">Featured in NIKKEI Business Daily — "Why Chinese AI Talent is in Japanese Startups".</div>
+          <div class="w-[70px] text-[var(--bg-dark)] font-jetbrains text-[10px] font-bold tracking-wide flex-shrink-0">2024.08</div>
+          <div class="flex-1 text-[var(--bg-dark)] font-inter text-[13px] font-medium leading-[1.5]">🎤 Presented poster "Brittle Fracture Animation with VQ-VAE-Based Generative Method" at SCA 2024 in Montreal, Canada.</div>
         </div>
       </div>
       <button onclick="openModal('newsModal')" class="bg-[var(--bg-dark)] text-[var(--neon)] font-jetbrains text-[11px] font-bold tracking-wide px-6 py-2.5 self-start hover:opacity-90 transition-opacity">
@@ -191,7 +200,7 @@
           <h3 class="text-[var(--text-white)] font-inter text-[32px] font-extrabold tracking-[-0.03em] leading-none">DeepFracture</h3>
           <p class="text-[var(--text-gray)] font-inter text-sm font-light leading-[1.6]">A Generative Approach for Predicting Brittle Fractures<br>with Neural Discrete Representation Learning</p>
           <div class="text-[var(--text-dim)] font-jetbrains text-[10px] tracking-[0.05em]">Yuhang Huang, Takashi Kanai  ·  Computer Graphics Forum, Feb 2025</div>
-          <a href="#" class="text-[var(--neon)] font-jetbrains text-xs font-semibold tracking-wide hover:opacity-80 transition-opacity">View Project →</a>
+          <a href="https://github.com/nikoloside/TEBP-DeepFracture" target="_blank" class="text-[var(--neon)] font-jetbrains text-xs font-semibold tracking-wide hover:opacity-80 transition-opacity">View Project →</a>
         </div>
       </div>
       <button onclick="openModal('projectsModal')" class="bg-[var(--neon)] text-[var(--bg-dark)] font-jetbrains text-[11px] font-bold tracking-wide px-6 py-2.5 self-start hover:opacity-90 transition-opacity">
@@ -210,8 +219,8 @@
         <div class="text-[rgba(255,255,255,0.5)] font-inter text-[13px] leading-[1.5]">Computer Graphics Forum, e70002, 15 pages, February 2025.</div>
       </div>
       <div class="w-full flex flex-col gap-3 pt-6 border-t border-[rgba(255,255,255,0.125)] mb-8">
-        <div class="text-[rgba(255,255,255,0.8)] font-inter text-base font-medium leading-[1.5]">"Predicting Brittle Fracture Surface Shape From a Versatile Database"</div>
-        <div class="text-[rgba(255,255,255,0.38)] font-jetbrains text-[10px] tracking-[0.03em]">Yuhang Huang, Yonghang Yu, Takashi Kanai  ·  CAVW, Nov 2019  ·  SIGGRAPH Asia 2017 D2AT</div>
+        <div class="text-[rgba(255,255,255,0.8)] font-inter text-base font-medium leading-[1.5]">NIKKEI Business Daily Feature</div>
+        <div class="text-[rgba(255,255,255,0.38)] font-jetbrains text-[10px] tracking-[0.03em]">"Why Chinese AI Talent is in Japanese Startups"  ·  June 2023</div>
       </div>
       <button onclick="openModal('publicationsModal')" class="bg-[rgba(255,255,255,0.125)] text-[var(--text-white)] font-jetbrains text-[11px] font-bold tracking-wide px-6 py-2.5 self-start hover:bg-[rgba(255,255,255,0.2)] transition-colors">
         All Publications →
@@ -229,8 +238,8 @@
           <a href="https://github.com/nikoloside" target="_blank" class="text-[var(--text-gray)] font-jetbrains text-[11px] hover:text-[var(--neon)] transition-colors">GitHub</a>
           <a href="https://twitter.com/nikoloside" target="_blank" class="text-[var(--text-gray)] font-jetbrains text-[11px] hover:text-[var(--neon)] transition-colors">Twitter</a>
           <a href="https://www.threads.net/@nikoloside" target="_blank" class="text-[var(--text-gray)] font-jetbrains text-[11px] hover:text-[var(--neon)] transition-colors">Threads</a>
-          <a href="https://www.xiaohongshu.com/user/profile/nikoloside" target="_blank" class="text-[var(--text-gray)] font-jetbrains text-[11px] hover:text-[var(--neon)] transition-colors">RED</a>
-          <a href="https://www.linkedin.com/in/nikoloside" target="_blank" class="text-[var(--text-gray)] font-jetbrains text-[11px] hover:text-[var(--neon)] transition-colors">LinkedIn</a>
+          <a href="https://xhslink.com/m/2zkz2aYpuTZ" target="_blank" class="text-[var(--text-gray)] font-jetbrains text-[11px] hover:text-[var(--neon)] transition-colors">RED</a>
+          <a href="https://www.linkedin.com/in/nikolos-huang" target="_blank" class="text-[var(--text-gray)] font-jetbrains text-[11px] hover:text-[var(--neon)] transition-colors">LinkedIn</a>
         </div>
       </footer>
     </section>
@@ -257,40 +266,44 @@
 
         <div class="flex flex-col">
           <div class="flex gap-8 py-5 border-b border-[var(--border-dark)]">
+            <div class="w-20 text-[var(--neon)] font-jetbrains text-xs font-bold tracking-wide flex-shrink-0">2026.01</div>
+            <div class="flex-1 text-[var(--text-white)] font-inter text-[15px] leading-[1.6]">🎓 Became PhD candidate and will graduate in March 2026.</div>
+          </div>
+          <div class="flex gap-8 py-5 border-b border-[var(--border-dark)]">
             <div class="w-20 text-[var(--neon)] font-jetbrains text-xs font-bold tracking-wide flex-shrink-0">2025.09</div>
-            <div class="flex-1 text-[var(--text-white)] font-inter text-[15px] leading-[1.6]">VC Research Incentive Awards VC2025 — Distance Field Design for Fragment Shape Learning.</div>
+            <div class="flex-1 text-[var(--text-white)] font-inter text-[15px] leading-[1.6]">🏆 Received VC Research Incentive Awards VC2025 for research on "境界最遠点を正規化基準とする距離場設計による破片形状学習" (Distance Field Design with Far-From-Boundary Normalization for Fragment Shape Learning).</div>
           </div>
           <div class="flex gap-8 py-5 border-b border-[var(--border-dark)]">
             <div class="w-20 text-[var(--neon)] font-jetbrains text-xs font-bold tracking-wide flex-shrink-0">2025.08</div>
-            <div class="flex-1 text-[var(--text-white)] font-inter text-[15px] leading-[1.6]">DeepFracture GitHub awarded GRSI Replicability Stamp. Released HuggingFace Model & Dataset.</div>
+            <div class="flex-1 text-[var(--text-white)] font-inter text-[15px] leading-[1.6]">📄 DeepFracture GitHub has been awarded the GRSI Replicability Stamp Replicability Stamp, and released the Hugging Face Model 🤗 and Dataset 🔗.</div>
           </div>
           <div class="flex gap-8 py-5 border-b border-[var(--border-dark)]">
             <div class="w-20 text-[var(--neon)] font-jetbrains text-xs font-bold tracking-wide flex-shrink-0">2025.02</div>
-            <div class="flex-1 text-[var(--text-white)] font-inter text-[15px] leading-[1.6]">DeepFracture accepted to Computer Graphics Forum.</div>
+            <div class="flex-1 text-[var(--text-white)] font-inter text-[15px] leading-[1.6]">📄 DeepFracture paper accepted to Computer Graphics Forum (February 2025).</div>
           </div>
           <div class="flex gap-8 py-5 border-b border-[var(--border-dark)]">
             <div class="w-20 text-[var(--neon)] font-jetbrains text-xs font-bold tracking-wide flex-shrink-0">2024.08</div>
-            <div class="flex-1 text-[var(--text-white)] font-inter text-[15px] leading-[1.6]">Poster at SCA 2024, Montreal — VQ-VAE-Based Brittle Fracture Animation.</div>
-          </div>
-          <div class="flex gap-8 py-5 border-b border-[var(--border-dark)]">
-            <div class="w-20 text-[var(--neon)] font-jetbrains text-xs font-bold tracking-wide flex-shrink-0">2024.07</div>
-            <div class="flex-1 text-[var(--text-white)] font-inter text-[15px] leading-[1.6]">Poster at CGI 2024, Shanghai — Multi-Phase Fracture Prediction with SDF Representation.</div>
-          </div>
-          <div class="flex gap-8 py-5 border-b border-[var(--border-dark)]">
-            <div class="w-20 text-[var(--neon)] font-jetbrains text-xs font-bold tracking-wide flex-shrink-0">2024.04</div>
-            <div class="flex-1 text-[var(--text-white)] font-inter text-[15px] leading-[1.6]">DeepFracture demo released on HuggingFace Spaces.</div>
+            <div class="flex-1 text-[var(--text-white)] font-inter text-[15px] leading-[1.6]">🎤 Presented poster "Brittle Fracture Animation with VQ-VAE-Based Generative Method" at SCA 2024 in Montreal, Canada.</div>
           </div>
           <div class="flex gap-8 py-5 border-b border-[var(--border-dark)]">
             <div class="w-20 text-[var(--neon)] font-jetbrains text-xs font-bold tracking-wide flex-shrink-0">2023.06</div>
-            <div class="flex-1 text-[var(--text-white)] font-inter text-[15px] leading-[1.6]">Featured in NIKKEI Business Daily — "Why Chinese AI Talent is in Japanese Startups".</div>
+            <div class="flex-1 text-[var(--text-white)] font-inter text-[15px] leading-[1.6]">📰 Featured in NIKKEI Business Daily article "Why Chinese AI Talent is in Japanese Startups" highlighting contributions to Japanese tech ecosystem.</div>
           </div>
           <div class="flex gap-8 py-5 border-b border-[var(--border-dark)]">
-            <div class="w-20 text-[var(--neon)] font-jetbrains text-xs font-bold tracking-wide flex-shrink-0">2022.09</div>
-            <div class="flex-1 text-[var(--text-white)] font-inter text-[15px] leading-[1.6]">Started Ph.D. program at the University of Tokyo, Department of Frontier Sciences.</div>
+            <div class="w-20 text-[var(--neon)] font-jetbrains text-xs font-bold tracking-wide flex-shrink-0">2023-2024</div>
+            <div class="flex-1 text-[var(--text-white)] font-inter text-[15px] leading-[1.6]">🎓 Awarded JST SpringGX Doctoral Scholarship for Next Generation Researcher Challenging Research Program at University of Tokyo.</div>
+          </div>
+          <div class="flex gap-8 py-5 border-b border-[var(--border-dark)]">
+            <div class="w-20 text-[var(--neon)] font-jetbrains text-xs font-bold tracking-wide flex-shrink-0">2022.10</div>
+            <div class="flex-1 text-[var(--text-white)] font-inter text-[15px] leading-[1.6]">🏆 Won VC Posters Awards VC+VCC2022 for "Brittle fracture simulation based on JSPS WINGS-CFS Fellowship - World-leading Innovative Graduate Study Program Codesigning Future Society.</div>
+          </div>
+          <div class="flex gap-8 py-5 border-b border-[var(--border-dark)]">
+            <div class="w-20 text-[var(--neon)] font-jetbrains text-xs font-bold tracking-wide flex-shrink-0">2021.09</div>
+            <div class="flex-1 text-[var(--text-white)] font-inter text-[15px] leading-[1.6]">🎮 Graduated from DeNA, thank you to the team members of Pokemon Masters EX.</div>
           </div>
           <div class="flex gap-8 py-5">
-            <div class="w-20 text-[var(--neon)] font-jetbrains text-xs font-bold tracking-wide flex-shrink-0">2019.11</div>
-            <div class="flex-1 text-[var(--text-white)] font-inter text-[15px] leading-[1.6]">Paper accepted to Computer Animation and Virtual Worlds (CAVW) — "Predicting Brittle Fracture Surface Shape From a Versatile Database".</div>
+            <div class="w-20 text-[var(--neon)] font-jetbrains text-xs font-bold tracking-wide flex-shrink-0">2021.01</div>
+            <div class="flex-1 text-[var(--text-white)] font-inter text-[15px] leading-[1.6]">🥇 Team member selected as finalist in OpenCV AI Competition 2021 Phase 1 from over 1400 submissions.</div>
           </div>
         </div>
       </div>
@@ -325,13 +338,13 @@
               <h3 class="text-[var(--text-white)] font-inter text-[28px] font-bold leading-tight">DeepFracture</h3>
               <p class="text-[var(--text-gray)] font-inter text-sm leading-[1.6]">A generative approach for predicting brittle fractures with neural discrete representation learning. GRSI Replicability Stamp awarded.</p>
               <div class="text-[var(--text-dim)] font-jetbrains text-[10px] tracking-wide">Python · PyTorch · VQ-VAE · SDF</div>
+              <a href="https://github.com/nikoloside/TEBP-DeepFracture" target="_blank" class="text-[var(--neon)] font-jetbrains text-xs font-semibold tracking-wide hover:opacity-80 transition-opacity">View Project →</a>
             </div>
           </div>
 
           <!-- Project 2: WorldLine -->
           <div class="flex">
-            <div class="w-[360px] h-[260px] bg-[var(--neon)] flex items-center justify-center flex-shrink-0">
-              <div class="text-[rgba(10,10,15,0.19)] font-inter text-[72px] font-extrabold tracking-[-0.04em]">WL</div>
+            <div class="w-[360px] h-[260px] flex items-center justify-center flex-shrink-0 bg-cover bg-center" style="background-image: url('./assets/worldline.png');">
             </div>
             <div class="flex-1 h-[260px] bg-[var(--bg-card)] px-10 py-8 flex flex-col justify-center gap-3">
               <div class="text-[var(--neon)] font-jetbrains text-[10px] font-bold tracking-[0.2em]">ACTIVE  ·  FOUNDER</div>
@@ -343,14 +356,38 @@
 
           <!-- Project 3: FractureBench -->
           <div class="flex">
-            <div class="w-[360px] h-[260px] bg-[var(--bg-card)] border border-[var(--border-dark)] flex items-center justify-center flex-shrink-0">
-              <div class="text-[var(--text-dim)] font-inter text-[72px] font-extrabold tracking-[-0.04em]">FB</div>
+            <div class="w-[360px] h-[260px] flex items-center justify-center flex-shrink-0 bg-cover bg-center" style="background-image: url('./assets/break4models.png');">
             </div>
             <div class="flex-1 h-[260px] bg-[var(--bg-card)] px-10 py-8 flex flex-col justify-center gap-3">
               <div class="text-[var(--purple-glow)] font-jetbrains text-[10px] font-bold tracking-[0.2em]">HUGGINGFACE  ·  DEMO</div>
               <h3 class="text-[var(--text-white)] font-inter text-[28px] font-bold leading-tight">FractureBench</h3>
               <p class="text-[var(--text-gray)] font-inter text-sm leading-[1.6]">Interactive demo and dataset for brittle fracture prediction. Try DeepFracture models directly on HuggingFace Spaces.</p>
               <div class="text-[var(--text-dim)] font-jetbrains text-[10px] tracking-wide">HuggingFace · Gradio · Python</div>
+              <a href="https://huggingface.co/datasets/nikoloside/break4models" target="_blank" class="text-[var(--purple-glow)] font-jetbrains text-xs font-semibold tracking-wide hover:opacity-80 transition-opacity">View Dataset →</a>
+            </div>
+          </div>
+
+          <!-- Project 4: AKB-Autovoter -->
+          <div class="flex">
+            <div class="w-[360px] h-[260px] flex items-center justify-center flex-shrink-0 bg-cover bg-center" style="background-image: url('./assets/akb-autovoter-BoDK3rMV.gif');">
+            </div>
+            <div class="flex-1 h-[260px] bg-[var(--bg-card)] px-10 py-8 flex flex-col justify-center gap-3">
+              <div class="text-[var(--neon)] font-jetbrains text-[10px] font-bold tracking-[0.2em]">AUTOMATION  ·  PIPELINE</div>
+              <h3 class="text-[var(--text-white)] font-inter text-[28px] font-bold leading-tight">AKB-Autovoter</h3>
+              <p class="text-[var(--text-gray)] font-inter text-sm leading-[1.6]">Automated voting system for AKB Sousenkyo pipeline</p>
+              <div class="text-[var(--text-dim)] font-jetbrains text-[10px] tracking-wide">Python · Automation · Web Scraping</div>
+            </div>
+          </div>
+
+          <!-- Project 5: Studio-Spatial Visualizer -->
+          <div class="flex">
+            <div class="w-[360px] h-[260px] flex items-center justify-center flex-shrink-0 bg-cover bg-center" style="background-image: url('./assets/studio-DPg89tab.jpeg');">
+            </div>
+            <div class="flex-1 h-[260px] bg-[var(--bg-card)] px-10 py-8 flex flex-col justify-center gap-3">
+              <div class="text-[var(--purple-glow)] font-jetbrains text-[10px] font-bold tracking-[0.2em]">ANALYTICS  ·  VISUALIZATION</div>
+              <h3 class="text-[var(--text-white)] font-inter text-[28px] font-bold leading-tight">Studio-Spatial Visualizer</h3>
+              <p class="text-[var(--text-gray)] font-inter text-sm leading-[1.6]">Spatial analytics and visualization metrics system</p>
+              <div class="text-[var(--text-dim)] font-jetbrains text-[10px] tracking-wide">Spatial Analytics · Data Visualization · Metrics</div>
             </div>
           </div>
         </div>
@@ -376,9 +413,9 @@
         <h2 class="mb-4 text-[var(--text-white)] font-inter text-5xl font-extrabold tracking-[-0.04em]">All Publications</h2>
         <p class="mb-12 text-[var(--text-gray)] font-inter text-[15px] leading-[1.6]">Journals, conference papers, and domestic publications.</p>
 
-        <!-- Journal Papers -->
+        <!-- Journals -->
         <div class="mb-12">
-          <h3 class="mb-6 text-[var(--neon)] font-jetbrains text-[11px] font-bold tracking-[0.4em]">JOURNAL PAPERS</h3>
+          <h3 class="mb-6 text-[var(--neon)] font-jetbrains text-[11px] font-bold tracking-[0.4em]">JOURNALS</h3>
           <div class="flex flex-col gap-6">
             <div class="pb-5 border-b border-[var(--border-dark)]">
               <div class="mb-2 text-[var(--text-white)] font-inter text-[17px] font-semibold leading-[1.5]">"DeepFracture: A Generative Approach for Predicting Brittle Fractures with Neural Discrete Representation Learning"</div>
@@ -388,47 +425,107 @@
             <div class="pb-5 border-b border-[var(--border-dark)]">
               <div class="mb-2 text-[var(--text-white)] font-inter text-[17px] font-semibold leading-[1.5]">"Predicting Brittle Fracture Surface Shape From a Versatile Database"</div>
               <div class="mb-2 text-[var(--purple-glow)] font-jetbrains text-xs font-medium tracking-[0.05em]">Yuhang Huang, Yonghang Yu, Takashi Kanai</div>
-              <div class="text-[var(--text-gray)] font-inter text-[13px] leading-[1.5]">Computer Animation and Virtual Worlds (CAVW), November 2019.</div>
+              <div class="text-[var(--text-gray)] font-inter text-[13px] leading-[1.5]">Computer Animation and Virtual Worlds, Volume 30, Issue 6, e1865, 19 pages, November/December 2019.</div>
             </div>
           </div>
         </div>
 
-        <!-- Conference Papers -->
+        <!-- Papers -->
         <div class="mb-12">
-          <h3 class="mb-6 text-[var(--neon)] font-jetbrains text-[11px] font-bold tracking-[0.4em]">CONFERENCE PAPERS</h3>
+          <h3 class="mb-6 text-[var(--neon)] font-jetbrains text-[11px] font-bold tracking-[0.4em]">PAPERS</h3>
           <div class="flex flex-col gap-6">
             <div class="pb-5 border-b border-[var(--border-dark)]">
-              <div class="mb-2 text-[var(--text-white)] font-inter text-[17px] font-semibold leading-[1.5]">"VQ-VAE-Based Brittle Fracture Animation"</div>
+              <div class="mb-2 text-[var(--text-white)] font-inter text-[17px] font-semibold leading-[1.5]">"Brittle Fracture Prediction Method for Plane Shapes Using Conditional-GANs"</div>
               <div class="mb-2 text-[var(--purple-glow)] font-jetbrains text-xs font-medium tracking-[0.05em]">Yuhang Huang, Takashi Kanai</div>
-              <div class="text-[var(--text-gray)] font-inter text-[13px] leading-[1.5]">Poster, SCA 2024, Montreal.</div>
+              <div class="text-[var(--text-gray)] font-inter text-[13px] leading-[1.5]">Proc. 12th Asian Forum on Graphic Science, Article No.25, 9 pages, Kunming, China, August 2019.</div>
             </div>
             <div class="pb-5 border-b border-[var(--border-dark)]">
-              <div class="mb-2 text-[var(--text-white)] font-inter text-[17px] font-semibold leading-[1.5]">"Multi-Phase Fracture Prediction with SDF Representation"</div>
-              <div class="mb-2 text-[var(--purple-glow)] font-jetbrains text-xs font-medium tracking-[0.05em]">Yuhang Huang, Takashi Kanai</div>
-              <div class="text-[var(--text-gray)] font-inter text-[13px] leading-[1.5]">Poster, CGI 2024, Shanghai.</div>
-            </div>
-            <div class="pb-5 border-b border-[var(--border-dark)]">
-              <div class="mb-2 text-[var(--text-white)] font-inter text-[17px] font-semibold leading-[1.5]">"Predicting Brittle Fracture Surface Shape From a Versatile Database"</div>
-              <div class="mb-2 text-[var(--purple-glow)] font-jetbrains text-xs font-medium tracking-[0.05em]">Yuhang Huang, Yonghang Yu, Takashi Kanai</div>
-              <div class="text-[var(--text-gray)] font-inter text-[13px] leading-[1.5]">D2AT, SIGGRAPH Asia 2017, Bangkok.</div>
+              <div class="mb-2 text-[var(--text-white)] font-inter text-[17px] font-semibold leading-[1.5]">"Data-Driven Approach for Simulating Brittle Fracture Surfaces"</div>
+              <div class="mb-2 text-[var(--purple-glow)] font-jetbrains text-xs font-medium tracking-[0.05em]">Yonghang Yu, Yuhang Huang, Takashi Kanai</div>
+              <div class="text-[var(--text-gray)] font-inter text-[13px] leading-[1.5]">ACM SIGGRAPH ASIA 2017 Workshop: Data-Driven Animation Techniques (D2AT), 8 pages, Bangkok, Thailand, November/December 2017.</div>
             </div>
           </div>
         </div>
 
-        <!-- Domestic Journals -->
-        <div class="mb-8">
-          <h3 class="mb-6 text-[var(--neon)] font-jetbrains text-[11px] font-bold tracking-[0.4em]">DOMESTIC JOURNALS</h3>
+        <!-- Posters -->
+        <div class="mb-12">
+          <h3 class="mb-6 text-[var(--neon)] font-jetbrains text-[11px] font-bold tracking-[0.4em]">POSTERS</h3>
           <div class="pb-5 border-b border-[var(--border-dark)]">
-            <div class="mb-2 text-[var(--text-white)] font-inter text-[17px] font-semibold leading-[1.5]">"3D Representation Learning for Brittle Fracture Patterns Using Distance Fields"</div>
+            <div class="mb-2 text-[var(--text-white)] font-inter text-[17px] font-semibold leading-[1.5]">"Brittle Fracture Animation with VQ-VAE-Based Generative Method"</div>
             <div class="mb-2 text-[var(--purple-glow)] font-jetbrains text-xs font-medium tracking-[0.05em]">Yuhang Huang, Takashi Kanai</div>
-            <div class="text-[var(--text-gray)] font-inter text-[13px] leading-[1.5]">IPSJ SIG-CG, Visual Computing 2024.</div>
+            <div class="text-[var(--text-gray)] font-inter text-[13px] leading-[1.5]">23rd ACM SIGGRAPH / Eurographics Symposium on Computer Animation (SCA2024) Posters, No.3, pp.1-2, Montreal Canada, August 2024.</div>
           </div>
         </div>
 
-        <!-- Summary -->
-        <div class="bg-[var(--bg-card)] px-8 py-6 rounded-lg">
-          <div class="mb-2 text-[var(--text-gray)] font-jetbrains text-xs tracking-[0.05em]">+ 3 additional reviewed domestic journals, 8 workshops & posters</div>
-          <a href="https://scholar.google.com" target="_blank" class="text-[var(--purple-glow)] font-jetbrains text-xs font-semibold tracking-[0.05em] hover:text-[var(--neon)] transition-colors">Full list available on Google Scholar →</a>
+        <!-- Domestic Conference & Journal -->
+        <div class="mb-12">
+          <h3 class="mb-6 text-[var(--neon)] font-jetbrains text-[11px] font-bold tracking-[0.4em]">DOMESTIC CONFERENCE & JOURNAL</h3>
+          <div class="flex flex-col gap-6">
+            <div class="pb-5 border-b border-[var(--border-dark)]">
+              <div class="mb-2 text-[var(--text-white)] font-inter text-[17px] font-semibold leading-[1.5]">境界最遠点を正規化基準とする距離場設計による破片形状学習</div>
+              <div class="mb-2 text-[var(--purple-glow)] font-jetbrains text-xs font-medium tracking-[0.05em]">黄 宇航, 金井 崇</div>
+              <div class="text-[var(--text-gray)] font-inter text-[13px] leading-[1.5]">Visual Computing 2025, 東京, 9月, No.22, 2025. (査読付き)</div>
+            </div>
+            <div class="pb-5 border-b border-[var(--border-dark)]">
+              <div class="mb-2 text-[var(--text-white)] font-inter text-[17px] font-semibold leading-[1.5]">敵対的生成ネットワークを用いた任意3次元形状の脆性破壊予測</div>
+              <div class="mb-2 text-[var(--purple-glow)] font-jetbrains text-xs font-medium tracking-[0.05em]">黄 宇航, 金井 崇</div>
+              <div class="text-[var(--text-gray)] font-inter text-[13px] leading-[1.5]">Visual Computing 2023, 東京, 9月, No.35, 2023. (査読付き)</div>
+            </div>
+            <div class="pb-5 border-b border-[var(--border-dark)]">
+              <div class="mb-2 text-[var(--text-white)] font-inter text-[17px] font-semibold leading-[1.5]">深層学習ベース脆性破壊シミュレーションに向けて – 条件付きGAN による平面オブジェクトの破壊形状予測 –</div>
+              <div class="mb-2 text-[var(--purple-glow)] font-jetbrains text-xs font-medium tracking-[0.05em]">黄 宇航，金井 崇</div>
+              <div class="text-[var(--text-gray)] font-inter text-[13px] leading-[1.5]">画像電子学会誌，Vol.50, No.4 (ビジュアルコンピューティング特集号), pp.558-567, 2021. (査読付き)</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Domestic Workshop & Posters & Invited talks -->
+        <div class="mb-12">
+          <h3 class="mb-6 text-[var(--neon)] font-jetbrains text-[11px] font-bold tracking-[0.4em]">DOMESTIC WORKSHOP & POSTERS & INVITED TALKS</h3>
+          <div class="flex flex-col gap-6">
+            <div class="pb-5 border-b border-[var(--border-dark)]">
+              <div class="mb-2 text-[var(--text-white)] font-inter text-[17px] font-semibold leading-[1.5]">DeepFracture: A Generative Approach for Predicting Brittle Fractures with Neural Discrete Representation Learning</div>
+              <div class="mb-2 text-[var(--purple-glow)] font-jetbrains text-xs font-medium tracking-[0.05em]">黄 宇航, 金井 崇</div>
+              <div class="text-[var(--text-gray)] font-inter text-[13px] leading-[1.5]">Visual Computing 2025 招待講演, 2025. (査読なし)</div>
+            </div>
+            <div class="pb-5 border-b border-[var(--border-dark)]">
+              <div class="mb-2 text-[var(--text-white)] font-inter text-[17px] font-semibold leading-[1.5]">3D-GANを用いた破壊形状生成にもとづく脆性破壊シミュレーション</div>
+              <div class="mb-2 text-[var(--purple-glow)] font-jetbrains text-xs font-medium tracking-[0.05em]">黄 宇航, 金井 崇</div>
+              <div class="text-[var(--text-gray)] font-inter text-[13px] leading-[1.5]">Visual Computing 2022 ポスター, P11, 京都, 10月, 2022. (査読なし)</div>
+            </div>
+            <div class="pb-5 border-b border-[var(--border-dark)]">
+              <div class="mb-2 text-[var(--text-white)] font-inter text-[17px] font-semibold leading-[1.5]">データ駆動法による脆性破壊曲面生成シミュレーション</div>
+              <div class="mb-2 text-[var(--purple-glow)] font-jetbrains text-xs font-medium tracking-[0.05em]">黄 宇航，于 永航，金井 崇</div>
+              <div class="text-[var(--text-gray)] font-inter text-[13px] leading-[1.5]">画像電子学会 ビジュアルコンピューティングワークショップ 2017, 登別, 12月, 2017. (査読なし)</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Awards -->
+        <div class="mb-8">
+          <h3 class="mb-6 text-[var(--neon)] font-jetbrains text-[11px] font-bold tracking-[0.4em]">AWARDS</h3>
+          <div class="flex flex-col gap-6">
+            <div class="pb-5 border-b border-[var(--border-dark)]">
+              <div class="mb-2 text-[var(--text-white)] font-inter text-[17px] font-semibold leading-[1.5]">VC Research Incentive Awards VC2025</div>
+              <div class="text-[var(--text-gray)] font-inter text-[13px] leading-[1.5]">境界最遠点を正規化基準とする距離場設計による破片形状学習 (September 2025)</div>
+            </div>
+            <div class="pb-5 border-b border-[var(--border-dark)]">
+              <div class="mb-2 text-[var(--text-white)] font-inter text-[17px] font-semibold leading-[1.5]">JST SpringGX Doctoral Scholarship</div>
+              <div class="text-[var(--text-gray)] font-inter text-[13px] leading-[1.5]">Next Generation Researcher Challenging Research Program (SPRING) University of Tokyo "Leading Human Resource Development for Green Transformation (GX)" (2023-2024)</div>
+            </div>
+            <div class="pb-5 border-b border-[var(--border-dark)]">
+              <div class="mb-2 text-[var(--text-white)] font-inter text-[17px] font-semibold leading-[1.5]">VC Posters Awards VC+VCC2022</div>
+              <div class="text-[var(--text-gray)] font-inter text-[13px] leading-[1.5]">Brittle fracture simulation based on JSPS WINGS-CFS Fellowship - World-leading Innovative Graduate Study Program Codesigning Future Society (October 2022)</div>
+            </div>
+            <div class="pb-5 border-b border-[var(--border-dark)]">
+              <div class="mb-2 text-[var(--text-white)] font-inter text-[17px] font-semibold leading-[1.5]">NIKKEI Business Daily Feature</div>
+              <div class="text-[var(--text-gray)] font-inter text-[13px] leading-[1.5]">Why Chinese AI Talent is in Japanese Startups (June 2023)</div>
+            </div>
+            <div class="pb-5">
+              <div class="mb-2 text-[var(--text-white)] font-inter text-[17px] font-semibold leading-[1.5]">OpenCV AI Competition 2021 Phase 1 Finalists</div>
+              <div class="text-[var(--text-gray)] font-inter text-[13px] leading-[1.5]">Member of a team chosen as finalists from over 1400 submissions in OpenCV AI Competition 2021 (January 2021)</div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -577,69 +674,116 @@
 
     let mouseX = -10, mouseY = -10;
     let targetMousePresent = 0;
-    let previousGlowElements = [];
 
     document.addEventListener('mouseenter', () => {
       targetMousePresent = 1.0;
     });
 
     document.addEventListener('mousemove', (event) => {
-      targetMousePresent = 1.0;
-      mouseX = (event.clientX / window.innerWidth) * 2 - 1;
-      mouseY = -(event.clientY / window.innerHeight) * 2 + 1;
+      // Check if mouse is over the first section (Hero) or third section (Featured Project)
+      const firstSection = document.querySelector('.snap-section');
+      const projectSection = document.querySelector('#projects');
+      const element = document.elementFromPoint(event.clientX, event.clientY);
+      const isInFirstSection = firstSection && firstSection.contains(element);
+      const isInProjectSection = projectSection && projectSection.contains(element);
 
-      const vector = new THREE.Vector3(mouseX, mouseY, 0.5);
-      vector.unproject(camera);
-      const dir = vector.sub(camera.position).normalize();
-      const distance = -camera.position.z / dir.z;
-      const pos = camera.position.clone().add(dir.multiplyScalar(distance));
+      if (isInProjectSection) {
+        // Hide grid completely in Featured Project section
+        targetMousePresent = 0.0;
+        material.uniforms.uMouse.value.set(-10, -10);
+      } else if (isInFirstSection) {
+        // Apply grid distortion in first section
+        targetMousePresent = 1.0;
+        mouseX = (event.clientX / window.innerWidth) * 2 - 1;
+        mouseY = -(event.clientY / window.innerHeight) * 2 + 1;
 
-      material.uniforms.uMouse.value.set(pos.x, pos.y);
+        const vector = new THREE.Vector3(mouseX, mouseY, 0.5);
+        vector.unproject(camera);
+        const dir = vector.sub(camera.position).normalize();
+        const distance = -camera.position.z / dir.z;
+        const pos = camera.position.clone().add(dir.multiplyScalar(distance));
 
-      // Apply text brightness to nearby elements
-      const x = event.clientX;
-      const y = event.clientY;
-      const radius = 150;
-
-      // Remove glow from all previous elements
-      previousGlowElements.forEach(el => {
-        if (el && el.classList) {
-          el.classList.remove('text-glow');
-        }
-      });
-      previousGlowElements = [];
-
-      // Find all text-containing elements (exclude images and canvas)
-      const allElements = document.querySelectorAll('h1, h2, h3, h4, h5, h6, p, a, span, button');
-      allElements.forEach(el => {
-        // Skip if element has no text content
-        if (!el.textContent || el.textContent.trim() === '') return;
-
-        // Skip if element contains images
-        if (el.querySelector('img') || el.tagName === 'IMG') return;
-
-        // Skip if element has background image
-        const style = window.getComputedStyle(el);
-        if (style.backgroundImage && style.backgroundImage !== 'none') return;
-
-        const rect = el.getBoundingClientRect();
-        const centerX = rect.left + rect.width / 2;
-        const centerY = rect.top + rect.height / 2;
-        const dist = Math.sqrt(Math.pow(centerX - x, 2) + Math.pow(centerY - y, 2));
-
-        // Only add glow if within radius
-        if (dist < radius && rect.width > 0 && rect.height > 0) {
-          el.classList.add('text-glow');
-          previousGlowElements.push(el);
-        }
-      });
+        material.uniforms.uMouse.value.set(pos.x, pos.y);
+      } else {
+        // Other sections - keep grid visible but no distortion
+        targetMousePresent = 1.0;
+        material.uniforms.uMouse.value.set(-10, -10);
+      }
     });
 
     document.addEventListener('mouseleave', () => {
       targetMousePresent = 0.0;
       material.uniforms.uMouse.value.set(-10, -10);
-      previousGlowElements.forEach(el => el.classList.remove('text-glow'));
-      previousGlowElements = [];
+    });
+
+    // Text hover effect - detect light or dark text
+    function isLightColor(color) {
+      const rgb = color.match(/\d+/g);
+      if (!rgb || rgb.length < 3) return true;
+
+      const r = parseInt(rgb[0]);
+      const g = parseInt(rgb[1]);
+      const b = parseInt(rgb[2]);
+
+      const luminance = (0.299 * r + 0.587 * g + 0.114 * b);
+      return luminance > 128;
+    }
+
+    // Add hover listeners to all text elements (including footer)
+    const textElements = document.querySelectorAll('h1, h2, h3, h4, h5, h6, p, a, span, button, div');
+    textElements.forEach(el => {
+      if (!el.textContent || el.textContent.trim() === '') return;
+      if (el.querySelector('img') || el.tagName === 'IMG') return;
+
+      // Skip containers with multiple significant children (exclude br, span)
+      const significantChildren = Array.from(el.children).filter(child =>
+        child.tagName !== 'BR' && child.tagName !== 'SPAN'
+      );
+      if (significantChildren.length > 3) return;
+
+      // Skip elements with background color (like buttons)
+      const elStyle = window.getComputedStyle(el);
+      const bgColor = elStyle.backgroundColor;
+      if (bgColor && bgColor !== 'rgba(0, 0, 0, 0)' && bgColor !== 'transparent') return;
+
+      // Skip WorldLine button specifically (span/button with WorldLine text AND background)
+      if ((el.tagName === 'SPAN' || el.tagName === 'BUTTON') &&
+          el.textContent.trim() === 'WorldLine') return;
+
+      el.addEventListener('mouseenter', function() {
+        const style = window.getComputedStyle(this);
+        if (style.backgroundImage && style.backgroundImage !== 'none') return;
+
+        // Check if element or parent has bright background (like News section)
+        let parent = this;
+        let hasBrightBg = false;
+        for (let i = 0; i < 5; i++) {
+          if (!parent) break;
+          const bgColor = window.getComputedStyle(parent).backgroundColor;
+          // Check if background is the neon yellow-green
+          if (bgColor.includes('202, 255, 4') || bgColor.includes('rgb(202, 255, 4)')) {
+            hasBrightBg = true;
+            break;
+          }
+          parent = parent.parentElement;
+        }
+
+        // Skip hover effect for text on bright backgrounds
+        if (hasBrightBg) return;
+
+        const color = style.color;
+        if (isLightColor(color)) {
+          // Light/gray text -> green
+          this.classList.add('text-glow-light');
+        } else {
+          // Dark text -> green with glow
+          this.classList.add('text-glow-dark');
+        }
+      });
+
+      el.addEventListener('mouseleave', function() {
+        this.classList.remove('text-glow-light', 'text-glow-dark');
+      });
     });
 
     function animate() {
