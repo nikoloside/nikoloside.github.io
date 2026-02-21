@@ -1,0 +1,2540 @@
+{
+  "version": "2.8",
+  "children": [
+    {
+      "type": "frame",
+      "id": "TFxjd",
+      "x": 0,
+      "y": 0,
+      "name": "Niko Huang — Portfolio",
+      "clip": true,
+      "width": 1440,
+      "fill": "$bg-dark",
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "Kg8hJ",
+          "name": "Header",
+          "width": "fill_container",
+          "fill": "$bg-dark",
+          "padding": [
+            20,
+            80
+          ],
+          "justifyContent": "space_between",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "V11X5",
+              "name": "logo",
+              "fill": "$neon",
+              "content": ">. Niko Huang",
+              "fontFamily": "JetBrains Mono",
+              "fontSize": 14,
+              "fontWeight": "700",
+              "letterSpacing": 1
+            },
+            {
+              "type": "frame",
+              "id": "ivnVR",
+              "name": "nav",
+              "gap": 32,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "xR6Iu",
+                  "name": "n1",
+                  "fill": "$text-white",
+                  "content": "Home",
+                  "fontFamily": "JetBrains Mono",
+                  "fontSize": 11,
+                  "fontWeight": "500",
+                  "letterSpacing": 2
+                },
+                {
+                  "type": "text",
+                  "id": "zqTcL",
+                  "name": "n2",
+                  "fill": "$text-gray",
+                  "content": "Project",
+                  "fontFamily": "JetBrains Mono",
+                  "fontSize": 11,
+                  "fontWeight": "500",
+                  "letterSpacing": 2
+                },
+                {
+                  "type": "text",
+                  "id": "oQmRr",
+                  "name": "n3",
+                  "fill": "$text-gray",
+                  "content": "Publication",
+                  "fontFamily": "JetBrains Mono",
+                  "fontSize": 11,
+                  "fontWeight": "500",
+                  "letterSpacing": 2
+                },
+                {
+                  "type": "frame",
+                  "id": "eDrLm",
+                  "name": "wl",
+                  "fill": "$neon",
+                  "padding": [
+                    4,
+                    12
+                  ],
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "WIhDm",
+                      "name": "wlT",
+                      "fill": "$bg-dark",
+                      "content": "WorldLine",
+                      "fontFamily": "JetBrains Mono",
+                      "fontSize": 10,
+                      "fontWeight": "700",
+                      "letterSpacing": 1
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "5n3de",
+          "name": "Hero",
+          "width": "fill_container",
+          "fill": "$bg-dark",
+          "gap": 80,
+          "padding": [
+            100,
+            80
+          ],
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "AovSN",
+              "name": "heroLeft",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 20,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "3lzQ2",
+                  "name": "heroLabel",
+                  "fill": "$purple-glow",
+                  "content": "FOUNDER · RESEARCHER · ENGINEER",
+                  "fontFamily": "JetBrains Mono",
+                  "fontSize": 10,
+                  "fontWeight": "600",
+                  "letterSpacing": 4
+                },
+                {
+                  "type": "text",
+                  "id": "pESbX",
+                  "name": "heroName",
+                  "fill": "$text-white",
+                  "content": "Niko Huang",
+                  "fontFamily": "Inter",
+                  "fontSize": 72,
+                  "fontWeight": "800",
+                  "letterSpacing": -3
+                },
+                {
+                  "type": "rectangle",
+                  "id": "dTNsr",
+                  "name": "heroLine",
+                  "fill": "$neon",
+                  "width": 60,
+                  "height": 3
+                },
+                {
+                  "type": "text",
+                  "id": "M1Odx",
+                  "name": "heroBio",
+                  "fill": "$text-gray",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "Founder of WorldLine, an agentic system for games with Persistent Narrative World Representation.\n\nPreviously Game Engineer at DeNA, IoT Full-Stack at Butlr.\nEarned Ph.D. in Computer Graphics at the University of Tokyo, advised by Prof. Takashi Kanai. Focusing on computer graphics, physics-based animation, and multi-phase SDF 3D representation for fracture patterns.",
+                  "lineHeight": 1.7,
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "300"
+                },
+                {
+                  "type": "frame",
+                  "id": "7IDK7",
+                  "name": "heroLinks",
+                  "gap": 20,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "crMO9",
+                      "name": "hlGH",
+                      "fill": "$text-gray",
+                      "content": "GitHub",
+                      "fontFamily": "JetBrains Mono",
+                      "fontSize": 11,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "rmvTS",
+                      "name": "hlTW",
+                      "fill": "$text-gray",
+                      "content": "Twitter",
+                      "fontFamily": "JetBrains Mono",
+                      "fontSize": 11,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "FsUvb",
+                      "name": "hlIG",
+                      "fill": "$text-gray",
+                      "content": "Threads",
+                      "fontFamily": "JetBrains Mono",
+                      "fontSize": 11,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "uF3IH",
+                      "name": "hlRED",
+                      "fill": "$text-gray",
+                      "content": "RED",
+                      "fontFamily": "JetBrains Mono",
+                      "fontSize": 11,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "mG61S",
+                      "name": "hlLI",
+                      "fill": "$text-gray",
+                      "content": "LinkedIn",
+                      "fontFamily": "JetBrains Mono",
+                      "fontSize": 11,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "iixP9",
+              "name": "heroRight",
+              "width": 320,
+              "height": 320,
+              "fill": {
+                "type": "image",
+                "enabled": true,
+                "url": "./images/generated-1771613078253.png",
+                "mode": "fill"
+              },
+              "layout": "vertical",
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "wYCoM",
+                  "name": "heroIcon",
+                  "enabled": false,
+                  "fill": "#FFFFFF18",
+                  "content": "NH",
+                  "fontFamily": "Inter",
+                  "fontSize": 80,
+                  "fontWeight": "800",
+                  "letterSpacing": -4
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "RqTsw",
+          "name": "News",
+          "width": "fill_container",
+          "fill": "$neon",
+          "layout": "vertical",
+          "gap": 32,
+          "padding": [
+            64,
+            80
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "ss14J",
+              "name": "newsH",
+              "fill": "$bg-dark",
+              "content": "NEWS",
+              "fontFamily": "JetBrains Mono",
+              "fontSize": 11,
+              "fontWeight": "700",
+              "letterSpacing": 4
+            },
+            {
+              "type": "frame",
+              "id": "0gRVG",
+              "name": "newsList",
+              "width": "fill_container",
+              "layout": "vertical",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "pmGk0",
+                  "name": "nr1",
+                  "width": "fill_container",
+                  "stroke": {
+                    "thickness": {
+                      "bottom": 1
+                    },
+                    "fill": "#0A0A0F20"
+                  },
+                  "gap": 24,
+                  "padding": [
+                    12,
+                    0
+                  ],
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "hYcoB",
+                      "name": "nr1d",
+                      "fill": "$bg-dark",
+                      "textGrowth": "fixed-width",
+                      "width": 70,
+                      "content": "2025.09",
+                      "fontFamily": "JetBrains Mono",
+                      "fontSize": 10,
+                      "fontWeight": "700",
+                      "letterSpacing": 1
+                    },
+                    {
+                      "type": "text",
+                      "id": "Oq7JD",
+                      "name": "nr1t",
+                      "fill": "$bg-dark",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "VC Research Incentive Awards VC2025 — Distance Field Design for Fragment Shape Learning.",
+                      "lineHeight": 1.5,
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "500"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "g81C3",
+                  "name": "nr2",
+                  "width": "fill_container",
+                  "stroke": {
+                    "thickness": {
+                      "bottom": 1
+                    },
+                    "fill": "#0A0A0F20"
+                  },
+                  "gap": 24,
+                  "padding": [
+                    12,
+                    0
+                  ],
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "fJsPb",
+                      "name": "nr2d",
+                      "fill": "$bg-dark",
+                      "textGrowth": "fixed-width",
+                      "width": 70,
+                      "content": "2025.08",
+                      "fontFamily": "JetBrains Mono",
+                      "fontSize": 10,
+                      "fontWeight": "700",
+                      "letterSpacing": 1
+                    },
+                    {
+                      "type": "text",
+                      "id": "TSz31",
+                      "name": "nr2t",
+                      "fill": "$bg-dark",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "DeepFracture GitHub awarded GRSI Replicability Stamp. Released HuggingFace Model & Dataset.",
+                      "lineHeight": 1.5,
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "500"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "QQPsq",
+                  "name": "nr3",
+                  "width": "fill_container",
+                  "stroke": {
+                    "thickness": {
+                      "bottom": 1
+                    },
+                    "fill": "#0A0A0F20"
+                  },
+                  "gap": 24,
+                  "padding": [
+                    12,
+                    0
+                  ],
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "obPdX",
+                      "name": "nr3d",
+                      "fill": "$bg-dark",
+                      "textGrowth": "fixed-width",
+                      "width": 70,
+                      "content": "2025.02",
+                      "fontFamily": "JetBrains Mono",
+                      "fontSize": 10,
+                      "fontWeight": "700",
+                      "letterSpacing": 1
+                    },
+                    {
+                      "type": "text",
+                      "id": "dFzNT",
+                      "name": "nr3t",
+                      "fill": "$bg-dark",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "DeepFracture accepted to Computer Graphics Forum.",
+                      "lineHeight": 1.5,
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "500"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "xgn4V",
+                  "name": "nr4",
+                  "width": "fill_container",
+                  "stroke": {
+                    "thickness": {
+                      "bottom": 1
+                    },
+                    "fill": "#0A0A0F20"
+                  },
+                  "gap": 24,
+                  "padding": [
+                    12,
+                    0
+                  ],
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "vzwod",
+                      "name": "nr4d",
+                      "fill": "$bg-dark",
+                      "textGrowth": "fixed-width",
+                      "width": 70,
+                      "content": "2024.08",
+                      "fontFamily": "JetBrains Mono",
+                      "fontSize": 10,
+                      "fontWeight": "700",
+                      "letterSpacing": 1
+                    },
+                    {
+                      "type": "text",
+                      "id": "2U0vV",
+                      "name": "nr4t",
+                      "fill": "$bg-dark",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Poster at SCA 2024, Montreal — VQ-VAE-Based Brittle Fracture Animation.",
+                      "lineHeight": 1.5,
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "500"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "b9cUz",
+                  "name": "nr5",
+                  "width": "fill_container",
+                  "gap": 24,
+                  "padding": [
+                    12,
+                    0
+                  ],
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "zCKLz",
+                      "name": "nr5d",
+                      "fill": "$bg-dark",
+                      "textGrowth": "fixed-width",
+                      "width": 70,
+                      "content": "2023.06",
+                      "fontFamily": "JetBrains Mono",
+                      "fontSize": 10,
+                      "fontWeight": "700",
+                      "letterSpacing": 1
+                    },
+                    {
+                      "type": "text",
+                      "id": "ectXm",
+                      "name": "nr5t",
+                      "fill": "$bg-dark",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Featured in NIKKEI Business Daily — \"Why Chinese AI Talent is in Japanese Startups\".",
+                      "lineHeight": 1.5,
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "500"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "VGhVV",
+              "name": "newsBtn",
+              "fill": "$bg-dark",
+              "gap": 8,
+              "padding": [
+                10,
+                24
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "Z316e",
+                  "name": "newsBtnT",
+                  "fill": "$neon",
+                  "content": "All News →",
+                  "fontFamily": "JetBrains Mono",
+                  "fontSize": 11,
+                  "fontWeight": "700",
+                  "letterSpacing": 1
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "k4wLD",
+          "name": "Project",
+          "width": "fill_container",
+          "fill": "$bg-dark",
+          "layout": "vertical",
+          "gap": 32,
+          "padding": [
+            64,
+            80
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "aYJhR",
+              "name": "projH",
+              "fill": "$text-dim",
+              "content": "FEATURED PROJECT",
+              "fontFamily": "JetBrains Mono",
+              "fontSize": 11,
+              "fontWeight": "700",
+              "letterSpacing": 4
+            },
+            {
+              "type": "frame",
+              "id": "gW495",
+              "name": "projCard",
+              "width": "fill_container",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "2a3fe",
+                  "name": "projAccent",
+                  "width": 400,
+                  "height": 280,
+                  "fill": "$purple-dim",
+                  "layout": "vertical",
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "1FD4u",
+                      "name": "projIcon",
+                      "fill": "#FFFFFF15",
+                      "content": "DF",
+                      "fontFamily": "Inter",
+                      "fontSize": 64,
+                      "fontWeight": "800",
+                      "letterSpacing": -2
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "Ldy1e",
+                  "name": "projInfo",
+                  "width": "fill_container",
+                  "height": 280,
+                  "fill": "$bg-card",
+                  "layout": "vertical",
+                  "gap": 16,
+                  "padding": [
+                    32,
+                    40
+                  ],
+                  "justifyContent": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "3dfSk",
+                      "name": "projBadge",
+                      "fill": "$neon",
+                      "padding": [
+                        3,
+                        10
+                      ],
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "DTHIW",
+                          "name": "projBadgeT",
+                          "fill": "$bg-dark",
+                          "content": "CGF 2025",
+                          "fontFamily": "JetBrains Mono",
+                          "fontSize": 9,
+                          "fontWeight": "700",
+                          "letterSpacing": 2
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "id": "HI8Pa",
+                      "name": "projTitle",
+                      "fill": "$text-white",
+                      "content": "DeepFracture",
+                      "fontFamily": "Inter",
+                      "fontSize": 32,
+                      "fontWeight": "800",
+                      "letterSpacing": -1
+                    },
+                    {
+                      "type": "text",
+                      "id": "2f2VV",
+                      "name": "projSub",
+                      "fill": "$text-gray",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "A Generative Approach for Predicting Brittle Fractures\nwith Neural Discrete Representation Learning",
+                      "lineHeight": 1.6,
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontWeight": "300"
+                    },
+                    {
+                      "type": "text",
+                      "id": "iBqLb",
+                      "name": "projMeta",
+                      "fill": "$text-dim",
+                      "content": "Yuhang Huang, Takashi Kanai  ·  Computer Graphics Forum, Feb 2025",
+                      "fontFamily": "JetBrains Mono",
+                      "fontSize": 10,
+                      "letterSpacing": 0.5
+                    },
+                    {
+                      "type": "text",
+                      "id": "2iOCN",
+                      "name": "projLink",
+                      "fill": "$neon",
+                      "content": "View Project →",
+                      "fontFamily": "JetBrains Mono",
+                      "fontSize": 12,
+                      "fontWeight": "600",
+                      "letterSpacing": 1
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "fbZjq",
+              "name": "projBtn",
+              "fill": "$neon",
+              "gap": 8,
+              "padding": [
+                10,
+                24
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "uiB9X",
+                  "name": "projBtnT",
+                  "fill": "$bg-dark",
+                  "content": "All Projects →",
+                  "fontFamily": "JetBrains Mono",
+                  "fontSize": 11,
+                  "fontWeight": "700",
+                  "letterSpacing": 1
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "rcQIg",
+          "name": "Publication",
+          "width": "fill_container",
+          "fill": "$purple-dim",
+          "layout": "vertical",
+          "gap": 32,
+          "padding": [
+            64,
+            80
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "p22zg",
+              "name": "pubH",
+              "fill": "#FFFFFF60",
+              "content": "SELECTED PUBLICATION",
+              "fontFamily": "JetBrains Mono",
+              "fontSize": 11,
+              "fontWeight": "700",
+              "letterSpacing": 4
+            },
+            {
+              "type": "frame",
+              "id": "lpZDA",
+              "name": "pubItem",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 12,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "dmGpW",
+                  "name": "pubTitle",
+                  "fill": "$text-white",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "\"DeepFracture: A Generative Approach for Predicting Brittle Fractures with Neural Discrete Representation Learning\"",
+                  "lineHeight": 1.5,
+                  "fontFamily": "Inter",
+                  "fontSize": 18,
+                  "fontWeight": "600"
+                },
+                {
+                  "type": "text",
+                  "id": "T86mM",
+                  "name": "pubAuth",
+                  "fill": "#FFFFFFAA",
+                  "content": "Yuhang Huang, Takashi Kanai",
+                  "fontFamily": "JetBrains Mono",
+                  "fontSize": 12,
+                  "fontWeight": "500",
+                  "letterSpacing": 0.5
+                },
+                {
+                  "type": "text",
+                  "id": "uoijo",
+                  "name": "pubVenue",
+                  "fill": "#FFFFFF80",
+                  "content": "Computer Graphics Forum, e70002, 15 pages, February 2025.",
+                  "lineHeight": 1.5,
+                  "fontFamily": "Inter",
+                  "fontSize": 13
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "XjoOR",
+              "name": "pubItem2",
+              "width": "fill_container",
+              "stroke": {
+                "thickness": {
+                  "top": 1
+                },
+                "fill": "#FFFFFF20"
+              },
+              "layout": "vertical",
+              "gap": 12,
+              "padding": [
+                24,
+                0,
+                0,
+                0
+              ],
+              "children": [
+                {
+                  "type": "text",
+                  "id": "D9Gl7",
+                  "name": "pubTitle2",
+                  "fill": "#FFFFFFCC",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "\"Predicting Brittle Fracture Surface Shape From a Versatile Database\"",
+                  "lineHeight": 1.5,
+                  "fontFamily": "Inter",
+                  "fontSize": 16,
+                  "fontWeight": "500"
+                },
+                {
+                  "type": "text",
+                  "id": "chmoa",
+                  "name": "pubAuth2",
+                  "fill": "#FFFFFF60",
+                  "content": "Yuhang Huang, Yonghang Yu, Takashi Kanai  ·  CAVW, Nov 2019  ·  SIGGRAPH Asia 2017 D2AT",
+                  "fontFamily": "JetBrains Mono",
+                  "fontSize": 10,
+                  "letterSpacing": 0.3
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "id": "MXOI2",
+              "name": "pubMore",
+              "enabled": false,
+              "fill": "#FFFFFF50",
+              "content": "+ 3 international papers, 3 reviewed domestic journals, 8 workshops & posters →",
+              "fontFamily": "JetBrains Mono",
+              "fontSize": 11,
+              "letterSpacing": 0.5
+            },
+            {
+              "type": "frame",
+              "id": "cNeHV",
+              "name": "pubBtn",
+              "fill": "#FFFFFF20",
+              "gap": 8,
+              "padding": [
+                10,
+                24
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "zQGaE",
+                  "name": "pubBtnT",
+                  "fill": "$text-white",
+                  "content": "All Publications →",
+                  "fontFamily": "JetBrains Mono",
+                  "fontSize": 11,
+                  "fontWeight": "700",
+                  "letterSpacing": 1
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "kBIO7",
+          "name": "Footer",
+          "width": "fill_container",
+          "fill": "$bg-dark",
+          "padding": [
+            40,
+            80,
+            48,
+            80
+          ],
+          "justifyContent": "space_between",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "QRFVn",
+              "name": "ftLeft",
+              "layout": "vertical",
+              "gap": 6,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "AC6ez",
+                  "name": "ftName",
+                  "fill": "$neon",
+                  "content": ">. Niko Huang",
+                  "fontFamily": "JetBrains Mono",
+                  "fontSize": 13,
+                  "fontWeight": "700",
+                  "letterSpacing": 1
+                },
+                {
+                  "type": "text",
+                  "id": "Me2w9",
+                  "name": "ftCopy",
+                  "fill": "$text-dim",
+                  "content": "© 2025 · University of Tokyo",
+                  "fontFamily": "JetBrains Mono",
+                  "fontSize": 10,
+                  "fontWeight": "normal",
+                  "letterSpacing": 0.5
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "Wjqb9",
+              "name": "ftRight",
+              "gap": 28,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "5Kqby",
+                  "name": "ftGH",
+                  "fill": "$text-gray",
+                  "content": "GitHub",
+                  "fontFamily": "JetBrains Mono",
+                  "fontSize": 11,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "RqM0w",
+                  "name": "ftTW",
+                  "fill": "$text-gray",
+                  "content": "Twitter",
+                  "fontFamily": "JetBrains Mono",
+                  "fontSize": 11,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "dzirN",
+                  "name": "ftIG",
+                  "fill": "$text-gray",
+                  "content": "Threads",
+                  "fontFamily": "JetBrains Mono",
+                  "fontSize": 11,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "ZUX5b",
+                  "name": "ftRED",
+                  "fill": "$text-gray",
+                  "content": "RED",
+                  "fontFamily": "JetBrains Mono",
+                  "fontSize": 11,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "a6z9M",
+                  "name": "ftLI",
+                  "fill": "$text-gray",
+                  "content": "LinkedIn",
+                  "fontFamily": "JetBrains Mono",
+                  "fontSize": 11,
+                  "fontWeight": "normal"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "gSbgN",
+      "x": 1640,
+      "y": 0,
+      "name": "All News",
+      "width": 1440,
+      "fill": "$bg-dark",
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "z22YY",
+          "name": "newsHeader",
+          "width": "fill_container",
+          "stroke": {
+            "thickness": {
+              "bottom": 1
+            },
+            "fill": "$border-dark"
+          },
+          "padding": [
+            24,
+            80
+          ],
+          "justifyContent": "space_between",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "OCCJY",
+              "name": "backBtn",
+              "gap": 8,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "gBwGo",
+                  "name": "backArrow",
+                  "fill": "$text-gray",
+                  "content": "←",
+                  "fontFamily": "JetBrains Mono",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "BBm8K",
+                  "name": "backLabel",
+                  "fill": "$text-gray",
+                  "content": "Back to Home",
+                  "fontFamily": "JetBrains Mono",
+                  "fontSize": 12,
+                  "fontWeight": "500"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "id": "fdyPL",
+              "name": "newsLogo",
+              "fill": "$text-white",
+              "content": ">. Niko Huang",
+              "fontFamily": "JetBrains Mono",
+              "fontSize": 13,
+              "fontWeight": "700"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "HAV7t",
+          "name": "titleSection",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 16,
+          "padding": [
+            64,
+            80,
+            32,
+            80
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "QCdq0",
+              "name": "titleLabel",
+              "fill": "$neon",
+              "content": "NEWS",
+              "fontFamily": "JetBrains Mono",
+              "fontSize": 11,
+              "fontWeight": "700",
+              "letterSpacing": 4
+            },
+            {
+              "type": "text",
+              "id": "OKZ0l",
+              "name": "titleText",
+              "fill": "$text-white",
+              "content": "All Updates",
+              "fontFamily": "Inter",
+              "fontSize": 48,
+              "fontWeight": "800",
+              "letterSpacing": -2
+            },
+            {
+              "type": "text",
+              "id": "B1JFm",
+              "name": "titleDesc",
+              "fill": "$text-gray",
+              "content": "Research milestones, awards, and media coverage.",
+              "lineHeight": 1.6,
+              "fontFamily": "Inter",
+              "fontSize": 15,
+              "fontWeight": "normal"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "Su4W4",
+          "name": "fullNewsList",
+          "width": "fill_container",
+          "layout": "vertical",
+          "padding": [
+            0,
+            80,
+            64,
+            80
+          ],
+          "children": [
+            {
+              "type": "frame",
+              "id": "IdFQs",
+              "name": "n1",
+              "width": "fill_container",
+              "stroke": {
+                "thickness": {
+                  "bottom": 1
+                },
+                "fill": "$border-dark"
+              },
+              "gap": 32,
+              "padding": [
+                20,
+                0
+              ],
+              "children": [
+                {
+                  "type": "text",
+                  "id": "vqYVp",
+                  "name": "n1d",
+                  "fill": "$neon",
+                  "textGrowth": "fixed-width",
+                  "width": 80,
+                  "content": "2025.09",
+                  "fontFamily": "JetBrains Mono",
+                  "fontSize": 12,
+                  "fontWeight": "700",
+                  "letterSpacing": 1
+                },
+                {
+                  "type": "text",
+                  "id": "RGTuy",
+                  "name": "n1t",
+                  "fill": "$text-white",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "VC Research Incentive Awards VC2025 — Distance Field Design for Fragment Shape Learning.",
+                  "lineHeight": 1.6,
+                  "fontFamily": "Inter",
+                  "fontSize": 15
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "evbRD",
+              "name": "n2",
+              "width": "fill_container",
+              "stroke": {
+                "thickness": {
+                  "bottom": 1
+                },
+                "fill": "$border-dark"
+              },
+              "gap": 32,
+              "padding": [
+                20,
+                0
+              ],
+              "children": [
+                {
+                  "type": "text",
+                  "id": "mJIkg",
+                  "name": "n2d",
+                  "fill": "$neon",
+                  "textGrowth": "fixed-width",
+                  "width": 80,
+                  "content": "2025.08",
+                  "fontFamily": "JetBrains Mono",
+                  "fontSize": 12,
+                  "fontWeight": "700",
+                  "letterSpacing": 1
+                },
+                {
+                  "type": "text",
+                  "id": "iemBh",
+                  "name": "n2t",
+                  "fill": "$text-white",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "DeepFracture GitHub awarded GRSI Replicability Stamp. Released HuggingFace Model & Dataset.",
+                  "lineHeight": 1.6,
+                  "fontFamily": "Inter",
+                  "fontSize": 15
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "BUXuH",
+              "name": "n3",
+              "width": "fill_container",
+              "stroke": {
+                "thickness": {
+                  "bottom": 1
+                },
+                "fill": "$border-dark"
+              },
+              "gap": 32,
+              "padding": [
+                20,
+                0
+              ],
+              "children": [
+                {
+                  "type": "text",
+                  "id": "0FORu",
+                  "name": "n3d",
+                  "fill": "$neon",
+                  "textGrowth": "fixed-width",
+                  "width": 80,
+                  "content": "2025.02",
+                  "fontFamily": "JetBrains Mono",
+                  "fontSize": 12,
+                  "fontWeight": "700",
+                  "letterSpacing": 1
+                },
+                {
+                  "type": "text",
+                  "id": "z7qfD",
+                  "name": "n3t",
+                  "fill": "$text-white",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "DeepFracture accepted to Computer Graphics Forum.",
+                  "lineHeight": 1.6,
+                  "fontFamily": "Inter",
+                  "fontSize": 15
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "FRDAd",
+              "name": "n4",
+              "width": "fill_container",
+              "stroke": {
+                "thickness": {
+                  "bottom": 1
+                },
+                "fill": "$border-dark"
+              },
+              "gap": 32,
+              "padding": [
+                20,
+                0
+              ],
+              "children": [
+                {
+                  "type": "text",
+                  "id": "DNKuV",
+                  "name": "n4d",
+                  "fill": "$neon",
+                  "textGrowth": "fixed-width",
+                  "width": 80,
+                  "content": "2024.08",
+                  "fontFamily": "JetBrains Mono",
+                  "fontSize": 12,
+                  "fontWeight": "700",
+                  "letterSpacing": 1
+                },
+                {
+                  "type": "text",
+                  "id": "jwoYc",
+                  "name": "n4t",
+                  "fill": "$text-white",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "Poster at SCA 2024, Montreal — VQ-VAE-Based Brittle Fracture Animation.",
+                  "lineHeight": 1.6,
+                  "fontFamily": "Inter",
+                  "fontSize": 15
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "9ZOgp",
+              "name": "n5",
+              "width": "fill_container",
+              "stroke": {
+                "thickness": {
+                  "bottom": 1
+                },
+                "fill": "$border-dark"
+              },
+              "gap": 32,
+              "padding": [
+                20,
+                0
+              ],
+              "children": [
+                {
+                  "type": "text",
+                  "id": "Dgzib",
+                  "name": "n5d",
+                  "fill": "$neon",
+                  "textGrowth": "fixed-width",
+                  "width": 80,
+                  "content": "2024.07",
+                  "fontFamily": "JetBrains Mono",
+                  "fontSize": 12,
+                  "fontWeight": "700",
+                  "letterSpacing": 1
+                },
+                {
+                  "type": "text",
+                  "id": "DKKwj",
+                  "name": "n5t",
+                  "fill": "$text-white",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "Poster at CGI 2024, Shanghai — Multi-Phase Fracture Prediction with SDF Representation.",
+                  "lineHeight": 1.6,
+                  "fontFamily": "Inter",
+                  "fontSize": 15
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "MQxn6",
+              "name": "n6",
+              "width": "fill_container",
+              "stroke": {
+                "thickness": {
+                  "bottom": 1
+                },
+                "fill": "$border-dark"
+              },
+              "gap": 32,
+              "padding": [
+                20,
+                0
+              ],
+              "children": [
+                {
+                  "type": "text",
+                  "id": "ldpuT",
+                  "name": "n6d",
+                  "fill": "$neon",
+                  "textGrowth": "fixed-width",
+                  "width": 80,
+                  "content": "2024.04",
+                  "fontFamily": "JetBrains Mono",
+                  "fontSize": 12,
+                  "fontWeight": "700",
+                  "letterSpacing": 1
+                },
+                {
+                  "type": "text",
+                  "id": "VzwWe",
+                  "name": "n6t",
+                  "fill": "$text-white",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "DeepFracture demo released on HuggingFace Spaces.",
+                  "lineHeight": 1.6,
+                  "fontFamily": "Inter",
+                  "fontSize": 15
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "ULrla",
+              "name": "n7",
+              "width": "fill_container",
+              "stroke": {
+                "thickness": {
+                  "bottom": 1
+                },
+                "fill": "$border-dark"
+              },
+              "gap": 32,
+              "padding": [
+                20,
+                0
+              ],
+              "children": [
+                {
+                  "type": "text",
+                  "id": "VtdmU",
+                  "name": "n7d",
+                  "fill": "$neon",
+                  "textGrowth": "fixed-width",
+                  "width": 80,
+                  "content": "2023.06",
+                  "fontFamily": "JetBrains Mono",
+                  "fontSize": 12,
+                  "fontWeight": "700",
+                  "letterSpacing": 1
+                },
+                {
+                  "type": "text",
+                  "id": "5kKc4",
+                  "name": "n7t",
+                  "fill": "$text-white",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "Featured in NIKKEI Business Daily — \"Why Chinese AI Talent is in Japanese Startups\".",
+                  "lineHeight": 1.6,
+                  "fontFamily": "Inter",
+                  "fontSize": 15
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "uc6w2",
+              "name": "n8",
+              "width": "fill_container",
+              "stroke": {
+                "thickness": {
+                  "bottom": 1
+                },
+                "fill": "$border-dark"
+              },
+              "gap": 32,
+              "padding": [
+                20,
+                0
+              ],
+              "children": [
+                {
+                  "type": "text",
+                  "id": "QaEK0",
+                  "name": "n8d",
+                  "fill": "$neon",
+                  "textGrowth": "fixed-width",
+                  "width": 80,
+                  "content": "2022.09",
+                  "fontFamily": "JetBrains Mono",
+                  "fontSize": 12,
+                  "fontWeight": "700",
+                  "letterSpacing": 1
+                },
+                {
+                  "type": "text",
+                  "id": "BaIVA",
+                  "name": "n8t",
+                  "fill": "$text-white",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "Started Ph.D. program at the University of Tokyo, Department of Frontier Sciences.",
+                  "lineHeight": 1.6,
+                  "fontFamily": "Inter",
+                  "fontSize": 15
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "wTxmK",
+              "name": "n9",
+              "width": "fill_container",
+              "gap": 32,
+              "padding": [
+                20,
+                0
+              ],
+              "children": [
+                {
+                  "type": "text",
+                  "id": "b9jFJ",
+                  "name": "n9d",
+                  "fill": "$neon",
+                  "textGrowth": "fixed-width",
+                  "width": 80,
+                  "content": "2019.11",
+                  "fontFamily": "JetBrains Mono",
+                  "fontSize": 12,
+                  "fontWeight": "700",
+                  "letterSpacing": 1
+                },
+                {
+                  "type": "text",
+                  "id": "PR5Hg",
+                  "name": "n9t",
+                  "fill": "$text-white",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "Paper accepted to Computer Animation and Virtual Worlds (CAVW) — \"Predicting Brittle Fracture Surface Shape From a Versatile Database\".",
+                  "lineHeight": 1.6,
+                  "fontFamily": "Inter",
+                  "fontSize": 15
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "e6CGn",
+      "x": 3180,
+      "y": 0,
+      "name": "All Projects",
+      "width": 1440,
+      "fill": "$bg-dark",
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "oXK5b",
+          "name": "projHeader",
+          "width": "fill_container",
+          "stroke": {
+            "thickness": {
+              "bottom": 1
+            },
+            "fill": "$border-dark"
+          },
+          "padding": [
+            24,
+            80
+          ],
+          "justifyContent": "space_between",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "5vzbf",
+              "name": "pBackBtn",
+              "gap": 8,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "ZaAAx",
+                  "name": "pBackArr",
+                  "fill": "$text-gray",
+                  "content": "←",
+                  "fontFamily": "JetBrains Mono",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "lPSKk",
+                  "name": "pBackLbl",
+                  "fill": "$text-gray",
+                  "content": "Back to Home",
+                  "fontFamily": "JetBrains Mono",
+                  "fontSize": 12,
+                  "fontWeight": "500"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "id": "wkr6v",
+              "name": "pLogo",
+              "fill": "$text-white",
+              "content": ">. Niko Huang",
+              "fontFamily": "JetBrains Mono",
+              "fontSize": 13,
+              "fontWeight": "700"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "1OCtV",
+          "name": "pTitleSec",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 16,
+          "padding": [
+            64,
+            80,
+            32,
+            80
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "n6RQm",
+              "name": "pLabel",
+              "fill": "$purple-glow",
+              "content": "PROJECTS",
+              "fontFamily": "JetBrains Mono",
+              "fontSize": 11,
+              "fontWeight": "700",
+              "letterSpacing": 4
+            },
+            {
+              "type": "text",
+              "id": "Jwa2g",
+              "name": "pTitle",
+              "fill": "$text-white",
+              "content": "All Projects",
+              "fontFamily": "Inter",
+              "fontSize": 48,
+              "fontWeight": "800",
+              "letterSpacing": -2
+            },
+            {
+              "type": "text",
+              "id": "GagiB",
+              "name": "pDesc",
+              "fill": "$text-gray",
+              "content": "Research projects, software tools, and interactive demos.",
+              "lineHeight": 1.6,
+              "fontFamily": "Inter",
+              "fontSize": 15,
+              "fontWeight": "normal"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "f9S3A",
+          "name": "projList",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 32,
+          "padding": [
+            0,
+            80,
+            64,
+            80
+          ],
+          "children": [
+            {
+              "type": "frame",
+              "id": "IQ09d",
+              "name": "DeepFracture Card",
+              "width": "fill_container",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "EGc0Z",
+                  "name": "c1accent",
+                  "width": 360,
+                  "height": 260,
+                  "fill": "$purple-dim",
+                  "layout": "vertical",
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "T94rr",
+                      "name": "c1icon",
+                      "fill": "#FFFFFF30",
+                      "content": "DF",
+                      "fontFamily": "Inter",
+                      "fontSize": 72,
+                      "fontWeight": "800",
+                      "letterSpacing": -3
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "Oi9Nd",
+                  "name": "c1info",
+                  "width": "fill_container",
+                  "height": 260,
+                  "fill": "$bg-card",
+                  "layout": "vertical",
+                  "gap": 12,
+                  "padding": [
+                    32,
+                    40
+                  ],
+                  "justifyContent": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "0x44N",
+                      "name": "c1badge",
+                      "fill": "$neon",
+                      "content": "CGF 2025  ·  FEATURED",
+                      "fontFamily": "JetBrains Mono",
+                      "fontSize": 10,
+                      "fontWeight": "700",
+                      "letterSpacing": 2
+                    },
+                    {
+                      "type": "text",
+                      "id": "MwE7r",
+                      "name": "c1title",
+                      "fill": "$text-white",
+                      "content": "DeepFracture",
+                      "fontFamily": "Inter",
+                      "fontSize": 28,
+                      "fontWeight": "700"
+                    },
+                    {
+                      "type": "text",
+                      "id": "0n8Au",
+                      "name": "c1desc",
+                      "fill": "$text-gray",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "A generative approach for predicting brittle fractures with neural discrete representation learning. GRSI Replicability Stamp awarded.",
+                      "lineHeight": 1.6,
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "tuAQ8",
+                      "name": "c1meta",
+                      "fill": "$text-dim",
+                      "content": "Python · PyTorch · VQ-VAE · SDF",
+                      "fontFamily": "JetBrains Mono",
+                      "fontSize": 10,
+                      "fontWeight": "normal",
+                      "letterSpacing": 1
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "qM39s",
+              "name": "WorldLine Card",
+              "width": "fill_container",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "Sx4aV",
+                  "name": "c2accent",
+                  "width": 360,
+                  "height": 260,
+                  "fill": "$neon",
+                  "layout": "vertical",
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "PF9Nz",
+                      "name": "c2icon",
+                      "fill": "#0A0A0F30",
+                      "content": "WL",
+                      "fontFamily": "Inter",
+                      "fontSize": 72,
+                      "fontWeight": "800",
+                      "letterSpacing": -3
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "rwhzD",
+                  "name": "c2info",
+                  "width": "fill_container",
+                  "height": 260,
+                  "fill": "$bg-card",
+                  "layout": "vertical",
+                  "gap": 12,
+                  "padding": [
+                    32,
+                    40
+                  ],
+                  "justifyContent": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "zvqJ5",
+                      "name": "c2badge",
+                      "fill": "$neon",
+                      "content": "ACTIVE  ·  FOUNDER",
+                      "fontFamily": "JetBrains Mono",
+                      "fontSize": 10,
+                      "fontWeight": "700",
+                      "letterSpacing": 2
+                    },
+                    {
+                      "type": "text",
+                      "id": "d27ec",
+                      "name": "c2title",
+                      "fill": "$text-white",
+                      "content": "WorldLine",
+                      "fontFamily": "Inter",
+                      "fontSize": 28,
+                      "fontWeight": "700"
+                    },
+                    {
+                      "type": "text",
+                      "id": "zNzkm",
+                      "name": "c2desc",
+                      "fill": "$text-gray",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "An agentic system for games with Persistent Narrative World Representation. AI-driven storytelling meets interactive game worlds.",
+                      "lineHeight": 1.6,
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "uknjt",
+                      "name": "c2meta",
+                      "fill": "$text-dim",
+                      "content": "Agentic AI · Game Engine · Narrative Systems",
+                      "fontFamily": "JetBrains Mono",
+                      "fontSize": 10,
+                      "fontWeight": "normal",
+                      "letterSpacing": 1
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "0eNql",
+              "name": "FractureBench Card",
+              "width": "fill_container",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "p9Pr6",
+                  "name": "c3accent",
+                  "width": 360,
+                  "height": 260,
+                  "fill": "$bg-card",
+                  "stroke": {
+                    "thickness": 1,
+                    "fill": "$border-dark"
+                  },
+                  "layout": "vertical",
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "ayndi",
+                      "name": "c3icon",
+                      "fill": "$text-dim",
+                      "content": "FB",
+                      "fontFamily": "Inter",
+                      "fontSize": 72,
+                      "fontWeight": "800",
+                      "letterSpacing": -3
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "ZdZUP",
+                  "name": "c3info",
+                  "width": "fill_container",
+                  "height": 260,
+                  "fill": "$bg-card",
+                  "layout": "vertical",
+                  "gap": 12,
+                  "padding": [
+                    32,
+                    40
+                  ],
+                  "justifyContent": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "laopO",
+                      "name": "c3badge",
+                      "fill": "$purple-glow",
+                      "content": "HUGGINGFACE  ·  DEMO",
+                      "fontFamily": "JetBrains Mono",
+                      "fontSize": 10,
+                      "fontWeight": "700",
+                      "letterSpacing": 2
+                    },
+                    {
+                      "type": "text",
+                      "id": "K8s6V",
+                      "name": "c3title",
+                      "fill": "$text-white",
+                      "content": "FractureBench",
+                      "fontFamily": "Inter",
+                      "fontSize": 28,
+                      "fontWeight": "700"
+                    },
+                    {
+                      "type": "text",
+                      "id": "fkSXs",
+                      "name": "c3desc",
+                      "fill": "$text-gray",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Interactive demo and dataset for brittle fracture prediction. Try DeepFracture models directly on HuggingFace Spaces.",
+                      "lineHeight": 1.6,
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "mknz6",
+                      "name": "c3meta",
+                      "fill": "$text-dim",
+                      "content": "HuggingFace · Gradio · Python",
+                      "fontFamily": "JetBrains Mono",
+                      "fontSize": 10,
+                      "fontWeight": "normal",
+                      "letterSpacing": 1
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "x1vKw",
+      "x": 4720,
+      "y": 0,
+      "name": "All Publications",
+      "width": 1440,
+      "fill": "$bg-dark",
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "hf4af",
+          "name": "pubHeader",
+          "width": "fill_container",
+          "stroke": {
+            "thickness": {
+              "bottom": 1
+            },
+            "fill": "$border-dark"
+          },
+          "padding": [
+            24,
+            80
+          ],
+          "justifyContent": "space_between",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "etlKt",
+              "name": "pbBackBtn",
+              "gap": 8,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "OdIpC",
+                  "name": "pbBackArr",
+                  "fill": "$text-gray",
+                  "content": "←",
+                  "fontFamily": "JetBrains Mono",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "l6SQr",
+                  "name": "pbBackLbl",
+                  "fill": "$text-gray",
+                  "content": "Back to Home",
+                  "fontFamily": "JetBrains Mono",
+                  "fontSize": 12,
+                  "fontWeight": "500"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "id": "EA9X6",
+              "name": "pbLogo",
+              "fill": "$text-white",
+              "content": ">. Niko Huang",
+              "fontFamily": "JetBrains Mono",
+              "fontSize": 13,
+              "fontWeight": "700"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "qbhtX",
+          "name": "pbTitleSec",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 16,
+          "padding": [
+            64,
+            80,
+            32,
+            80
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "EDZxG",
+              "name": "pbLabel",
+              "fill": "$purple-glow",
+              "content": "PUBLICATIONS",
+              "fontFamily": "JetBrains Mono",
+              "fontSize": 11,
+              "fontWeight": "700",
+              "letterSpacing": 4
+            },
+            {
+              "type": "text",
+              "id": "TvwXj",
+              "name": "pbTitle",
+              "fill": "$text-white",
+              "content": "All Publications",
+              "fontFamily": "Inter",
+              "fontSize": 48,
+              "fontWeight": "800",
+              "letterSpacing": -2
+            },
+            {
+              "type": "text",
+              "id": "VwqRd",
+              "name": "pbDesc",
+              "fill": "$text-gray",
+              "content": "Journals, conference papers, and domestic publications.",
+              "lineHeight": 1.6,
+              "fontFamily": "Inter",
+              "fontSize": 15,
+              "fontWeight": "normal"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "YrLN8",
+          "name": "pubContent",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 48,
+          "padding": [
+            0,
+            80,
+            64,
+            80
+          ],
+          "children": [
+            {
+              "type": "frame",
+              "id": "vhF2y",
+              "name": "Journals Section",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 24,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "g4Scb",
+                  "name": "sec1h",
+                  "fill": "$neon",
+                  "content": "JOURNAL PAPERS",
+                  "fontFamily": "JetBrains Mono",
+                  "fontSize": 11,
+                  "fontWeight": "700",
+                  "letterSpacing": 4
+                },
+                {
+                  "type": "frame",
+                  "id": "kOIF3",
+                  "name": "p1",
+                  "width": "fill_container",
+                  "stroke": {
+                    "thickness": {
+                      "bottom": 1
+                    },
+                    "fill": "$border-dark"
+                  },
+                  "layout": "vertical",
+                  "gap": 8,
+                  "padding": [
+                    0,
+                    0,
+                    20,
+                    0
+                  ],
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "6nTDZ",
+                      "name": "p1t",
+                      "fill": "$text-white",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "\"DeepFracture: A Generative Approach for Predicting Brittle Fractures with Neural Discrete Representation Learning\"",
+                      "lineHeight": 1.5,
+                      "fontFamily": "Inter",
+                      "fontSize": 17,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "text",
+                      "id": "CjS8Z",
+                      "name": "p1a",
+                      "fill": "$purple-glow",
+                      "content": "Yuhang Huang, Takashi Kanai",
+                      "fontFamily": "JetBrains Mono",
+                      "fontSize": 12,
+                      "fontWeight": "500",
+                      "letterSpacing": 0.5
+                    },
+                    {
+                      "type": "text",
+                      "id": "BzDm3",
+                      "name": "p1v",
+                      "fill": "$text-gray",
+                      "content": "Computer Graphics Forum, e70002, 15 pages, February 2025.",
+                      "lineHeight": 1.5,
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "T0LaW",
+                  "name": "p2",
+                  "width": "fill_container",
+                  "stroke": {
+                    "thickness": {
+                      "bottom": 1
+                    },
+                    "fill": "$border-dark"
+                  },
+                  "layout": "vertical",
+                  "gap": 8,
+                  "padding": [
+                    0,
+                    0,
+                    20,
+                    0
+                  ],
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "uAaaX",
+                      "name": "p2t",
+                      "fill": "$text-white",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "\"Predicting Brittle Fracture Surface Shape From a Versatile Database\"",
+                      "lineHeight": 1.5,
+                      "fontFamily": "Inter",
+                      "fontSize": 17,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "text",
+                      "id": "WG1Ax",
+                      "name": "p2a",
+                      "fill": "$purple-glow",
+                      "content": "Yuhang Huang, Yonghang Yu, Takashi Kanai",
+                      "fontFamily": "JetBrains Mono",
+                      "fontSize": 12,
+                      "fontWeight": "500",
+                      "letterSpacing": 0.5
+                    },
+                    {
+                      "type": "text",
+                      "id": "IxvjO",
+                      "name": "p2v",
+                      "fill": "$text-gray",
+                      "content": "Computer Animation and Virtual Worlds (CAVW), November 2019.",
+                      "lineHeight": 1.5,
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "wJ1VA",
+              "name": "Conference Section",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 24,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "YzP4B",
+                  "name": "sec2h",
+                  "fill": "$neon",
+                  "content": "CONFERENCE PAPERS",
+                  "fontFamily": "JetBrains Mono",
+                  "fontSize": 11,
+                  "fontWeight": "700",
+                  "letterSpacing": 4
+                },
+                {
+                  "type": "frame",
+                  "id": "tqmxh",
+                  "name": "cp1",
+                  "width": "fill_container",
+                  "stroke": {
+                    "thickness": {
+                      "bottom": 1
+                    },
+                    "fill": "$border-dark"
+                  },
+                  "layout": "vertical",
+                  "gap": 8,
+                  "padding": [
+                    0,
+                    0,
+                    20,
+                    0
+                  ],
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "g7IRv",
+                      "name": "cp1t",
+                      "fill": "$text-white",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "\"VQ-VAE-Based Brittle Fracture Animation\"",
+                      "lineHeight": 1.5,
+                      "fontFamily": "Inter",
+                      "fontSize": 17,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "text",
+                      "id": "xTX6S",
+                      "name": "cp1a",
+                      "fill": "$purple-glow",
+                      "content": "Yuhang Huang, Takashi Kanai",
+                      "fontFamily": "JetBrains Mono",
+                      "fontSize": 12,
+                      "fontWeight": "500",
+                      "letterSpacing": 0.5
+                    },
+                    {
+                      "type": "text",
+                      "id": "X0DWW",
+                      "name": "cp1v",
+                      "fill": "$text-gray",
+                      "content": "Poster, SCA 2024, Montreal.",
+                      "lineHeight": 1.5,
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "M28sO",
+                  "name": "cp2",
+                  "width": "fill_container",
+                  "stroke": {
+                    "thickness": {
+                      "bottom": 1
+                    },
+                    "fill": "$border-dark"
+                  },
+                  "layout": "vertical",
+                  "gap": 8,
+                  "padding": [
+                    0,
+                    0,
+                    20,
+                    0
+                  ],
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "fyU1Q",
+                      "name": "cp2t",
+                      "fill": "$text-white",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "\"Multi-Phase Fracture Prediction with SDF Representation\"",
+                      "lineHeight": 1.5,
+                      "fontFamily": "Inter",
+                      "fontSize": 17,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "text",
+                      "id": "N69Mi",
+                      "name": "cp2a",
+                      "fill": "$purple-glow",
+                      "content": "Yuhang Huang, Takashi Kanai",
+                      "fontFamily": "JetBrains Mono",
+                      "fontSize": 12,
+                      "fontWeight": "500",
+                      "letterSpacing": 0.5
+                    },
+                    {
+                      "type": "text",
+                      "id": "KX3sb",
+                      "name": "cp2v",
+                      "fill": "$text-gray",
+                      "content": "Poster, CGI 2024, Shanghai.",
+                      "lineHeight": 1.5,
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "Lva4v",
+                  "name": "cp3",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 8,
+                  "padding": [
+                    0,
+                    0,
+                    20,
+                    0
+                  ],
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "b4Enc",
+                      "name": "cp3t",
+                      "fill": "$text-white",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "\"Predicting Brittle Fracture Surface Shape From a Versatile Database\"",
+                      "lineHeight": 1.5,
+                      "fontFamily": "Inter",
+                      "fontSize": 17,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "text",
+                      "id": "scR3A",
+                      "name": "cp3a",
+                      "fill": "$purple-glow",
+                      "content": "Yuhang Huang, Yonghang Yu, Takashi Kanai",
+                      "fontFamily": "JetBrains Mono",
+                      "fontSize": 12,
+                      "fontWeight": "500",
+                      "letterSpacing": 0.5
+                    },
+                    {
+                      "type": "text",
+                      "id": "tfk4n",
+                      "name": "cp3v",
+                      "fill": "$text-gray",
+                      "content": "D2AT, SIGGRAPH Asia 2017, Bangkok.",
+                      "lineHeight": 1.5,
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "i85gl",
+              "name": "Domestic Section",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 24,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "fPjP1",
+                  "name": "sec3h",
+                  "fill": "$neon",
+                  "content": "DOMESTIC JOURNALS",
+                  "fontFamily": "JetBrains Mono",
+                  "fontSize": 11,
+                  "fontWeight": "700",
+                  "letterSpacing": 4
+                },
+                {
+                  "type": "frame",
+                  "id": "xECpo",
+                  "name": "dp1",
+                  "width": "fill_container",
+                  "stroke": {
+                    "thickness": {
+                      "bottom": 1
+                    },
+                    "fill": "$border-dark"
+                  },
+                  "layout": "vertical",
+                  "gap": 8,
+                  "padding": [
+                    0,
+                    0,
+                    20,
+                    0
+                  ],
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "nTUux",
+                      "name": "dp1t",
+                      "fill": "$text-white",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "\"3D Representation Learning for Brittle Fracture Patterns Using Distance Fields\"",
+                      "lineHeight": 1.5,
+                      "fontFamily": "Inter",
+                      "fontSize": 17,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "text",
+                      "id": "vYVEB",
+                      "name": "dp1a",
+                      "fill": "$purple-glow",
+                      "content": "Yuhang Huang, Takashi Kanai",
+                      "fontFamily": "JetBrains Mono",
+                      "fontSize": 12,
+                      "fontWeight": "500",
+                      "letterSpacing": 0.5
+                    },
+                    {
+                      "type": "text",
+                      "id": "pi8ny",
+                      "name": "dp1v",
+                      "fill": "$text-gray",
+                      "content": "IPSJ SIG-CG, Visual Computing 2024.",
+                      "lineHeight": 1.5,
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "u2pKa",
+              "name": "summary",
+              "width": "fill_container",
+              "fill": "$bg-card",
+              "layout": "vertical",
+              "gap": 8,
+              "padding": [
+                24,
+                32
+              ],
+              "children": [
+                {
+                  "type": "text",
+                  "id": "61en8",
+                  "name": "sumText",
+                  "fill": "$text-gray",
+                  "content": "+ 3 additional reviewed domestic journals, 8 workshops & posters",
+                  "fontFamily": "JetBrains Mono",
+                  "fontSize": 12,
+                  "fontWeight": "normal",
+                  "letterSpacing": 0.5
+                },
+                {
+                  "type": "text",
+                  "id": "6IFBS",
+                  "name": "sumNote",
+                  "fill": "$purple-glow",
+                  "content": "Full list available on Google Scholar →",
+                  "fontFamily": "JetBrains Mono",
+                  "fontSize": 12,
+                  "fontWeight": "600",
+                  "letterSpacing": 0.5
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "variables": {
+    "bg-card": {
+      "type": "color",
+      "value": "#12121A"
+    },
+    "bg-card-hover": {
+      "type": "color",
+      "value": "#1A1A25"
+    },
+    "bg-dark": {
+      "type": "color",
+      "value": "#0A0A0F"
+    },
+    "border-dark": {
+      "type": "color",
+      "value": "#1E1E2E"
+    },
+    "neon": {
+      "type": "color",
+      "value": "#CAFF04"
+    },
+    "neon-dim": {
+      "type": "color",
+      "value": "#A3D900"
+    },
+    "purple": {
+      "type": "color",
+      "value": "#8B5CF6"
+    },
+    "purple-dim": {
+      "type": "color",
+      "value": "#6D28D9"
+    },
+    "purple-glow": {
+      "type": "color",
+      "value": "#A78BFA"
+    },
+    "text-dim": {
+      "type": "color",
+      "value": "#3A3A50"
+    },
+    "text-gray": {
+      "type": "color",
+      "value": "#6B6B80"
+    },
+    "text-white": {
+      "type": "color",
+      "value": "#F0F0F5"
+    }
+  }
+}
