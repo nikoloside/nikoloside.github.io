@@ -158,10 +158,23 @@
         flex-direction: column !important;
       }
 
+      /* Modal project cards - stack vertically */
+      #projectsModal .flex:has(.w-\[360px\]),
+      #publicationsModal .flex {
+        flex-direction: column !important;
+      }
+
+      /* Project image sizing */
       .w-\[400px\].h-\[280px\],
       .w-\[360px\].h-\[260px\] {
         width: 100% !important;
         height: 200px !important;
+      }
+
+      /* Modal project text containers - remove fixed height */
+      .modal-content .flex-1.h-\[260px\] {
+        height: auto !important;
+        min-height: 200px;
       }
 
       /* Modal mobile adjustments */
