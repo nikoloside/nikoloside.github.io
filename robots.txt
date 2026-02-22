@@ -1,0 +1,27 @@
+# Niko Huang Portfolio - Robots Configuration
+# Allow search engines to index the portfolio for visibility
+
+User-agent: *
+Allow: /
+
+# Don't index design source files
+Disallow: /*.pen$
+
+# Don't index backup files
+Disallow: /*.backup$
+
+# Common spam/aggressive crawlers to discourage
+User-agent: AhrefsBot
+Crawl-delay: 10
+
+User-agent: SemrushBot
+Crawl-delay: 10
+
+User-agent: MJ12bot
+Crawl-delay: 10
+
+User-agent: DotBot
+Crawl-delay: 10
+
+# Sitemap location (if you add one in the future)
+# Sitemap: https://nikoloside.github.io/sitemap.xml
