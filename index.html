@@ -286,7 +286,7 @@
           <a href="#hero" class="text-[var(--text-white)] font-jetbrains text-[11px] font-medium tracking-[0.2em] hover:text-[var(--neon)] transition-colors">HOME</a>
           <a href="#projects" class="text-[var(--text-gray)] font-jetbrains text-[11px] font-medium tracking-[0.2em] hover:text-[var(--neon)] transition-colors">PROJECT</a>
           <a href="#publications" class="text-[var(--text-gray)] font-jetbrains text-[11px] font-medium tracking-[0.2em] hover:text-[var(--neon)] transition-colors">PUBLICATION</a>
-          <span class="bg-[var(--neon)] text-[var(--bg-dark)] font-jetbrains text-[10px] font-bold tracking-wide px-3 py-1 opacity-50 cursor-not-allowed">WorldLine</span>
+          <span class="bg-[var(--neon)] text-[var(--bg-dark)] font-jetbrains text-[10px] font-bold tracking-wide px-3 py-1 opacity-50 cursor-not-allowed">TBD</span>
         </nav>
       </header>
 
@@ -505,17 +505,7 @@
             </div>
           </div>
 
-          <!-- Project 2: WorldLine -->
-          <div class="flex">
-            <div class="w-[360px] h-[260px] flex items-center justify-center flex-shrink-0 bg-cover bg-center" style="background-image: url('./assets/worldline.png');">
-            </div>
-            <div class="flex-1 h-[260px] bg-[var(--bg-card)] px-10 py-8 flex flex-col justify-center gap-3">
-              <div class="text-[var(--neon)] font-jetbrains text-[10px] font-bold tracking-[0.2em]">ACTIVE  ·  FOUNDER</div>
-              <h3 class="text-[var(--text-white)] font-inter text-[28px] font-bold leading-tight">WorldLine</h3>
-              <p class="text-[var(--text-gray)] font-inter text-sm leading-[1.6]">An agentic system for games with Persistent Narrative World Representation. AI-driven storytelling meets interactive game worlds.</p>
-              <div class="text-[var(--text-dim)] font-jetbrains text-[10px] tracking-wide">Agentic AI · Game Engine · Narrative Systems</div>
-            </div>
-          </div>
+          <!-- Project 2 temporarily removed -->
 
           <!-- Project 3: FractureBench -->
           <div class="flex">
@@ -909,9 +899,9 @@
       const bgColor = elStyle.backgroundColor;
       if (bgColor && bgColor !== 'rgba(0, 0, 0, 0)' && bgColor !== 'transparent') return;
 
-      // Skip WorldLine button specifically (span/button with WorldLine text AND background)
+      // Skip TBD button specifically (span/button with TBD text AND background)
       if ((el.tagName === 'SPAN' || el.tagName === 'BUTTON') &&
-          el.textContent.trim() === 'WorldLine') return;
+          el.textContent.trim() === 'TBD') return;
 
       el.addEventListener('mouseenter', function() {
         const style = window.getComputedStyle(this);

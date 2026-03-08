@@ -3,6 +3,7 @@ images/
 
 # Backup files
 *.backup
+worldline.snippet.html
 
 # Node modules (if any)
 node_modules/
