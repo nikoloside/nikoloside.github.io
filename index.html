@@ -576,25 +576,14 @@
         <p class="mb-12 text-[var(--text-gray)] font-inter text-[15px] leading-[1.6]">Research projects, software tools, and interactive demos.</p>
 
         <div class="flex flex-col gap-8">
-          <!-- Project 1: DeepFracture -->
-          <div class="flex">
-            <div class="w-[360px] h-[260px] flex items-center justify-center flex-shrink-0 bg-cover bg-center" style="background-image: url('./assets/deepfracture-BbkZjZIl.png');">
-            </div>
-            <div class="flex-1 h-[260px] bg-[var(--bg-card)] px-10 py-8 flex flex-col justify-center gap-3">
-              <div class="text-[var(--neon)] font-jetbrains text-[10px] font-bold tracking-[0.2em]">CGF 2025  ·  FEATURED</div>
-              <h3 class="text-[var(--text-white)] font-inter text-[28px] font-bold leading-tight">DeepFracture</h3>
-              <p class="text-[var(--text-gray)] font-inter text-sm leading-[1.6]">A generative approach for predicting brittle fractures with neural discrete representation learning. GRSI Replicability Stamp awarded.</p>
-              <div class="text-[var(--text-dim)] font-jetbrains text-[10px] tracking-wide">Python · PyTorch · VQ-VAE · SDF</div>
-              <a href="https://github.com/nikoloside/TEBP-DeepFracture" target="_blank" class="text-[var(--neon)] font-jetbrains text-xs font-semibold tracking-wide hover:opacity-80 transition-opacity">View Project →</a>
-            </div>
-          </div>
+          <!-- Ordered newest → oldest, matching the site's news timeline. -->
 
-          <!-- Project 2: WorldLines -->
+          <!-- 2026 · WorldLines (flagship) -->
           <div class="flex">
             <div class="w-[360px] h-[260px] flex items-center justify-center flex-shrink-0 bg-no-repeat bg-contain bg-center bg-[var(--bg-card)]" style="background-image: url('https://github.com/LudicDynamics/WorldLines/raw/main/assets/hero.png');">
             </div>
             <div class="flex-1 h-[260px] bg-[var(--bg-card)] px-10 py-8 flex flex-col justify-center gap-3">
-              <div class="text-[var(--neon)] font-jetbrains text-[10px] font-bold tracking-[0.2em]">ACTIVE  ·  FOUNDER</div>
+              <div class="text-[var(--neon)] font-jetbrains text-[10px] font-bold tracking-[0.2em]">2026  ·  ACTIVE · FOUNDER</div>
               <h3 class="text-[var(--text-white)] font-inter text-[28px] font-bold leading-tight">WorldLines</h3>
               <p class="text-[var(--text-gray)] font-inter text-sm leading-[1.6]">An agentic system for games with Persistent Narrative World Representation. AI-driven storytelling meets interactive game worlds.</p>
               <div class="text-[var(--text-dim)] font-jetbrains text-[10px] tracking-wide">Agentic AI · Game Engine · Narrative Systems</div>
@@ -602,12 +591,51 @@
             </div>
           </div>
 
-          <!-- Project 3: FractureBench -->
+          <!-- 2026 · Abyss — a WorldLines validation slice -->
+          <div class="flex">
+            <div class="w-[360px] h-[260px] flex items-center justify-center flex-shrink-0 bg-cover bg-center" style="background-image: url('./assets/proj-abyss.png');">
+            </div>
+            <div class="flex-1 h-[260px] bg-[var(--bg-card)] px-10 py-8 flex flex-col justify-center gap-3">
+              <div class="text-[var(--neon)] font-jetbrains text-[10px] font-bold tracking-[0.2em]">2026  ·  WORLDLINES VALIDATION</div>
+              <h3 class="text-[var(--text-white)] font-inter text-[28px] font-bold leading-tight">Abyss — TRPG Expedition</h3>
+              <p class="text-[var(--text-gray)] font-inter text-sm leading-[1.6]">Validates whether an LLM can run a fair game master: dice-gated checks, persistent party state, and consequences that carry across a long descent.</p>
+              <div class="text-[var(--text-dim)] font-jetbrains text-[10px] tracking-wide">Agentic AI · LLM Game Master · Dice System</div>
+              <a href="https://ludics.space" target="_blank" class="text-[var(--neon)] font-jetbrains text-xs font-semibold tracking-wide hover:opacity-80 transition-opacity">View Demo →</a>
+            </div>
+          </div>
+
+          <!-- 2026 · Dice Shot — a WorldLines validation slice -->
+          <div class="flex">
+            <div class="w-[360px] h-[260px] flex items-center justify-center flex-shrink-0 bg-cover bg-center" style="background-image: url('./assets/proj-diceshot.png');">
+            </div>
+            <div class="flex-1 h-[260px] bg-[var(--bg-card)] px-10 py-8 flex flex-col justify-center gap-3">
+              <div class="text-[var(--neon)] font-jetbrains text-[10px] font-bold tracking-[0.2em]">2026  ·  WORLDLINES VALIDATION</div>
+              <h3 class="text-[var(--text-white)] font-inter text-[28px] font-bold leading-tight">Dice Shot — Short-Form RPG</h3>
+              <p class="text-[var(--text-gray)] font-inter text-sm leading-[1.6]">Validates swipe-native, short-form branching narrative as a top-of-funnel format — measuring how far players go and whether they convert to sign-up.</p>
+              <div class="text-[var(--text-dim)] font-jetbrains text-[10px] tracking-wide">TypeScript · Swipe UX · Funnel / Conversion</div>
+              <a href="https://ludics.space/app-diceshort/" target="_blank" class="text-[var(--neon)] font-jetbrains text-xs font-semibold tracking-wide hover:opacity-80 transition-opacity">Play Demo →</a>
+            </div>
+          </div>
+
+          <!-- 2025 · DeepFracture (featured research) -->
+          <div class="flex">
+            <div class="w-[360px] h-[260px] flex items-center justify-center flex-shrink-0 bg-cover bg-center" style="background-image: url('./assets/deepfracture-BbkZjZIl.png');">
+            </div>
+            <div class="flex-1 h-[260px] bg-[var(--bg-card)] px-10 py-8 flex flex-col justify-center gap-3">
+              <div class="text-[var(--neon)] font-jetbrains text-[10px] font-bold tracking-[0.2em]">2025  ·  CGF · FEATURED</div>
+              <h3 class="text-[var(--text-white)] font-inter text-[28px] font-bold leading-tight">DeepFracture</h3>
+              <p class="text-[var(--text-gray)] font-inter text-sm leading-[1.6]">A generative approach for predicting brittle fractures with neural discrete representation learning. GRSI Replicability Stamp awarded.</p>
+              <div class="text-[var(--text-dim)] font-jetbrains text-[10px] tracking-wide">Python · PyTorch · VQ-VAE · SDF</div>
+              <a href="https://github.com/nikoloside/TEBP-DeepFracture" target="_blank" class="text-[var(--neon)] font-jetbrains text-xs font-semibold tracking-wide hover:opacity-80 transition-opacity">View Project →</a>
+            </div>
+          </div>
+
+          <!-- 2025 · FractureBench (demo derived from DeepFracture) -->
           <div class="flex">
             <div class="w-[360px] h-[260px] flex items-center justify-center flex-shrink-0 bg-cover bg-center" style="background-image: url('./assets/break4models.png');">
             </div>
             <div class="flex-1 h-[260px] bg-[var(--bg-card)] px-10 py-8 flex flex-col justify-center gap-3">
-              <div class="text-[var(--purple-glow)] font-jetbrains text-[10px] font-bold tracking-[0.2em]">HUGGINGFACE  ·  DEMO</div>
+              <div class="text-[var(--purple-glow)] font-jetbrains text-[10px] font-bold tracking-[0.2em]">2025  ·  HUGGINGFACE · DEMO</div>
               <h3 class="text-[var(--text-white)] font-inter text-[28px] font-bold leading-tight">FractureBench</h3>
               <p class="text-[var(--text-gray)] font-inter text-sm leading-[1.6]">Interactive demo and dataset for brittle fracture prediction. Try DeepFracture models directly on HuggingFace Spaces.</p>
               <div class="text-[var(--text-dim)] font-jetbrains text-[10px] tracking-wide">HuggingFace · Gradio · Python</div>
@@ -615,19 +643,7 @@
             </div>
           </div>
 
-          <!-- Project 4: AKB-Autovoter -->
-          <div class="flex">
-            <div class="w-[360px] h-[260px] flex items-center justify-center flex-shrink-0 bg-cover bg-center" style="background-image: url('./assets/akb-autovoter-BoDK3rMV.gif');">
-            </div>
-            <div class="flex-1 h-[260px] bg-[var(--bg-card)] px-10 py-8 flex flex-col justify-center gap-3">
-              <div class="text-[var(--neon)] font-jetbrains text-[10px] font-bold tracking-[0.2em]">AUTOMATION  ·  PIPELINE</div>
-              <h3 class="text-[var(--text-white)] font-inter text-[28px] font-bold leading-tight">AKB-Autovoter</h3>
-              <p class="text-[var(--text-gray)] font-inter text-sm leading-[1.6]">Automated voting system for AKB Sousenkyo pipeline</p>
-              <div class="text-[var(--text-dim)] font-jetbrains text-[10px] tracking-wide">Python · Automation · Web Scraping</div>
-            </div>
-          </div>
-
-          <!-- Project 5: Studio-Spatial Visualizer -->
+          <!-- DeNA era · Studio-Spatial Visualizer -->
           <div class="flex">
             <div class="w-[360px] h-[260px] flex items-center justify-center flex-shrink-0 bg-cover bg-center" style="background-image: url('./assets/studio-DPg89tab.jpeg');">
             </div>
@@ -636,6 +652,18 @@
               <h3 class="text-[var(--text-white)] font-inter text-[28px] font-bold leading-tight">Studio-Spatial Visualizer</h3>
               <p class="text-[var(--text-gray)] font-inter text-sm leading-[1.6]">Spatial analytics and visualization metrics system</p>
               <div class="text-[var(--text-dim)] font-jetbrains text-[10px] tracking-wide">Spatial Analytics · Data Visualization · Metrics</div>
+            </div>
+          </div>
+
+          <!-- Earliest · AKB-Autovoter -->
+          <div class="flex">
+            <div class="w-[360px] h-[260px] flex items-center justify-center flex-shrink-0 bg-cover bg-center" style="background-image: url('./assets/akb-autovoter-BoDK3rMV.gif');">
+            </div>
+            <div class="flex-1 h-[260px] bg-[var(--bg-card)] px-10 py-8 flex flex-col justify-center gap-3">
+              <div class="text-[var(--neon)] font-jetbrains text-[10px] font-bold tracking-[0.2em]">AUTOMATION  ·  PIPELINE</div>
+              <h3 class="text-[var(--text-white)] font-inter text-[28px] font-bold leading-tight">AKB-Autovoter</h3>
+              <p class="text-[var(--text-gray)] font-inter text-sm leading-[1.6]">Automated voting system for AKB Sousenkyo pipeline</p>
+              <div class="text-[var(--text-dim)] font-jetbrains text-[10px] tracking-wide">Python · Automation · Web Scraping</div>
             </div>
           </div>
         </div>
