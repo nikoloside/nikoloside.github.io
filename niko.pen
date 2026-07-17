@@ -213,16 +213,6 @@
                       "fontFamily": "JetBrains Mono",
                       "fontSize": 11,
                       "fontWeight": "normal"
-                    },
-                    {
-                      "type": "text",
-                      "id": "mG61S",
-                      "name": "hlLI",
-                      "fill": "$text-gray",
-                      "content": "LinkedIn",
-                      "fontFamily": "JetBrains Mono",
-                      "fontSize": 11,
-                      "fontWeight": "normal"
                     }
                   ]
                 }
@@ -947,16 +937,6 @@
                   "name": "ftRED",
                   "fill": "$text-gray",
                   "content": "RED",
-                  "fontFamily": "JetBrains Mono",
-                  "fontSize": 11,
-                  "fontWeight": "normal"
-                },
-                {
-                  "type": "text",
-                  "id": "a6z9M",
-                  "name": "ftLI",
-                  "fill": "$text-gray",
-                  "content": "LinkedIn",
                   "fontFamily": "JetBrains Mono",
                   "fontSize": 11,
                   "fontWeight": "normal"

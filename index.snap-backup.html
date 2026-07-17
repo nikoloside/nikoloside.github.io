@@ -1,0 +1,1338 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Niko Huang — Portfolio</title>
+  <link rel="icon" type="image/jpeg" href="./assets/icon-BO8uqT9S.jpg" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Three.js for Grid Effect -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8FJ3FS3HFB"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-8FJ3FS3HFB');
+  </script>
+
+  <style>
+    /* Smooth Scroll Snap */
+    .snap-container {
+      scroll-snap-type: y mandatory;
+      overflow-y: scroll;
+      height: 100vh;
+      scroll-behavior: smooth;
+    }
+    .snap-section {
+      scroll-snap-align: start;
+      scroll-snap-stop: normal;
+      min-height: 100vh;
+    }
+
+    /* Smooth scrollbar */
+    .snap-container::-webkit-scrollbar {
+      width: 0px;
+      background: transparent;
+    }
+
+    /* Nested archive scroll (Blogs section): scroll internally, then the
+       page snaps to the next section once it bottoms out. */
+    .blog-scroll { overscroll-behavior-y: auto; }
+    .blog-scroll::-webkit-scrollbar { width: 6px; }
+    .blog-scroll::-webkit-scrollbar-thumb { background: rgba(202,255,4,0.4); border-radius: 3px; }
+    .blog-scroll::-webkit-scrollbar-thumb:hover { background: rgba(202,255,4,0.6); }
+    .blog-scroll::-webkit-scrollbar-track { background: transparent; }
+
+    /* Scroll Animation */
+    .fade-in-section {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
+    .fade-in-section.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Text Enhancement on Hover - Bright green only */
+    .text-glow-light {
+      color: #CAFF04 !important;
+      transition: color 0.15s ease;
+    }
+
+    .text-glow-dark {
+      color: #CAFF04 !important;
+      text-shadow: 0 0 10px rgba(202, 255, 4, 0.5);
+      transition: color 0.15s ease, text-shadow 0.15s ease;
+    }
+
+    /* Hover effect for text elements */
+    h1:hover, h2:hover, h3:hover, h4:hover, h5:hover, h6:hover,
+    p:hover, span:hover {
+      cursor: default;
+    }
+
+    /* Clickable elements */
+    a:hover, button:hover {
+      cursor: pointer;
+    }
+
+    /* Modal Animation */
+    .modal {
+      display: none;
+      opacity: 0;
+      transition: opacity 0.3s ease-out;
+    }
+    .modal.active {
+      display: flex;
+      opacity: 1;
+    }
+    .modal-content {
+      transform: translateY(20px);
+      transition: transform 0.3s ease-out;
+    }
+    .modal.active .modal-content {
+      transform: translateY(0);
+    }
+
+    /* Mobile Responsive Styles */
+    @media (max-width: 768px) {
+      /* Adjust section padding for mobile */
+      .snap-section {
+        padding: 1rem !important;
+      }
+
+      /* Hero section mobile layout */
+      .snap-section .flex-1 {
+        padding: 1rem !important;
+      }
+
+      /* Header mobile */
+      header {
+        padding: 1rem !important;
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      header nav {
+        flex-wrap: wrap;
+        gap: 0.5rem !important;
+        justify-content: center;
+      }
+
+      /* Hero content mobile - stack vertically */
+      .snap-section > div.flex {
+        flex-direction: column !important;
+        align-items: center;
+        gap: 2rem !important;
+      }
+
+      /* Hero image mobile */
+      .w-80.h-80 {
+        width: 12rem !important;
+        height: 12rem !important;
+      }
+
+      /* Typography scaling */
+      h1 {
+        font-size: 3rem !important;
+        line-height: 1 !important;
+      }
+
+      h2 {
+        font-size: 1.5rem !important;
+      }
+
+      h3 {
+        font-size: 1.25rem !important;
+      }
+
+      /* Project cards - stack vertically */
+      .w-full.flex:has(.w-\[400px\]) {
+        flex-direction: column !important;
+      }
+
+      /* Modal project cards - stack vertically */
+      #projectsModal .flex:has(.w-\[360px\]),
+      #publicationsModal .flex {
+        flex-direction: column !important;
+      }
+
+      /* Project image sizing */
+      .w-\[400px\].h-\[280px\],
+      .w-\[360px\].h-\[260px\] {
+        width: 100% !important;
+        height: 200px !important;
+      }
+
+      /* Modal project text containers - remove fixed height */
+      .modal-content .flex-1.h-\[260px\] {
+        height: auto !important;
+        min-height: 200px;
+      }
+
+      /* Modal mobile adjustments */
+      .modal-content {
+        width: 95% !important;
+        max-width: 95% !important;
+        margin: 1rem;
+      }
+
+      .modal-content > div {
+        padding: 1rem !important;
+      }
+
+      /* News section mobile */
+      .w-full.flex.gap-6 {
+        flex-direction: column !important;
+        gap: 0.5rem !important;
+      }
+
+      .w-\[70px\],
+      .w-20 {
+        width: auto !important;
+      }
+
+      /* Hide grid effect on mobile for performance */
+      #gridCanvas {
+        display: none !important;
+      }
+
+      /* Footer mobile */
+      footer {
+        flex-direction: column !important;
+        gap: 2rem;
+        text-align: center;
+      }
+
+      footer .flex {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+    }
+
+    /* Tablet responsive styles */
+    @media (min-width: 769px) and (max-width: 1024px) {
+      .snap-section {
+        padding: 2rem !important;
+      }
+
+      h1 {
+        font-size: 4rem !important;
+      }
+
+      .w-\[400px\].h-\[280px\] {
+        width: 300px !important;
+      }
+
+      .w-\[360px\].h-\[260px\] {
+        width: 280px !important;
+      }
+    }
+
+    /* Small mobile */
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 2.5rem !important;
+      }
+
+      .text-\[72px\] {
+        font-size: 2rem !important;
+      }
+
+      .text-\[32px\] {
+        font-size: 1.5rem !important;
+      }
+
+      .text-\[28px\] {
+        font-size: 1.25rem !important;
+      }
+
+      header nav a,
+      header nav span {
+        font-size: 0.625rem !important;
+      }
+
+      .w-80.h-80 {
+        width: 10rem !important;
+        height: 10rem !important;
+      }
+    }
+  </style>
+</head>
+<body class="h-full font-inter overflow-hidden">
+  <!-- Grid Effect Canvas -->
+  <canvas id="gridCanvas" class="fixed top-0 left-0 w-full h-full pointer-events-none -z-10"></canvas>
+
+  <!-- Main Container with Scroll Snap -->
+  <div class="snap-container relative">
+    <!-- Section 1: Hero with Header -->
+    <section class="snap-section w-full h-screen bg-[var(--bg-dark)] flex flex-col fade-in-section">
+      <!-- Header -->
+      <header class="w-full bg-[var(--bg-dark)] px-20 py-5 flex items-center justify-between flex-shrink-0">
+        <div class="flex items-center gap-3">
+          <img src="./assets/icon-BO8uqT9S.jpg" alt="Niko Huang" class="w-8 h-8 rounded-full object-cover" />
+          <div class="text-[var(--neon)] font-jetbrains text-sm font-bold tracking-wide">
+            &gt;. Niko Huang
+          </div>
+        </div>
+        <nav class="flex items-center gap-8">
+          <a href="#hero" class="text-[var(--text-white)] font-jetbrains text-[11px] font-medium tracking-[0.2em] hover:text-[var(--neon)] transition-colors">HOME</a>
+          <a href="#projects" class="text-[var(--text-gray)] font-jetbrains text-[11px] font-medium tracking-[0.2em] hover:text-[var(--neon)] transition-colors">WORKS</a>
+          <a href="#blogs" class="text-[var(--text-gray)] font-jetbrains text-[11px] font-medium tracking-[0.2em] hover:text-[var(--neon)] transition-colors">BLOGS</a>
+          <a href="#publications" class="text-[var(--text-gray)] font-jetbrains text-[11px] font-medium tracking-[0.2em] hover:text-[var(--neon)] transition-colors">PUBLICATION</a>
+          <a href="https://github.com/LudicDynamics/WorldLines" target="_blank" class="bg-[var(--neon)] text-[var(--bg-dark)] font-jetbrains text-[10px] font-bold tracking-wide px-3 py-1 hover:opacity-90 transition-opacity">worldlines</a>
+        </nav>
+      </header>
+
+      <!-- Hero Content -->
+      <div class="flex-1 px-20 py-16 flex items-center gap-20">
+        <div class="flex-1 flex flex-col gap-5">
+          <div class="text-[var(--purple-glow)] font-jetbrains text-[10px] font-semibold tracking-[0.4em]">
+            FOUNDER · RESEARCHER · ENGINEER
+          </div>
+          <h1 class="text-[var(--text-white)] font-inter text-[72px] font-extrabold tracking-[-0.04em] leading-none">
+            Niko Huang
+          </h1>
+          <div class="w-[60px] h-[3px] bg-[var(--neon)]"></div>
+          <p class="text-[var(--text-gray)] font-inter text-sm font-light leading-[1.7] max-w-2xl">
+            Founder of WorldLine, an agentic system for games with Persistent Narrative World Representation.<br><br>
+            Previously Game Engineer at DeNA, IoT Full-Stack at Butlr.<br>
+            Earned Ph.D. in Computer Graphics at the University of Tokyo, advised by Prof. Takashi Kanai. Focusing on computer graphics, physics-based animation, and multi-phase SDF 3D representation for fracture patterns.
+          </p>
+          <div class="flex items-center gap-5">
+            <a href="https://github.com/nikoloside" target="_blank" class="text-[var(--text-gray)] font-jetbrains text-[11px] hover:text-[var(--neon)] transition-colors">GitHub</a>
+            <a href="https://twitter.com/nikoloside" target="_blank" class="text-[var(--text-gray)] font-jetbrains text-[11px] hover:text-[var(--neon)] transition-colors">Twitter</a>
+            <a href="https://www.threads.net/@nikoloside" target="_blank" class="text-[var(--text-gray)] font-jetbrains text-[11px] hover:text-[var(--neon)] transition-colors">Threads</a>
+            <a href="https://xhslink.com/m/2zkz2aYpuTZ" target="_blank" class="text-[var(--text-gray)] font-jetbrains text-[11px] hover:text-[var(--neon)] transition-colors">RED</a>
+          </div>
+        </div>
+        <div class="w-80 h-80 flex items-center justify-center rounded-lg overflow-hidden relative z-[60]">
+          <img src="./assets/icon-BO8uqT9S.jpg" alt="Niko Huang" class="w-full h-full object-cover" />
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 2: News -->
+    <section id="news" class="snap-section w-full h-screen bg-[var(--neon)] px-20 py-16 flex flex-col justify-center fade-in-section">
+      <h2 class="text-[var(--bg-dark)] font-jetbrains text-[11px] font-bold tracking-[0.4em] mb-8">
+        NEWS
+      </h2>
+      <div class="w-full flex flex-col mb-8 max-h-[60vh] overflow-y-auto">
+        <div class="w-full flex gap-6 py-3 border-b border-[rgba(10,10,15,0.125)]">
+          <div class="w-[70px] text-[var(--bg-dark)] font-jetbrains text-[10px] font-bold tracking-wide flex-shrink-0">2026.05.31</div>
+          <div class="flex-1 text-[var(--bg-dark)] font-inter text-[13px] font-medium leading-[1.5]">📄 "Far-From-Boundary Fields for Learning Segmented Implicit Solids" accepted to Computers &amp; Graphics.</div>
+        </div>
+        <div class="w-full flex gap-6 py-3 border-b border-[rgba(10,10,15,0.125)]">
+          <div class="w-[70px] text-[var(--bg-dark)] font-jetbrains text-[10px] font-bold tracking-wide flex-shrink-0">2026.05.08</div>
+          <div class="flex-1 flex items-center justify-between gap-4">
+            <div class="text-[var(--bg-dark)] font-inter text-[13px] font-medium leading-[1.5]">📄 Presented a work at Eurographics 2026 (EG 2026).</div>
+            <button onclick="openModal('egNewsModal')" class="text-[var(--bg-dark)] font-jetbrains text-[10px] font-bold tracking-wide underline underline-offset-4 hover:opacity-70 transition-opacity flex-shrink-0">
+              View details
+            </button>
+          </div>
+        </div>
+        <div class="w-full flex gap-6 py-3 border-b border-[rgba(10,10,15,0.125)]">
+          <div class="w-[70px] text-[var(--bg-dark)] font-jetbrains text-[10px] font-bold tracking-wide flex-shrink-0">2026.04.27</div>
+          <div class="flex-1 text-[var(--bg-dark)] font-inter text-[13px] font-medium leading-[1.5]">📢 <a href="https://prtimes.jp/main/html/rd/p/000000009.000139202.html" target="_blank" rel="noopener noreferrer" class="underline underline-offset-4 hover:opacity-70 transition-opacity">Selected for the AG1 batch hosted by Asu Capital</a>.</div>
+        </div>
+        <div class="w-full flex gap-6 py-3 border-b border-[rgba(10,10,15,0.125)]">
+          <div class="w-[70px] text-[var(--bg-dark)] font-jetbrains text-[10px] font-bold tracking-wide flex-shrink-0">2026.04.25</div>
+          <div class="flex-1 text-[var(--bg-dark)] font-inter text-[13px] font-medium leading-[1.5]">🚀 Released WorldLines v0.1.*.</div>
+        </div>
+        <div class="w-full flex gap-6 py-3 border-b border-[rgba(10,10,15,0.125)]">
+          <div class="w-[70px] text-[var(--bg-dark)] font-jetbrains text-[10px] font-bold tracking-wide flex-shrink-0">2026.03.24</div>
+          <div class="flex-1 text-[var(--bg-dark)] font-inter text-[13px] font-medium leading-[1.5]">🎓 Earned the Ph.D. degree in Computer Graphics from the University of Tokyo.</div>
+        </div>
+        <div class="w-full flex gap-6 py-3 border-b border-[rgba(10,10,15,0.125)]">
+          <div class="w-[70px] text-[var(--bg-dark)] font-jetbrains text-[10px] font-bold tracking-wide flex-shrink-0">2026.01</div>
+          <div class="flex-1 text-[var(--bg-dark)] font-inter text-[13px] font-medium leading-[1.5]">🎓 Became PhD candidate and will graduate in March 2026.</div>
+        </div>
+        <div class="w-full flex gap-6 py-3 border-b border-[rgba(10,10,15,0.125)]">
+          <div class="w-[70px] text-[var(--bg-dark)] font-jetbrains text-[10px] font-bold tracking-wide flex-shrink-0">2025.09</div>
+          <div class="flex-1 text-[var(--bg-dark)] font-inter text-[13px] font-medium leading-[1.5]">🏆 Received VC Research Incentive Awards VC2025 for research on "境界最遠点を正規化基準とする距離場設計による破片形状学習" (Distance Field Design with Far-From-Boundary Normalization for Fragment Shape Learning).</div>
+        </div>
+        <div class="w-full flex gap-6 py-3 border-b border-[rgba(10,10,15,0.125)]">
+          <div class="w-[70px] text-[var(--bg-dark)] font-jetbrains text-[10px] font-bold tracking-wide flex-shrink-0">2025.08</div>
+          <div class="flex-1 text-[var(--bg-dark)] font-inter text-[13px] font-medium leading-[1.5]">📄 DeepFracture GitHub has been awarded the GRSI Replicability Stamp Replicability Stamp, and released the Hugging Face Model 🤗 and Dataset 🔗.</div>
+        </div>
+        <div class="w-full flex gap-6 py-3 border-b border-[rgba(10,10,15,0.125)]">
+          <div class="w-[70px] text-[var(--bg-dark)] font-jetbrains text-[10px] font-bold tracking-wide flex-shrink-0">2025.02</div>
+          <div class="flex-1 text-[var(--bg-dark)] font-inter text-[13px] font-medium leading-[1.5]">📄 DeepFracture paper accepted to Computer Graphics Forum (February 2025).</div>
+        </div>
+        <div class="w-full flex gap-6 py-3">
+          <div class="w-[70px] text-[var(--bg-dark)] font-jetbrains text-[10px] font-bold tracking-wide flex-shrink-0">2024.08</div>
+          <div class="flex-1 text-[var(--bg-dark)] font-inter text-[13px] font-medium leading-[1.5]">🎤 Presented poster "Brittle Fracture Animation with VQ-VAE-Based Generative Method" at SCA 2024 in Montreal, Canada.</div>
+        </div>
+      </div>
+      <button onclick="openModal('newsModal')" class="bg-[var(--bg-dark)] text-[var(--neon)] font-jetbrains text-[11px] font-bold tracking-wide px-6 py-2.5 self-start hover:opacity-90 transition-opacity">
+        All News →
+      </button>
+    </section>
+
+    <!-- Section 3: Selected Works (latest 3; rest in All Projects modal) -->
+    <section id="projects" class="snap-section w-full h-screen bg-[var(--bg-dark)] px-20 py-16 flex flex-col justify-center fade-in-section">
+      <h2 class="text-[var(--text-dim)] font-jetbrains text-[11px] font-bold tracking-[0.4em] mb-8">
+        SELECTED WORKS
+      </h2>
+      <div class="w-full grid grid-cols-1 md:grid-cols-3 gap-5 mb-8">
+        <!-- 01 WorldLines -->
+        <div class="bg-[var(--bg-card)] flex flex-col">
+          <div class="w-full h-[170px] bg-[var(--bg-dark)] overflow-hidden"><img src="./assets/demo-worldlines.gif" alt="WorldLines demo" class="w-full h-full object-cover" loading="lazy" /></div>
+          <div class="px-6 py-5 flex flex-col gap-2 flex-1">
+            <div class="bg-[var(--neon)] text-[var(--bg-dark)] font-jetbrains text-[9px] font-bold tracking-[0.2em] px-2 py-0.5 self-start">ACTIVE · FOUNDER</div>
+            <h3 class="text-[var(--text-white)] font-inter text-[21px] font-extrabold tracking-[-0.03em] leading-tight">WorldLines</h3>
+            <div class="text-[var(--neon)] font-jetbrains text-[10px] tracking-wide">Agentic engine / Persistent world / AI storytelling</div>
+            <p class="text-[rgba(255,255,255,0.82)] font-inter text-[12.5px] font-light leading-[1.55] flex-1">An agentic engine for games with Persistent Narrative World Representation — a world that records and recalls what the player does. Agents play characters, the world keeps state, every choice is remembered.</p>
+            <div class="flex justify-between items-center pt-1">
+              <span class="text-[rgba(255,255,255,0.55)] font-jetbrains text-[9px] tracking-[0.05em]">Live · 2026</span>
+              <a href="https://github.com/LudicDynamics/WorldLines" target="_blank" class="text-[var(--neon)] font-jetbrains text-[11px] font-semibold tracking-wide hover:opacity-80 transition-opacity">Project →</a>
+            </div>
+          </div>
+        </div>
+        <!-- 02 Abyss -->
+        <div class="bg-[var(--bg-card)] flex flex-col">
+          <div class="w-full h-[170px] bg-[var(--bg-dark)] overflow-hidden"><img src="./assets/demo-abyss.gif" alt="Abyss demo" class="w-full h-full object-cover" loading="lazy" /></div>
+          <div class="px-6 py-5 flex flex-col gap-2 flex-1">
+            <div class="text-[var(--neon)] font-jetbrains text-[9px] font-bold tracking-[0.2em]">2026 · WORLDLINES VALIDATION</div>
+            <h3 class="text-[var(--text-white)] font-inter text-[21px] font-extrabold tracking-[-0.03em] leading-tight">Abyss — TRPG Expedition</h3>
+            <div class="text-[var(--neon)] font-jetbrains text-[10px] tracking-wide">LLM game master / Dice checks / Persistent party</div>
+            <p class="text-[rgba(255,255,255,0.82)] font-inter text-[12.5px] font-light leading-[1.55] flex-1">A validation slice testing whether an LLM can run a fair game master: dice-gated checks, persistent party state, and consequences that carry across a long descent — can agents hold a tabletop expedition together?</p>
+            <div class="flex justify-between items-center pt-1">
+              <span class="text-[rgba(255,255,255,0.55)] font-jetbrains text-[9px] tracking-[0.05em]">Prototype · 2026</span>
+              <a href="https://ludics.space" target="_blank" class="text-[var(--neon)] font-jetbrains text-[11px] font-semibold tracking-wide hover:opacity-80 transition-opacity">Demo →</a>
+            </div>
+          </div>
+        </div>
+        <!-- 03 Dice Shot -->
+        <div class="bg-[var(--bg-card)] flex flex-col">
+          <div class="w-full h-[170px] bg-[var(--bg-dark)] overflow-hidden"><img src="./assets/proj-diceshot.png" alt="Dice Shot" class="w-full h-full object-cover" loading="lazy" /></div>
+          <div class="px-6 py-5 flex flex-col gap-2 flex-1">
+            <div class="text-[var(--neon)] font-jetbrains text-[9px] font-bold tracking-[0.2em]">2026 · WORLDLINES VALIDATION</div>
+            <h3 class="text-[var(--text-white)] font-inter text-[21px] font-extrabold tracking-[-0.03em] leading-tight">Dice Shot</h3>
+            <div class="text-[var(--neon)] font-jetbrains text-[10px] tracking-wide">Swipe-native / Short-form RPG / Funnel</div>
+            <p class="text-[rgba(255,255,255,0.82)] font-inter text-[12.5px] font-light leading-[1.55] flex-1">A swipe-native, short-form branching RPG built as a top-of-funnel format — measuring how far players go and whether they convert. A dice-gated story you play one swipe at a time.</p>
+            <div class="flex justify-between items-center pt-1">
+              <span class="text-[rgba(255,255,255,0.55)] font-jetbrains text-[9px] tracking-[0.05em]">Browser playable · 2026</span>
+              <a href="https://ludics.space/app-diceshort/" target="_blank" class="text-[var(--neon)] font-jetbrains text-[11px] font-semibold tracking-wide hover:opacity-80 transition-opacity">Play →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button onclick="openModal('projectsModal')" class="bg-[var(--neon)] text-[var(--bg-dark)] font-jetbrains text-[11px] font-bold tracking-wide px-6 py-2.5 self-start hover:opacity-90 transition-opacity">
+        All Projects →
+      </button>
+    </section>
+
+    <!-- Section 3b: Selected Blogs & Talks (nested-scroll: scroll the archive, then snap to next) -->
+    <section id="blogs" class="snap-section w-full h-screen bg-[var(--bg-dark)] px-20 pt-12 pb-6 flex flex-col fade-in-section">
+      <div class="flex items-baseline justify-between mb-5 flex-shrink-0">
+        <h2 class="text-[var(--text-dim)] font-jetbrains text-[11px] font-bold tracking-[0.4em]">
+          SELECTED BLOGS &amp; TALKS
+        </h2>
+        <span class="text-[var(--text-dim)] font-jetbrains text-[10px] tracking-wide">↓ scroll the archive, then continue</span>
+      </div>
+
+      <!-- Nested scroll area: scrolls internally; bubbles to the page snap at its bottom -->
+      <div class="blog-scroll flex-1 overflow-y-auto pr-3 grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-0">
+
+        <!-- Writing Archive (our articles) -->
+        <div>
+          <div class="sticky top-0 bg-[var(--bg-dark)] py-2 text-[var(--neon)] font-jetbrains text-[10px] font-bold tracking-[0.3em] z-10">WRITING ARCHIVE</div>
+          <div class="flex flex-col">
+            <a href="https://ludicdynamics.com/blog/what-is-worldlines/" target="_blank" class="group py-4 border-b border-[var(--border-dark)] block">
+              <div class="text-[var(--text-white)] font-inter text-[16px] font-semibold leading-snug group-hover:text-[var(--neon)] transition-colors">What is WorldLines?</div>
+              <div class="text-[rgba(255,255,255,0.78)] font-inter text-[12px] leading-[1.5] mt-1.5">A 3-minute intro to WorldLines — the open-source AI engine where the world remembers. What it is, why we built it, and how to try it.</div>
+              <div class="text-[rgba(255,255,255,0.5)] font-jetbrains text-[10px] tracking-wide mt-1.5">Mar 2026</div>
+            </a>
+            <a href="https://ludicdynamics.com/blog/the-world-remembers/" target="_blank" class="group py-4 border-b border-[var(--border-dark)] block">
+              <div class="text-[var(--text-white)] font-inter text-[16px] font-semibold leading-snug group-hover:text-[var(--neon)] transition-colors">The World Remembers — Why AI RP Needs a World Engine</div>
+              <div class="text-[rgba(255,255,255,0.78)] font-inter text-[12px] leading-[1.5] mt-1.5">Chat-based AI roleplay has a ceiling. The next evolution isn't better prompts — it's world state, multi-agent coordination, and persistence. A manifesto.</div>
+              <div class="text-[rgba(255,255,255,0.5)] font-jetbrains text-[10px] tracking-wide mt-1.5">Mar 2026</div>
+            </a>
+            <a href="https://ludicdynamics.com/blog/building-worldlines-engine/" target="_blank" class="group py-4 border-b border-[var(--border-dark)] block">
+              <div class="text-[var(--text-white)] font-inter text-[16px] font-semibold leading-snug group-hover:text-[var(--neon)] transition-colors">Building a 🦞-style Agents Engine to Run TRPG</div>
+              <div class="text-[rgba(255,255,255,0.78)] font-inter text-[12px] leading-[1.5] mt-1.5">From AI chatbots to Claude Code TRPG, then building my own multi-agent engine. A four-month journey of a tabletop RPG game master.</div>
+              <div class="text-[rgba(255,255,255,0.5)] font-jetbrains text-[10px] tracking-wide mt-1.5">May 2026</div>
+            </a>
+            <a href="https://ludicdynamics.com/blog/git-for-narrative-worlds/" target="_blank" class="group py-4 border-b border-[var(--border-dark)] block">
+              <div class="text-[var(--text-white)] font-inter text-[16px] font-semibold leading-snug group-hover:text-[var(--neon)] transition-colors">Version Control for Story Worlds</div>
+              <div class="text-[rgba(255,255,255,0.78)] font-inter text-[12px] leading-[1.5] mt-1.5">Today's AI roleplay evaporates the moment you close the tab. WorldLines makes worlds and souls version-controlled — a commit-tree you can branch, restore, and share.</div>
+              <div class="text-[rgba(255,255,255,0.5)] font-jetbrains text-[10px] tracking-wide mt-1.5">May 2026</div>
+            </a>
+            <a href="https://ludicdynamics.com/blog/six-things-only-worldlines-does/" target="_blank" class="group py-4 border-b border-[var(--border-dark)] block">
+              <div class="text-[var(--text-white)] font-inter text-[16px] font-semibold leading-snug group-hover:text-[var(--neon)] transition-colors">Six Things Only WorldLines Does</div>
+              <div class="text-[rgba(255,255,255,0.78)] font-inter text-[12px] leading-[1.5] mt-1.5">Six things you'll feel in WorldLines that you won't find in chat-based AI roleplay — what changes when AI characters actually live.</div>
+              <div class="text-[rgba(255,255,255,0.5)] font-jetbrains text-[10px] tracking-wide mt-1.5">May 2026</div>
+            </a>
+            <a href="https://ludicdynamics.com/blog/building-in-tokyo/" target="_blank" class="group py-4 border-b border-[var(--border-dark)] block">
+              <div class="text-[var(--text-white)] font-inter text-[16px] font-semibold leading-snug group-hover:text-[var(--neon)] transition-colors">Why We Start in Tokyo</div>
+              <div class="text-[rgba(255,255,255,0.78)] font-inter text-[12px] leading-[1.5] mt-1.5">What Ludic Dynamics builds, how it differs from existing AI roleplay, and why Tokyo is our launchpad.</div>
+              <div class="text-[rgba(255,255,255,0.5)] font-jetbrains text-[10px] tracking-wide mt-1.5">Mar 2026</div>
+            </a>
+          </div>
+        </div>
+
+        <!-- Research Deck (research + talks) -->
+        <div>
+          <div class="sticky top-0 bg-[var(--bg-dark)] py-2 text-[var(--neon)] font-jetbrains text-[10px] font-bold tracking-[0.3em] z-10">RESEARCH DECK</div>
+          <div class="flex flex-col">
+            <a href="https://ludicdynamics.com/blog/world-model-hypothesis/" target="_blank" class="group py-4 border-b border-[var(--border-dark)] block">
+              <div class="text-[var(--text-white)] font-inter text-[16px] font-semibold leading-snug group-hover:text-[var(--neon)] transition-colors">The World-Model Hypothesis: Can Games Teach AI to Reason?</div>
+              <div class="text-[rgba(255,255,255,0.78)] font-inter text-[12px] leading-[1.5] mt-1.5">Exploring how persistent game worlds create a unique training ground for emergent AI reasoning.</div>
+              <div class="text-[rgba(255,255,255,0.5)] font-jetbrains text-[10px] tracking-wide mt-1.5">Apr 2026</div>
+            </a>
+            <a href="https://ludicdynamics.com/blog/character-agents-memory-architecture/" target="_blank" class="group py-4 border-b border-[var(--border-dark)] block">
+              <div class="text-[var(--text-white)] font-inter text-[16px] font-semibold leading-snug group-hover:text-[var(--neon)] transition-colors">Character Agents: Memory Architecture for NPCs</div>
+              <div class="text-[rgba(255,255,255,0.78)] font-inter text-[12px] leading-[1.5] mt-1.5">How we built a long-term memory system that lets AI characters form genuine relationships across sessions.</div>
+              <div class="text-[rgba(255,255,255,0.5)] font-jetbrains text-[10px] tracking-wide mt-1.5">May 2026</div>
+            </a>
+            <div class="py-4 border-b border-[var(--border-dark)]">
+              <div class="text-[var(--text-white)] font-inter text-[16px] font-semibold leading-snug">Presented at Eurographics 2026 (EG 2026)</div>
+              <div class="text-[rgba(255,255,255,0.78)] font-inter text-[12px] leading-[1.5] mt-1.5">Research on segmented implicit solids and far-from-boundary distance fields at one of computer graphics' flagship venues.</div>
+              <div class="text-[rgba(255,255,255,0.5)] font-jetbrains text-[10px] tracking-wide mt-1.5">Conference talk · May 2026</div>
+            </div>
+            <div class="py-4 border-b border-[var(--border-dark)]">
+              <div class="text-[var(--text-white)] font-inter text-[16px] font-semibold leading-snug">Brittle Fracture Animation with VQ-VAE</div>
+              <div class="text-[rgba(255,255,255,0.78)] font-inter text-[12px] leading-[1.5] mt-1.5">A VQ-VAE-based generative method for brittle fracture animation, presented as a poster.</div>
+              <div class="text-[rgba(255,255,255,0.5)] font-jetbrains text-[10px] tracking-wide mt-1.5">SCA 2024 Poster · Montreal</div>
+            </div>
+            <div class="py-4 border-b border-[var(--border-dark)]">
+              <div class="text-[var(--text-white)] font-inter text-[16px] font-semibold leading-snug">"Why Chinese AI Talent is in Japanese Startups"</div>
+              <div class="text-[rgba(255,255,255,0.78)] font-inter text-[12px] leading-[1.5] mt-1.5">A NIKKEI Business Daily feature on the wave of Chinese AI engineers building inside Japan's startup ecosystem.</div>
+              <div class="text-[rgba(255,255,255,0.5)] font-jetbrains text-[10px] tracking-wide mt-1.5">NIKKEI Business Daily · June 2023</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Section 4: Selected Publication -->
+    <section id="publications" class="snap-section w-full h-screen bg-[var(--purple-dim)] px-20 py-16 flex flex-col justify-center fade-in-section">
+      <h2 class="text-[rgba(255,255,255,0.38)] font-jetbrains text-[11px] font-bold tracking-[0.4em] mb-8">
+        SELECTED PUBLICATION
+      </h2>
+      <div class="w-full flex flex-col gap-3 mb-6">
+        <div class="text-[var(--text-white)] font-inter text-lg font-semibold leading-[1.5]">"DeepFracture: A Generative Approach for Predicting Brittle Fractures with Neural Discrete Representation Learning"</div>
+        <div class="text-[rgba(255,255,255,0.67)] font-jetbrains text-xs font-medium tracking-[0.05em]">Yuhang Huang, Takashi Kanai</div>
+        <div class="text-[rgba(255,255,255,0.5)] font-inter text-[13px] leading-[1.5]">Computer Graphics Forum, e70002, 15 pages, February 2025.</div>
+      </div>
+      <div class="w-full flex flex-col gap-3 pt-6 border-t border-[rgba(255,255,255,0.125)] mb-8">
+        <div class="text-[rgba(255,255,255,0.8)] font-inter text-base font-medium leading-[1.5]">NIKKEI Business Daily Feature</div>
+        <div class="text-[rgba(255,255,255,0.38)] font-jetbrains text-[10px] tracking-[0.03em]">"Why Chinese AI Talent is in Japanese Startups"  ·  June 2023</div>
+      </div>
+      <button onclick="openModal('publicationsModal')" class="bg-[rgba(255,255,255,0.125)] text-[var(--text-white)] font-jetbrains text-[11px] font-bold tracking-wide px-6 py-2.5 self-start hover:bg-[rgba(255,255,255,0.2)] transition-colors">
+        All Publications →
+      </button>
+    </section>
+
+    <!-- Section 5: Footer -->
+    <section class="snap-section w-full h-screen bg-[var(--bg-dark)] flex items-center justify-center fade-in-section">
+      <footer class="w-full px-20 py-10 flex items-center justify-between">
+        <div class="flex flex-col gap-1.5">
+          <div class="text-[var(--neon)] font-jetbrains text-[13px] font-bold tracking-wide">&gt;. Niko Huang</div>
+          <div class="text-[var(--text-dim)] font-jetbrains text-[10px] tracking-[0.05em]">2026 Ludic Dynamics</div>
+        </div>
+        <div class="flex items-center gap-7">
+          <a href="https://github.com/nikoloside" target="_blank" class="text-[var(--text-gray)] font-jetbrains text-[11px] hover:text-[var(--neon)] transition-colors">GitHub</a>
+          <a href="https://twitter.com/nikoloside" target="_blank" class="text-[var(--text-gray)] font-jetbrains text-[11px] hover:text-[var(--neon)] transition-colors">Twitter</a>
+          <a href="https://www.threads.net/@nikoloside" target="_blank" class="text-[var(--text-gray)] font-jetbrains text-[11px] hover:text-[var(--neon)] transition-colors">Threads</a>
+          <a href="https://xhslink.com/m/2zkz2aYpuTZ" target="_blank" class="text-[var(--text-gray)] font-jetbrains text-[11px] hover:text-[var(--neon)] transition-colors">RED</a>
+        </div>
+      </footer>
+    </section>
+
+  </div>
+
+  <!-- Modal: All News -->
+  <div id="newsModal" class="modal fixed inset-0 bg-black/80 backdrop-blur-sm z-50 items-center justify-center">
+    <div class="modal-content bg-[var(--bg-dark)] w-full max-w-5xl max-h-[90vh] overflow-y-auto rounded-lg shadow-2xl">
+      <!-- Modal Header -->
+      <div class="sticky top-0 bg-[var(--bg-dark)] border-b border-[var(--border-dark)] px-20 py-6 flex items-center justify-between z-10">
+        <button onclick="closeModal('newsModal')" class="flex items-center gap-2 text-[var(--text-gray)] hover:text-[var(--neon)] transition-colors">
+          <span class="font-jetbrains text-sm">←</span>
+          <span class="font-jetbrains text-xs font-medium">Back to Home</span>
+        </button>
+        <div class="text-[var(--text-white)] font-jetbrains text-[13px] font-bold tracking-wide">&gt;. Niko Huang</div>
+      </div>
+
+      <!-- Modal Content -->
+      <div class="px-20 py-16">
+        <div class="mb-4 text-[var(--neon)] font-jetbrains text-[11px] font-bold tracking-[0.4em]">NEWS</div>
+        <h2 class="mb-4 text-[var(--text-white)] font-inter text-5xl font-extrabold tracking-[-0.04em]">All Updates</h2>
+        <p class="mb-12 text-[var(--text-gray)] font-inter text-[15px] leading-[1.6]">Research milestones, awards, and media coverage.</p>
+
+        <div class="flex flex-col">
+          <div class="flex gap-8 py-5 border-b border-[var(--border-dark)]">
+            <div class="w-20 text-[var(--neon)] font-jetbrains text-xs font-bold tracking-wide flex-shrink-0">2026.05.31</div>
+            <div class="flex-1 text-[var(--text-white)] font-inter text-[15px] leading-[1.6]">📄 "Far-From-Boundary Fields for Learning Segmented Implicit Solids" accepted to Computers &amp; Graphics (Elsevier).</div>
+          </div>
+          <div class="flex gap-8 py-5 border-b border-[var(--border-dark)]">
+            <div class="w-20 text-[var(--neon)] font-jetbrains text-xs font-bold tracking-wide flex-shrink-0">2026.05.08</div>
+            <div class="flex-1">
+              <div class="text-[var(--text-white)] font-inter text-[15px] leading-[1.6]">📄 Presented a work at Eurographics 2026 (EG 2026).</div>
+              <button onclick="openModal('egNewsModal')" class="mt-4 text-[var(--neon)] font-jetbrains text-xs font-bold tracking-wide hover:opacity-80 transition-opacity">
+                Open detail popup →
+              </button>
+            </div>
+          </div>
+          <div class="flex gap-8 py-5 border-b border-[var(--border-dark)]">
+            <div class="w-20 text-[var(--neon)] font-jetbrains text-xs font-bold tracking-wide flex-shrink-0">2026.04.27</div>
+            <div class="flex-1 text-[var(--text-white)] font-inter text-[15px] leading-[1.6]">📢 <a href="https://prtimes.jp/main/html/rd/p/000000009.000139202.html" target="_blank" rel="noopener noreferrer" class="underline underline-offset-4 hover:opacity-80 transition-opacity">Selected for the AG1 batch hosted by Asu Capital</a>.</div>
+          </div>
+          <div class="flex gap-8 py-5 border-b border-[var(--border-dark)]">
+            <div class="w-20 text-[var(--neon)] font-jetbrains text-xs font-bold tracking-wide flex-shrink-0">2026.04.25</div>
+            <div class="flex-1 text-[var(--text-white)] font-inter text-[15px] leading-[1.6]">🚀 Released WorldLines v0.1.*.</div>
+          </div>
+          <div class="flex gap-8 py-5 border-b border-[var(--border-dark)]">
+            <div class="w-20 text-[var(--neon)] font-jetbrains text-xs font-bold tracking-wide flex-shrink-0">2026.03.24</div>
+            <div class="flex-1 text-[var(--text-white)] font-inter text-[15px] leading-[1.6]">🎓 Earned the Ph.D. degree in Computer Graphics from the University of Tokyo.</div>
+          </div>
+          <div class="flex gap-8 py-5 border-b border-[var(--border-dark)]">
+            <div class="w-20 text-[var(--neon)] font-jetbrains text-xs font-bold tracking-wide flex-shrink-0">2026.01</div>
+            <div class="flex-1 text-[var(--text-white)] font-inter text-[15px] leading-[1.6]">🎓 Became PhD candidate and will graduate in March 2026.</div>
+          </div>
+          <div class="flex gap-8 py-5 border-b border-[var(--border-dark)]">
+            <div class="w-20 text-[var(--neon)] font-jetbrains text-xs font-bold tracking-wide flex-shrink-0">2025.09</div>
+            <div class="flex-1 text-[var(--text-white)] font-inter text-[15px] leading-[1.6]">🏆 Received VC Research Incentive Awards VC2025 for research on "境界最遠点を正規化基準とする距離場設計による破片形状学習" (Distance Field Design with Far-From-Boundary Normalization for Fragment Shape Learning).</div>
+          </div>
+          <div class="flex gap-8 py-5 border-b border-[var(--border-dark)]">
+            <div class="w-20 text-[var(--neon)] font-jetbrains text-xs font-bold tracking-wide flex-shrink-0">2025.08</div>
+            <div class="flex-1 text-[var(--text-white)] font-inter text-[15px] leading-[1.6]">📄 DeepFracture GitHub has been awarded the GRSI Replicability Stamp Replicability Stamp, and released the Hugging Face Model 🤗 and Dataset 🔗.</div>
+          </div>
+          <div class="flex gap-8 py-5 border-b border-[var(--border-dark)]">
+            <div class="w-20 text-[var(--neon)] font-jetbrains text-xs font-bold tracking-wide flex-shrink-0">2025.02</div>
+            <div class="flex-1 text-[var(--text-white)] font-inter text-[15px] leading-[1.6]">📄 DeepFracture paper accepted to Computer Graphics Forum (February 2025).</div>
+          </div>
+          <div class="flex gap-8 py-5 border-b border-[var(--border-dark)]">
+            <div class="w-20 text-[var(--neon)] font-jetbrains text-xs font-bold tracking-wide flex-shrink-0">2024.08</div>
+            <div class="flex-1 text-[var(--text-white)] font-inter text-[15px] leading-[1.6]">🎤 Presented poster "Brittle Fracture Animation with VQ-VAE-Based Generative Method" at SCA 2024 in Montreal, Canada.</div>
+          </div>
+          <div class="flex gap-8 py-5 border-b border-[var(--border-dark)]">
+            <div class="w-20 text-[var(--neon)] font-jetbrains text-xs font-bold tracking-wide flex-shrink-0">2023.06</div>
+            <div class="flex-1 text-[var(--text-white)] font-inter text-[15px] leading-[1.6]">📰 Featured in NIKKEI Business Daily article "Why Chinese AI Talent is in Japanese Startups" highlighting contributions to Japanese tech ecosystem.</div>
+          </div>
+          <div class="flex gap-8 py-5 border-b border-[var(--border-dark)]">
+            <div class="w-20 text-[var(--neon)] font-jetbrains text-xs font-bold tracking-wide flex-shrink-0">2023-2024</div>
+            <div class="flex-1 text-[var(--text-white)] font-inter text-[15px] leading-[1.6]">🎓 Awarded JST SpringGX Doctoral Scholarship for Next Generation Researcher Challenging Research Program at University of Tokyo.</div>
+          </div>
+          <div class="flex gap-8 py-5 border-b border-[var(--border-dark)]">
+            <div class="w-20 text-[var(--neon)] font-jetbrains text-xs font-bold tracking-wide flex-shrink-0">2022.10</div>
+            <div class="flex-1 text-[var(--text-white)] font-inter text-[15px] leading-[1.6]">🏆 Won VC Posters Awards VC+VCC2022 for "Brittle fracture simulation based on JSPS WINGS-CFS Fellowship - World-leading Innovative Graduate Study Program Codesigning Future Society.</div>
+          </div>
+          <div class="flex gap-8 py-5 border-b border-[var(--border-dark)]">
+            <div class="w-20 text-[var(--neon)] font-jetbrains text-xs font-bold tracking-wide flex-shrink-0">2021.09</div>
+            <div class="flex-1 text-[var(--text-white)] font-inter text-[15px] leading-[1.6]">🎮 Graduated from DeNA, thank you to the team members of Pokemon Masters EX.</div>
+          </div>
+          <div class="flex gap-8 py-5">
+            <div class="w-20 text-[var(--neon)] font-jetbrains text-xs font-bold tracking-wide flex-shrink-0">2021.01</div>
+            <div class="flex-1 text-[var(--text-white)] font-inter text-[15px] leading-[1.6]">🥇 Team member selected as finalist in OpenCV AI Competition 2021 Phase 1 from over 1400 submissions.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal: EG 2026 News Detail -->
+  <div id="egNewsModal" class="modal fixed inset-0 bg-black/85 backdrop-blur-sm z-[60] items-center justify-center">
+    <div class="modal-content bg-[var(--bg-dark)] w-full max-w-4xl max-h-[90vh] overflow-y-auto rounded-lg shadow-2xl">
+      <div class="sticky top-0 bg-[var(--bg-dark)] border-b border-[var(--border-dark)] px-20 py-6 flex items-center justify-between z-10">
+        <button onclick="closeModal('egNewsModal')" class="flex items-center gap-2 text-[var(--text-gray)] hover:text-[var(--neon)] transition-colors">
+          <span class="font-jetbrains text-sm">←</span>
+          <span class="font-jetbrains text-xs font-medium">Back to News</span>
+        </button>
+        <div class="text-[var(--text-white)] font-jetbrains text-[13px] font-bold tracking-wide">&gt;. Niko Huang</div>
+      </div>
+
+      <div class="px-20 py-16">
+        <div class="mb-4 text-[var(--neon)] font-jetbrains text-[11px] font-bold tracking-[0.4em]">NEWS DETAIL</div>
+        <div class="mb-3 text-[rgba(255,255,255,0.45)] font-jetbrains text-xs font-bold tracking-wide">2026.05.08</div>
+        <h2 class="mb-4 text-[var(--text-white)] font-inter text-4xl font-extrabold tracking-[-0.04em]">Eurographics 2026</h2>
+        <p class="mb-10 text-[var(--text-gray)] font-inter text-[15px] leading-[1.7]">Presented a work at Eurographics 2026 (EG 2026).</p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <a href="./assets/gallery-2026-01.jpg" target="_blank" rel="noopener noreferrer" class="block overflow-hidden rounded-md border border-[var(--border-dark)] bg-[var(--bg-card)]">
+            <img src="./assets/gallery-2026-01.jpg" alt="Eurographics 2026 image 1" loading="lazy" class="w-full h-full object-cover" />
+          </a>
+          <a href="./assets/gallery-2026-02.jpeg" target="_blank" rel="noopener noreferrer" class="block overflow-hidden rounded-md border border-[var(--border-dark)] bg-[var(--bg-card)]">
+            <img src="./assets/gallery-2026-02.jpeg" alt="Eurographics 2026 image 2" loading="lazy" class="w-full h-full object-cover" />
+          </a>
+          <a href="./assets/gallery-2026-03.jpeg" target="_blank" rel="noopener noreferrer" class="block overflow-hidden rounded-md border border-[var(--border-dark)] bg-[var(--bg-card)]">
+            <img src="./assets/gallery-2026-03.jpeg" alt="Eurographics 2026 image 3" loading="lazy" class="w-full h-full object-cover" />
+          </a>
+          <a href="./assets/gallery-2026-04.jpeg" target="_blank" rel="noopener noreferrer" class="block overflow-hidden rounded-md border border-[var(--border-dark)] bg-[var(--bg-card)]">
+            <img src="./assets/gallery-2026-04.jpeg" alt="Eurographics 2026 image 4" loading="lazy" class="w-full h-full object-cover" />
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal: All Projects -->
+  <div id="projectsModal" class="modal fixed inset-0 bg-black/80 backdrop-blur-sm z-50 items-center justify-center">
+    <div class="modal-content bg-[var(--bg-dark)] w-full max-w-5xl max-h-[90vh] overflow-y-auto rounded-lg shadow-2xl">
+      <!-- Modal Header -->
+      <div class="sticky top-0 bg-[var(--bg-dark)] border-b border-[var(--border-dark)] px-20 py-6 flex items-center justify-between z-10">
+        <button onclick="closeModal('projectsModal')" class="flex items-center gap-2 text-[var(--text-gray)] hover:text-[var(--neon)] transition-colors">
+          <span class="font-jetbrains text-sm">←</span>
+          <span class="font-jetbrains text-xs font-medium">Back to Home</span>
+        </button>
+        <div class="text-[var(--text-white)] font-jetbrains text-[13px] font-bold tracking-wide">&gt;. Niko Huang</div>
+      </div>
+
+      <!-- Modal Content -->
+      <div class="px-20 py-16">
+        <div class="mb-4 text-[var(--purple-glow)] font-jetbrains text-[11px] font-bold tracking-[0.4em]">PROJECTS</div>
+        <h2 class="mb-4 text-[var(--text-white)] font-inter text-5xl font-extrabold tracking-[-0.04em]">All Projects</h2>
+        <p class="mb-12 text-[var(--text-gray)] font-inter text-[15px] leading-[1.6]">Research projects, software tools, and interactive demos.</p>
+
+        <div class="flex flex-col gap-8">
+          <!-- Ordered newest → oldest, matching the site's news timeline. -->
+
+          <!-- 2026 · WorldLines (flagship) -->
+          <div class="flex">
+            <div class="w-[360px] h-[260px] flex items-center justify-center flex-shrink-0 bg-no-repeat bg-contain bg-center bg-[var(--bg-card)]" style="background-image: url('https://github.com/LudicDynamics/WorldLines/raw/main/assets/hero.png');">
+            </div>
+            <div class="flex-1 h-[260px] bg-[var(--bg-card)] px-10 py-8 flex flex-col justify-center gap-3">
+              <div class="text-[var(--neon)] font-jetbrains text-[10px] font-bold tracking-[0.2em]">2026  ·  ACTIVE · FOUNDER</div>
+              <h3 class="text-[var(--text-white)] font-inter text-[28px] font-bold leading-tight">WorldLines</h3>
+              <p class="text-[var(--text-gray)] font-inter text-sm leading-[1.6]">An agentic system for games with Persistent Narrative World Representation. AI-driven storytelling meets interactive game worlds.</p>
+              <div class="text-[var(--text-dim)] font-jetbrains text-[10px] tracking-wide">Agentic AI · Game Engine · Narrative Systems</div>
+              <a href="https://github.com/LudicDynamics/WorldLines" target="_blank" class="text-[var(--neon)] font-jetbrains text-xs font-semibold tracking-wide hover:opacity-80 transition-opacity">View Project →</a>
+            </div>
+          </div>
+
+          <!-- 2026 · Abyss — a WorldLines validation slice -->
+          <div class="flex">
+            <div class="w-[360px] h-[260px] flex items-center justify-center flex-shrink-0 bg-cover bg-center" style="background-image: url('./assets/proj-abyss.png');">
+            </div>
+            <div class="flex-1 h-[260px] bg-[var(--bg-card)] px-10 py-8 flex flex-col justify-center gap-3">
+              <div class="text-[var(--neon)] font-jetbrains text-[10px] font-bold tracking-[0.2em]">2026  ·  WORLDLINES VALIDATION</div>
+              <h3 class="text-[var(--text-white)] font-inter text-[28px] font-bold leading-tight">Abyss — TRPG Expedition</h3>
+              <p class="text-[var(--text-gray)] font-inter text-sm leading-[1.6]">Validates whether an LLM can run a fair game master: dice-gated checks, persistent party state, and consequences that carry across a long descent.</p>
+              <div class="text-[var(--text-dim)] font-jetbrains text-[10px] tracking-wide">Agentic AI · LLM Game Master · Dice System</div>
+              <a href="https://ludics.space" target="_blank" class="text-[var(--neon)] font-jetbrains text-xs font-semibold tracking-wide hover:opacity-80 transition-opacity">View Demo →</a>
+            </div>
+          </div>
+
+          <!-- 2026 · Dice Shot — a WorldLines validation slice -->
+          <div class="flex">
+            <div class="w-[360px] h-[260px] flex items-center justify-center flex-shrink-0 bg-cover bg-center" style="background-image: url('./assets/proj-diceshot.png');">
+            </div>
+            <div class="flex-1 h-[260px] bg-[var(--bg-card)] px-10 py-8 flex flex-col justify-center gap-3">
+              <div class="text-[var(--neon)] font-jetbrains text-[10px] font-bold tracking-[0.2em]">2026  ·  WORLDLINES VALIDATION</div>
+              <h3 class="text-[var(--text-white)] font-inter text-[28px] font-bold leading-tight">Dice Shot — Short-Form RPG</h3>
+              <p class="text-[var(--text-gray)] font-inter text-sm leading-[1.6]">Validates swipe-native, short-form branching narrative as a top-of-funnel format — measuring how far players go and whether they convert to sign-up.</p>
+              <div class="text-[var(--text-dim)] font-jetbrains text-[10px] tracking-wide">TypeScript · Swipe UX · Funnel / Conversion</div>
+              <a href="https://ludics.space/app-diceshort/" target="_blank" class="text-[var(--neon)] font-jetbrains text-xs font-semibold tracking-wide hover:opacity-80 transition-opacity">Play Demo →</a>
+            </div>
+          </div>
+
+          <!-- 2025 · DeepFracture (featured research) -->
+          <div class="flex">
+            <div class="w-[360px] h-[260px] flex items-center justify-center flex-shrink-0 bg-cover bg-center" style="background-image: url('./assets/deepfracture-BbkZjZIl.png');">
+            </div>
+            <div class="flex-1 h-[260px] bg-[var(--bg-card)] px-10 py-8 flex flex-col justify-center gap-3">
+              <div class="text-[var(--neon)] font-jetbrains text-[10px] font-bold tracking-[0.2em]">2025  ·  CGF · FEATURED</div>
+              <h3 class="text-[var(--text-white)] font-inter text-[28px] font-bold leading-tight">DeepFracture</h3>
+              <p class="text-[var(--text-gray)] font-inter text-sm leading-[1.6]">A generative approach for predicting brittle fractures with neural discrete representation learning. GRSI Replicability Stamp awarded.</p>
+              <div class="text-[var(--text-dim)] font-jetbrains text-[10px] tracking-wide">Python · PyTorch · VQ-VAE · SDF</div>
+              <a href="https://github.com/nikoloside/TEBP-DeepFracture" target="_blank" class="text-[var(--neon)] font-jetbrains text-xs font-semibold tracking-wide hover:opacity-80 transition-opacity">View Project →</a>
+            </div>
+          </div>
+
+          <!-- 2025 · FractureBench (demo derived from DeepFracture) -->
+          <div class="flex">
+            <div class="w-[360px] h-[260px] flex items-center justify-center flex-shrink-0 bg-cover bg-center" style="background-image: url('./assets/break4models.png');">
+            </div>
+            <div class="flex-1 h-[260px] bg-[var(--bg-card)] px-10 py-8 flex flex-col justify-center gap-3">
+              <div class="text-[var(--purple-glow)] font-jetbrains text-[10px] font-bold tracking-[0.2em]">2025  ·  HUGGINGFACE · DEMO</div>
+              <h3 class="text-[var(--text-white)] font-inter text-[28px] font-bold leading-tight">FractureBench</h3>
+              <p class="text-[var(--text-gray)] font-inter text-sm leading-[1.6]">Interactive demo and dataset for brittle fracture prediction. Try DeepFracture models directly on HuggingFace Spaces.</p>
+              <div class="text-[var(--text-dim)] font-jetbrains text-[10px] tracking-wide">HuggingFace · Gradio · Python</div>
+              <a href="https://huggingface.co/datasets/nikoloside/break4models" target="_blank" class="text-[var(--purple-glow)] font-jetbrains text-xs font-semibold tracking-wide hover:opacity-80 transition-opacity">View Dataset →</a>
+            </div>
+          </div>
+
+          <!-- DeNA era · Studio-Spatial Visualizer -->
+          <div class="flex">
+            <div class="w-[360px] h-[260px] flex items-center justify-center flex-shrink-0 bg-cover bg-center" style="background-image: url('./assets/studio-DPg89tab.jpeg');">
+            </div>
+            <div class="flex-1 h-[260px] bg-[var(--bg-card)] px-10 py-8 flex flex-col justify-center gap-3">
+              <div class="text-[var(--purple-glow)] font-jetbrains text-[10px] font-bold tracking-[0.2em]">ANALYTICS  ·  VISUALIZATION</div>
+              <h3 class="text-[var(--text-white)] font-inter text-[28px] font-bold leading-tight">Studio-Spatial Visualizer</h3>
+              <p class="text-[var(--text-gray)] font-inter text-sm leading-[1.6]">Spatial analytics and visualization metrics system</p>
+              <div class="text-[var(--text-dim)] font-jetbrains text-[10px] tracking-wide">Spatial Analytics · Data Visualization · Metrics</div>
+            </div>
+          </div>
+
+          <!-- Earliest · AKB-Autovoter -->
+          <div class="flex">
+            <div class="w-[360px] h-[260px] flex items-center justify-center flex-shrink-0 bg-cover bg-center" style="background-image: url('./assets/akb-autovoter-BoDK3rMV.gif');">
+            </div>
+            <div class="flex-1 h-[260px] bg-[var(--bg-card)] px-10 py-8 flex flex-col justify-center gap-3">
+              <div class="text-[var(--neon)] font-jetbrains text-[10px] font-bold tracking-[0.2em]">AUTOMATION  ·  PIPELINE</div>
+              <h3 class="text-[var(--text-white)] font-inter text-[28px] font-bold leading-tight">AKB-Autovoter</h3>
+              <p class="text-[var(--text-gray)] font-inter text-sm leading-[1.6]">Automated voting system for AKB Sousenkyo pipeline</p>
+              <div class="text-[var(--text-dim)] font-jetbrains text-[10px] tracking-wide">Python · Automation · Web Scraping</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal: All Publications -->
+  <div id="publicationsModal" class="modal fixed inset-0 bg-black/80 backdrop-blur-sm z-50 items-center justify-center">
+    <div class="modal-content bg-[var(--bg-dark)] w-full max-w-5xl max-h-[90vh] overflow-y-auto rounded-lg shadow-2xl">
+      <!-- Modal Header -->
+      <div class="sticky top-0 bg-[var(--bg-dark)] border-b border-[var(--border-dark)] px-20 py-6 flex items-center justify-between z-10">
+        <button onclick="closeModal('publicationsModal')" class="flex items-center gap-2 text-[var(--text-gray)] hover:text-[var(--neon)] transition-colors">
+          <span class="font-jetbrains text-sm">←</span>
+          <span class="font-jetbrains text-xs font-medium">Back to Home</span>
+        </button>
+        <div class="text-[var(--text-white)] font-jetbrains text-[13px] font-bold tracking-wide">&gt;. Niko Huang</div>
+      </div>
+
+      <!-- Modal Content -->
+      <div class="px-20 py-16">
+        <div class="mb-4 text-[var(--purple-glow)] font-jetbrains text-[11px] font-bold tracking-[0.4em]">PUBLICATIONS</div>
+        <h2 class="mb-4 text-[var(--text-white)] font-inter text-5xl font-extrabold tracking-[-0.04em]">All Publications</h2>
+        <p class="mb-12 text-[var(--text-gray)] font-inter text-[15px] leading-[1.6]">Journals, conference papers, and domestic publications.</p>
+
+        <!-- Journals -->
+        <div class="mb-12">
+          <h3 class="mb-6 text-[var(--neon)] font-jetbrains text-[11px] font-bold tracking-[0.4em]">JOURNALS</h3>
+          <div class="flex flex-col gap-6">
+            <div class="pb-5 border-b border-[var(--border-dark)]">
+              <div class="mb-2 text-[var(--text-white)] font-inter text-[17px] font-semibold leading-[1.5]">"Far-From-Boundary Fields for Learning Segmented Implicit Solids"</div>
+              <div class="mb-2 text-[var(--purple-glow)] font-jetbrains text-xs font-medium tracking-[0.05em]">Yuhang Huang, Takashi Kanai</div>
+              <div class="text-[var(--text-gray)] font-inter text-[13px] leading-[1.5]">Computers &amp; Graphics, Volume 138, Article 104648, 2026.</div>
+              <a href="https://doi.org/10.1016/j.cag.2026.104648" target="_blank" class="inline-block mt-2 text-[var(--neon)] font-jetbrains text-xs font-semibold tracking-wide hover:opacity-80 transition-opacity">DOI: 10.1016/j.cag.2026.104648 →</a>
+            </div>
+            <div class="pb-5 border-b border-[var(--border-dark)]">
+              <div class="mb-2 text-[var(--text-white)] font-inter text-[17px] font-semibold leading-[1.5]">"DeepFracture: A Generative Approach for Predicting Brittle Fractures with Neural Discrete Representation Learning"</div>
+              <div class="mb-2 text-[var(--purple-glow)] font-jetbrains text-xs font-medium tracking-[0.05em]">Yuhang Huang, Takashi Kanai</div>
+              <div class="text-[var(--text-gray)] font-inter text-[13px] leading-[1.5]">Computer Graphics Forum, e70002, 15 pages, February 2025.</div>
+            </div>
+            <div class="pb-5 border-b border-[var(--border-dark)]">
+              <div class="mb-2 text-[var(--text-white)] font-inter text-[17px] font-semibold leading-[1.5]">"Predicting Brittle Fracture Surface Shape From a Versatile Database"</div>
+              <div class="mb-2 text-[var(--purple-glow)] font-jetbrains text-xs font-medium tracking-[0.05em]">Yuhang Huang, Yonghang Yu, Takashi Kanai</div>
+              <div class="text-[var(--text-gray)] font-inter text-[13px] leading-[1.5]">Computer Animation and Virtual Worlds, Volume 30, Issue 6, e1865, 19 pages, November/December 2019.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Papers -->
+        <div class="mb-12">
+          <h3 class="mb-6 text-[var(--neon)] font-jetbrains text-[11px] font-bold tracking-[0.4em]">PAPERS</h3>
+          <div class="flex flex-col gap-6">
+            <div class="pb-5 border-b border-[var(--border-dark)]">
+              <div class="mb-2 text-[var(--text-white)] font-inter text-[17px] font-semibold leading-[1.5]">"Brittle Fracture Prediction Method for Plane Shapes Using Conditional-GANs"</div>
+              <div class="mb-2 text-[var(--purple-glow)] font-jetbrains text-xs font-medium tracking-[0.05em]">Yuhang Huang, Takashi Kanai</div>
+              <div class="text-[var(--text-gray)] font-inter text-[13px] leading-[1.5]">Proc. 12th Asian Forum on Graphic Science, Article No.25, 9 pages, Kunming, China, August 2019.</div>
+            </div>
+            <div class="pb-5 border-b border-[var(--border-dark)]">
+              <div class="mb-2 text-[var(--text-white)] font-inter text-[17px] font-semibold leading-[1.5]">"Data-Driven Approach for Simulating Brittle Fracture Surfaces"</div>
+              <div class="mb-2 text-[var(--purple-glow)] font-jetbrains text-xs font-medium tracking-[0.05em]">Yonghang Yu, Yuhang Huang, Takashi Kanai</div>
+              <div class="text-[var(--text-gray)] font-inter text-[13px] leading-[1.5]">ACM SIGGRAPH ASIA 2017 Workshop: Data-Driven Animation Techniques (D2AT), 8 pages, Bangkok, Thailand, November/December 2017.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Posters -->
+        <div class="mb-12">
+          <h3 class="mb-6 text-[var(--neon)] font-jetbrains text-[11px] font-bold tracking-[0.4em]">POSTERS</h3>
+          <div class="pb-5 border-b border-[var(--border-dark)]">
+            <div class="mb-2 text-[var(--text-white)] font-inter text-[17px] font-semibold leading-[1.5]">"Brittle Fracture Animation with VQ-VAE-Based Generative Method"</div>
+            <div class="mb-2 text-[var(--purple-glow)] font-jetbrains text-xs font-medium tracking-[0.05em]">Yuhang Huang, Takashi Kanai</div>
+            <div class="text-[var(--text-gray)] font-inter text-[13px] leading-[1.5]">23rd ACM SIGGRAPH / Eurographics Symposium on Computer Animation (SCA2024) Posters, No.3, pp.1-2, Montreal Canada, August 2024.</div>
+          </div>
+        </div>
+
+        <!-- Domestic Conference & Journal -->
+        <div class="mb-12">
+          <h3 class="mb-6 text-[var(--neon)] font-jetbrains text-[11px] font-bold tracking-[0.4em]">DOMESTIC CONFERENCE & JOURNAL</h3>
+          <div class="flex flex-col gap-6">
+            <div class="pb-5 border-b border-[var(--border-dark)]">
+              <div class="mb-2 text-[var(--text-white)] font-inter text-[17px] font-semibold leading-[1.5]">多様な髪型に対応するためのニューラル補間ベース髪シミュレーション</div>
+              <div class="mb-2 text-[var(--purple-glow)] font-jetbrains text-xs font-medium tracking-[0.05em]">渡邉 圭祐, 黄 宇航, 金井 崇</div>
+              <div class="text-[var(--text-gray)] font-inter text-[13px] leading-[1.5]">映像表現・芸術科学フォーラム 2026 (Expressive Japan 2026) (映像情報メディア学会技術報告, vol. 50, no. 7, AIT2026-73, pp. 126-129), 東京, 3月, 2026.</div>
+            </div>
+            <div class="pb-5 border-b border-[var(--border-dark)]">
+              <div class="mb-2 text-[var(--text-white)] font-inter text-[17px] font-semibold leading-[1.5]">境界最遠点を正規化基準とする距離場設計による破片形状学習</div>
+              <div class="mb-2 text-[var(--purple-glow)] font-jetbrains text-xs font-medium tracking-[0.05em]">黄 宇航, 金井 崇</div>
+              <div class="text-[var(--text-gray)] font-inter text-[13px] leading-[1.5]">Visual Computing 2025, 東京, 9月, No.22, 2025. (査読付き)</div>
+            </div>
+            <div class="pb-5 border-b border-[var(--border-dark)]">
+              <div class="mb-2 text-[var(--text-white)] font-inter text-[17px] font-semibold leading-[1.5]">敵対的生成ネットワークを用いた任意3次元形状の脆性破壊予測</div>
+              <div class="mb-2 text-[var(--purple-glow)] font-jetbrains text-xs font-medium tracking-[0.05em]">黄 宇航, 金井 崇</div>
+              <div class="text-[var(--text-gray)] font-inter text-[13px] leading-[1.5]">Visual Computing 2023, 東京, 9月, No.35, 2023. (査読付き)</div>
+            </div>
+            <div class="pb-5 border-b border-[var(--border-dark)]">
+              <div class="mb-2 text-[var(--text-white)] font-inter text-[17px] font-semibold leading-[1.5]">深層学習ベース脆性破壊シミュレーションに向けて – 条件付きGAN による平面オブジェクトの破壊形状予測 –</div>
+              <div class="mb-2 text-[var(--purple-glow)] font-jetbrains text-xs font-medium tracking-[0.05em]">黄 宇航，金井 崇</div>
+              <div class="text-[var(--text-gray)] font-inter text-[13px] leading-[1.5]">画像電子学会誌，Vol.50, No.4 (ビジュアルコンピューティング特集号), pp.558-567, 2021. (査読付き)</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Articles / Media -->
+        <div class="mb-12">
+          <h3 class="mb-6 text-[var(--neon)] font-jetbrains text-[11px] font-bold tracking-[0.4em]">ARTICLES / MEDIA</h3>
+          <div class="flex flex-col gap-6">
+            <div class="pb-5 border-b border-[var(--border-dark)]">
+              <div class="mb-2 text-[var(--text-white)] font-inter text-[17px] font-semibold leading-[1.5]">データ駆動型物理法則 CG アニメーション</div>
+              <div class="mb-2 text-[var(--purple-glow)] font-jetbrains text-xs font-medium tracking-[0.05em]">金井 崇, 李 天行, 黄 宇航</div>
+              <div class="text-[var(--text-gray)] font-inter text-[13px] leading-[1.5]">映像情報メディア学会誌 特集「コンピュータグラフィックス技術の最前線」, Vol.79, No.6, 571-576, 2025.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Domestic Workshop & Posters & Invited talks -->
+        <div class="mb-12">
+          <h3 class="mb-6 text-[var(--neon)] font-jetbrains text-[11px] font-bold tracking-[0.4em]">DOMESTIC WORKSHOP & POSTERS & INVITED TALKS</h3>
+          <div class="flex flex-col gap-6">
+            <div class="pb-5 border-b border-[var(--border-dark)]">
+              <div class="mb-2 text-[var(--text-white)] font-inter text-[17px] font-semibold leading-[1.5]">DeepFracture: A Generative Approach for Predicting Brittle Fractures with Neural Discrete Representation Learning</div>
+              <div class="mb-2 text-[var(--purple-glow)] font-jetbrains text-xs font-medium tracking-[0.05em]">黄 宇航, 金井 崇</div>
+              <div class="text-[var(--text-gray)] font-inter text-[13px] leading-[1.5]">Visual Computing 2025 招待講演, 2025. (査読なし)</div>
+            </div>
+            <div class="pb-5 border-b border-[var(--border-dark)]">
+              <div class="mb-2 text-[var(--text-white)] font-inter text-[17px] font-semibold leading-[1.5]">事前学習による特定カテゴリの任意形状における破壊形状予測</div>
+              <div class="mb-2 text-[var(--purple-glow)] font-jetbrains text-xs font-medium tracking-[0.05em]">黄 宇航, 金井 崇</div>
+              <div class="text-[var(--text-gray)] font-inter text-[13px] leading-[1.5]">画像電子学会 ビジュアルコンピューティングワークショップ 2024, 太宰府, 福岡, 11月, 2024.</div>
+            </div>
+            <div class="pb-5 border-b border-[var(--border-dark)]">
+              <div class="mb-2 text-[var(--text-white)] font-inter text-[17px] font-semibold leading-[1.5]">VQ-VAEによるニューラル離散3次元破壊形状学習</div>
+              <div class="mb-2 text-[var(--purple-glow)] font-jetbrains text-xs font-medium tracking-[0.05em]">黄 宇航, 金井 崇</div>
+              <div class="text-[var(--text-gray)] font-inter text-[13px] leading-[1.5]">Visual Computing 2024 ポスター, P39, 東京, 9月, 2024.</div>
+            </div>
+            <div class="pb-5 border-b border-[var(--border-dark)]">
+              <div class="mb-2 text-[var(--text-white)] font-inter text-[17px] font-semibold leading-[1.5]">3D-GANによる破壊分割形状予測結果における形状再構築手法の検討</div>
+              <div class="mb-2 text-[var(--purple-glow)] font-jetbrains text-xs font-medium tracking-[0.05em]">黄 宇航, 金井 崇</div>
+              <div class="text-[var(--text-gray)] font-inter text-[13px] leading-[1.5]">画像電子学会 ビジュアルコンピューティングワークショップ 2022, 諏訪湖, 長野, 11月, 2022.</div>
+            </div>
+            <div class="pb-5 border-b border-[var(--border-dark)]">
+              <div class="mb-2 text-[var(--text-white)] font-inter text-[17px] font-semibold leading-[1.5]">3D-GANを用いた破壊形状生成にもとづく脆性破壊シミュレーション</div>
+              <div class="mb-2 text-[var(--purple-glow)] font-jetbrains text-xs font-medium tracking-[0.05em]">黄 宇航, 金井 崇</div>
+              <div class="text-[var(--text-gray)] font-inter text-[13px] leading-[1.5]">Visual Computing 2022 ポスター, P11, 京都, 10月, 2022. (査読なし)</div>
+            </div>
+            <div class="pb-5 border-b border-[var(--border-dark)]">
+              <div class="mb-2 text-[var(--text-white)] font-inter text-[17px] font-semibold leading-[1.5]">データ駆動法による脆性破壊曲面生成シミュレーション</div>
+              <div class="mb-2 text-[var(--purple-glow)] font-jetbrains text-xs font-medium tracking-[0.05em]">黄 宇航，于 永航，金井 崇</div>
+              <div class="text-[var(--text-gray)] font-inter text-[13px] leading-[1.5]">画像電子学会 ビジュアルコンピューティングワークショップ 2017, 登別, 12月, 2017. (査読なし)</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Awards -->
+        <div class="mb-8">
+          <h3 class="mb-6 text-[var(--neon)] font-jetbrains text-[11px] font-bold tracking-[0.4em]">AWARDS</h3>
+          <div class="flex flex-col gap-6">
+            <div class="pb-5 border-b border-[var(--border-dark)]">
+              <div class="mb-2 text-[var(--text-white)] font-inter text-[17px] font-semibold leading-[1.5]">VC Research Incentive Awards VC2025</div>
+              <div class="text-[var(--text-gray)] font-inter text-[13px] leading-[1.5]">境界最遠点を正規化基準とする距離場設計による破片形状学習 (September 2025)</div>
+            </div>
+            <div class="pb-5 border-b border-[var(--border-dark)]">
+              <div class="mb-2 text-[var(--text-white)] font-inter text-[17px] font-semibold leading-[1.5]">JST SpringGX Doctoral Scholarship</div>
+              <div class="text-[var(--text-gray)] font-inter text-[13px] leading-[1.5]">Next Generation Researcher Challenging Research Program (SPRING) University of Tokyo "Leading Human Resource Development for Green Transformation (GX)" (2023-2024)</div>
+            </div>
+            <div class="pb-5 border-b border-[var(--border-dark)]">
+              <div class="mb-2 text-[var(--text-white)] font-inter text-[17px] font-semibold leading-[1.5]">VC Posters Awards VC+VCC2022</div>
+              <div class="text-[var(--text-gray)] font-inter text-[13px] leading-[1.5]">Brittle fracture simulation based on JSPS WINGS-CFS Fellowship - World-leading Innovative Graduate Study Program Codesigning Future Society (October 2022)</div>
+            </div>
+            <div class="pb-5 border-b border-[var(--border-dark)]">
+              <div class="mb-2 text-[var(--text-white)] font-inter text-[17px] font-semibold leading-[1.5]">NIKKEI Business Daily Feature</div>
+              <div class="text-[var(--text-gray)] font-inter text-[13px] leading-[1.5]">Why Chinese AI Talent is in Japanese Startups (June 2023)</div>
+            </div>
+            <div class="pb-5">
+              <div class="mb-2 text-[var(--text-white)] font-inter text-[17px] font-semibold leading-[1.5]">OpenCV AI Competition 2021 Phase 1 Finalists</div>
+              <div class="text-[var(--text-gray)] font-inter text-[13px] leading-[1.5]">Member of a team chosen as finalists from over 1400 submissions in OpenCV AI Competition 2021 (January 2021)</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <!-- Modal: All Blogs & Talks -->
+  <div id="blogsModal" class="modal fixed inset-0 bg-black/80 backdrop-blur-sm z-50 items-center justify-center">
+    <div class="modal-content bg-[var(--bg-dark)] w-full max-w-5xl max-h-[90vh] overflow-y-auto rounded-lg shadow-2xl">
+      <!-- Modal Header -->
+      <div class="sticky top-0 bg-[var(--bg-dark)] border-b border-[var(--border-dark)] px-20 py-6 flex items-center justify-between z-10">
+        <button onclick="closeModal('blogsModal')" class="flex items-center gap-2 text-[var(--text-gray)] hover:text-[var(--neon)] transition-colors">
+          <span class="font-jetbrains text-sm">←</span>
+          <span class="font-jetbrains text-xs font-medium">Back to Home</span>
+        </button>
+        <div class="text-[var(--text-white)] font-jetbrains text-[13px] font-bold tracking-wide">&gt;. Niko Huang</div>
+      </div>
+
+      <!-- Modal Content -->
+      <div class="px-20 py-16">
+        <div class="mb-4 text-[var(--purple-glow)] font-jetbrains text-[11px] font-bold tracking-[0.4em]">BLOGS &amp; TALKS</div>
+        <h2 class="mb-4 text-[var(--text-white)] font-inter text-5xl font-extrabold tracking-[-0.04em]">Blogs &amp; Talks</h2>
+        <p class="mb-12 text-[var(--text-gray)] font-inter text-[15px] leading-[1.6]">Writing from the lab, conference talks, and media features.</p>
+
+        <!-- Writing -->
+        <div class="mb-12">
+          <h3 class="mb-6 text-[var(--neon)] font-jetbrains text-[11px] font-bold tracking-[0.4em]">WRITING</h3>
+          <div class="flex flex-col gap-6">
+            <a href="https://ludicdynamics.com/blog/what-is-worldlines/" target="_blank" class="pb-5 border-b border-[var(--border-dark)] block group">
+              <div class="mb-1 text-[var(--text-white)] font-inter text-[17px] font-semibold leading-[1.5] group-hover:text-[var(--neon)] transition-colors">What Is WorldLines</div>
+              <div class="text-[var(--text-gray)] font-inter text-[13px] leading-[1.5]">Ludic Dynamics · 2026</div>
+            </a>
+            <a href="https://ludicdynamics.com/blog/the-world-remembers/" target="_blank" class="pb-5 border-b border-[var(--border-dark)] block group">
+              <div class="mb-1 text-[var(--text-white)] font-inter text-[17px] font-semibold leading-[1.5] group-hover:text-[var(--neon)] transition-colors">The World Remembers</div>
+              <div class="text-[var(--text-gray)] font-inter text-[13px] leading-[1.5]">Ludic Dynamics · 2026</div>
+            </a>
+            <a href="https://ludicdynamics.com/blog/building-worldlines-engine/" target="_blank" class="pb-5 border-b border-[var(--border-dark)] block group">
+              <div class="mb-1 text-[var(--text-white)] font-inter text-[17px] font-semibold leading-[1.5] group-hover:text-[var(--neon)] transition-colors">Building the WorldLines Engine</div>
+              <div class="text-[var(--text-gray)] font-inter text-[13px] leading-[1.5]">Ludic Dynamics · 2026</div>
+            </a>
+            <a href="https://ludicdynamics.com/blog/git-for-narrative-worlds/" target="_blank" class="pb-5 border-b border-[var(--border-dark)] block group">
+              <div class="mb-1 text-[var(--text-white)] font-inter text-[17px] font-semibold leading-[1.5] group-hover:text-[var(--neon)] transition-colors">Git for Narrative Worlds</div>
+              <div class="text-[var(--text-gray)] font-inter text-[13px] leading-[1.5]">Ludic Dynamics · 2026</div>
+            </a>
+            <a href="https://ludicdynamics.com/blog/six-things-only-worldlines-does/" target="_blank" class="pb-5 border-b border-[var(--border-dark)] block group">
+              <div class="mb-1 text-[var(--text-white)] font-inter text-[17px] font-semibold leading-[1.5] group-hover:text-[var(--neon)] transition-colors">Six Things Only WorldLines Does</div>
+              <div class="text-[var(--text-gray)] font-inter text-[13px] leading-[1.5]">Ludic Dynamics · 2026</div>
+            </a>
+            <a href="https://ludicdynamics.com/blog/character-agents-memory-architecture/" target="_blank" class="pb-5 border-b border-[var(--border-dark)] block group">
+              <div class="mb-1 text-[var(--text-white)] font-inter text-[17px] font-semibold leading-[1.5] group-hover:text-[var(--neon)] transition-colors">Character Agents &amp; Memory Architecture</div>
+              <div class="text-[var(--text-gray)] font-inter text-[13px] leading-[1.5]">Ludic Dynamics · 2026</div>
+            </a>
+            <a href="https://ludicdynamics.com/blog/world-model-hypothesis/" target="_blank" class="pb-5 border-b border-[var(--border-dark)] block group">
+              <div class="mb-1 text-[var(--text-white)] font-inter text-[17px] font-semibold leading-[1.5] group-hover:text-[var(--neon)] transition-colors">The World-Model Hypothesis</div>
+              <div class="text-[var(--text-gray)] font-inter text-[13px] leading-[1.5]">Ludic Dynamics · 2026</div>
+            </a>
+            <a href="https://ludicdynamics.com/blog/building-in-tokyo/" target="_blank" class="pb-5 border-b border-[var(--border-dark)] block group">
+              <div class="mb-1 text-[var(--text-white)] font-inter text-[17px] font-semibold leading-[1.5] group-hover:text-[var(--neon)] transition-colors">Building in Tokyo</div>
+              <div class="text-[var(--text-gray)] font-inter text-[13px] leading-[1.5]">Ludic Dynamics · 2026</div>
+            </a>
+          </div>
+        </div>
+
+        <!-- Talks & Media -->
+        <div class="mb-4">
+          <h3 class="mb-6 text-[var(--neon)] font-jetbrains text-[11px] font-bold tracking-[0.4em]">TALKS &amp; MEDIA</h3>
+          <div class="flex flex-col gap-6">
+            <div class="pb-5 border-b border-[var(--border-dark)]">
+              <div class="mb-1 text-[var(--text-white)] font-inter text-[17px] font-semibold leading-[1.5]">Presented a work at Eurographics 2026 (EG 2026)</div>
+              <div class="text-[var(--text-gray)] font-inter text-[13px] leading-[1.5]">Conference talk · May 2026</div>
+            </div>
+            <div class="pb-5 border-b border-[var(--border-dark)]">
+              <div class="mb-1 text-[var(--text-white)] font-inter text-[17px] font-semibold leading-[1.5]">"Brittle Fracture Animation with VQ-VAE-Based Generative Method"</div>
+              <div class="text-[var(--text-gray)] font-inter text-[13px] leading-[1.5]">SCA 2024 Poster presentation · Montreal, Canada · August 2024</div>
+            </div>
+            <div class="pb-5 border-b border-[var(--border-dark)]">
+              <div class="mb-1 text-[var(--text-white)] font-inter text-[17px] font-semibold leading-[1.5]">"Brittle Fracture Prediction Method for Plane Shapes Using Conditional-GANs"</div>
+              <div class="text-[var(--text-gray)] font-inter text-[13px] leading-[1.5]">12th Asian Forum on Graphic Science · Kunming, China · August 2019</div>
+            </div>
+            <div class="pb-5 border-b border-[var(--border-dark)]">
+              <div class="mb-1 text-[var(--text-white)] font-inter text-[17px] font-semibold leading-[1.5]">"Data-Driven Approach for Simulating Brittle Fracture Surfaces"</div>
+              <div class="text-[var(--text-gray)] font-inter text-[13px] leading-[1.5]">ACM SIGGRAPH ASIA 2017 Workshop (D2AT) · Bangkok, Thailand · 2017</div>
+            </div>
+            <div class="pb-5 border-b border-[var(--border-dark)]">
+              <div class="mb-1 text-[var(--text-white)] font-inter text-[17px] font-semibold leading-[1.5]">"Why Chinese AI Talent is in Japanese Startups"</div>
+              <div class="text-[var(--text-gray)] font-inter text-[13px] leading-[1.5]">NIKKEI Business Daily Feature · June 2023</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script>
+    // Modal Functions
+    function syncBodyScrollLock() {
+      const hasActiveModal = document.querySelector('.modal.active');
+      document.body.style.overflow = hasActiveModal ? 'hidden' : '';
+    }
+
+    function openModal(modalId) {
+      const modal = document.getElementById(modalId);
+      modal.classList.add('active');
+      syncBodyScrollLock();
+    }
+
+    function closeModal(modalId) {
+      const modal = document.getElementById(modalId);
+      modal.classList.remove('active');
+      syncBodyScrollLock();
+    }
+
+    // Close modal on outside click
+    document.querySelectorAll('.modal').forEach(modal => {
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+          closeModal(modal.id);
+        }
+      });
+    });
+
+    // Close modal on ESC key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        const activeModals = Array.from(document.querySelectorAll('.modal.active'));
+        const topmostModal = activeModals[activeModals.length - 1];
+        if (topmostModal) {
+          closeModal(topmostModal.id);
+        }
+      }
+    });
+
+    // Scroll Animation
+    const fadeElements = document.querySelectorAll('.fade-in-section');
+    const observerOptions = {
+      threshold: 0.2,
+      rootMargin: '0px 0px -100px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+        }
+      });
+    }, observerOptions);
+
+    fadeElements.forEach(el => observer.observe(el));
+
+    // Grid Mesh Effect
+    const canvas = document.getElementById('gridCanvas');
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true });
+
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setClearColor(0x000000, 0);
+    camera.position.z = 5;
+
+    const gridSize = 50;
+    const geometry = new THREE.PlaneGeometry(20, 20, gridSize, gridSize);
+    const material = new THREE.ShaderMaterial({
+      uniforms: {
+        uMouse: { value: new THREE.Vector2(-10, -10) },
+        uTime: { value: 0 },
+        uColor: { value: new THREE.Color(0xCAFF04) },
+        uMousePresent: { value: 0.0 }
+      },
+      vertexShader: `
+        uniform vec2 uMouse;
+        uniform float uTime;
+        varying vec2 vUv;
+        varying float vElevation;
+        varying float vDistance;
+
+        void main() {
+          vUv = uv;
+          vec3 pos = position;
+          vec2 mousePos = uMouse;
+
+          float dist = distance(pos.xy, mousePos);
+          vDistance = dist;
+
+          float maxDist = 3.0;
+          float influence = smoothstep(maxDist, 0.0, dist);
+          float wave = sin(dist * 5.0 - uTime * 3.0) * 0.1;
+          float elevation = influence * (0.8 + wave);
+
+          pos.z += elevation;
+          vElevation = elevation;
+
+          gl_Position = projectionMatrix * modelViewMatrix * vec4(pos, 1.0);
+        }
+      `,
+      fragmentShader: `
+        uniform vec3 uColor;
+        uniform float uMousePresent;
+        varying vec2 vUv;
+        varying float vElevation;
+        varying float vDistance;
+
+        void main() {
+          float maxDist = 3.0;
+
+          // Grid lines
+          float gridLine = max(
+            step(0.98, fract(vUv.x * 50.0)),
+            step(0.98, fract(vUv.y * 50.0))
+          );
+
+          // Distance from center (for edge fade)
+          vec2 center = vec2(0.5, 0.5);
+          float distFromCenter = distance(vUv, center);
+          float edgeFade = smoothstep(0.7, 0.3, distFromCenter);
+
+          // Base grid visibility when mouse is present (dimmer)
+          float baseAlpha = uMousePresent * 0.15 * edgeFade;
+
+          // Extra glow near mouse (softer)
+          float mouseAlpha = smoothstep(maxDist, 0.0, vDistance) * uMousePresent;
+          float glow = vElevation * 1.5;
+
+          // Neon yellow-green color with softer glow
+          vec3 color = uColor * (0.5 + glow);
+
+          // Final alpha: base grid + mouse interaction with softer glow
+          float alpha = (baseAlpha + mouseAlpha * 0.5 * edgeFade) * (0.3 + gridLine * 0.7);
+
+          gl_FragColor = vec4(color, alpha);
+        }
+      `,
+      transparent: true,
+      side: THREE.DoubleSide
+    });
+
+    const mesh = new THREE.Mesh(geometry, material);
+    mesh.rotation.x = 0; // Face the screen directly
+    scene.add(mesh);
+
+    let mouseX = -10, mouseY = -10;
+    let targetMousePresent = 0;
+
+    document.addEventListener('mouseenter', () => {
+      targetMousePresent = 1.0;
+    });
+
+    document.addEventListener('mousemove', (event) => {
+      // Check if mouse is over the first section (Hero) or third section (Featured Project)
+      const firstSection = document.querySelector('.snap-section');
+      const projectSection = document.querySelector('#projects');
+      const element = document.elementFromPoint(event.clientX, event.clientY);
+      const isInFirstSection = firstSection && firstSection.contains(element);
+      const isInProjectSection = projectSection && projectSection.contains(element);
+
+      if (isInProjectSection) {
+        // Hide grid completely in Featured Project section
+        targetMousePresent = 0.0;
+        material.uniforms.uMouse.value.set(-10, -10);
+      } else if (isInFirstSection) {
+        // Apply grid distortion in first section
+        targetMousePresent = 1.0;
+        mouseX = (event.clientX / window.innerWidth) * 2 - 1;
+        mouseY = -(event.clientY / window.innerHeight) * 2 + 1;
+
+        const vector = new THREE.Vector3(mouseX, mouseY, 0.5);
+        vector.unproject(camera);
+        const dir = vector.sub(camera.position).normalize();
+        const distance = -camera.position.z / dir.z;
+        const pos = camera.position.clone().add(dir.multiplyScalar(distance));
+
+        material.uniforms.uMouse.value.set(pos.x, pos.y);
+      } else {
+        // Other sections - keep grid visible but no distortion
+        targetMousePresent = 1.0;
+        material.uniforms.uMouse.value.set(-10, -10);
+      }
+    });
+
+    document.addEventListener('mouseleave', () => {
+      targetMousePresent = 0.0;
+      material.uniforms.uMouse.value.set(-10, -10);
+    });
+
+    // Text hover effect - detect light or dark text
+    function isLightColor(color) {
+      const rgb = color.match(/\d+/g);
+      if (!rgb || rgb.length < 3) return true;
+
+      const r = parseInt(rgb[0]);
+      const g = parseInt(rgb[1]);
+      const b = parseInt(rgb[2]);
+
+      const luminance = (0.299 * r + 0.587 * g + 0.114 * b);
+      return luminance > 128;
+    }
+
+    // Add hover listeners to all text elements (including footer)
+    const textElements = document.querySelectorAll('h1, h2, h3, h4, h5, h6, p, a, span, button, div');
+    textElements.forEach(el => {
+      if (!el.textContent || el.textContent.trim() === '') return;
+      if (el.querySelector('img') || el.tagName === 'IMG') return;
+
+      // Skip containers with multiple significant children (exclude br, span)
+      const significantChildren = Array.from(el.children).filter(child =>
+        child.tagName !== 'BR' && child.tagName !== 'SPAN'
+      );
+      if (significantChildren.length > 3) return;
+
+      // Skip elements with background color (like buttons)
+      const elStyle = window.getComputedStyle(el);
+      const bgColor = elStyle.backgroundColor;
+      if (bgColor && bgColor !== 'rgba(0, 0, 0, 0)' && bgColor !== 'transparent') return;
+
+      el.addEventListener('mouseenter', function() {
+        const style = window.getComputedStyle(this);
+        if (style.backgroundImage && style.backgroundImage !== 'none') return;
+
+        // Check if element or parent has bright background (like News section)
+        let parent = this;
+        let hasBrightBg = false;
+        for (let i = 0; i < 5; i++) {
+          if (!parent) break;
+          const bgColor = window.getComputedStyle(parent).backgroundColor;
+          // Check if background is the neon yellow-green
+          if (bgColor.includes('202, 255, 4') || bgColor.includes('rgb(202, 255, 4)')) {
+            hasBrightBg = true;
+            break;
+          }
+          parent = parent.parentElement;
+        }
+
+        // Skip hover effect for text on bright backgrounds
+        if (hasBrightBg) return;
+
+        const color = style.color;
+        if (isLightColor(color)) {
+          // Light/gray text -> green
+          this.classList.add('text-glow-light');
+        } else {
+          // Dark text -> green with glow
+          this.classList.add('text-glow-dark');
+        }
+      });
+
+      el.addEventListener('mouseleave', function() {
+        this.classList.remove('text-glow-light', 'text-glow-dark');
+      });
+    });
+
+    function animate() {
+      requestAnimationFrame(animate);
+      material.uniforms.uTime.value += 0.016;
+
+      // Smooth fade in/out of grid
+      const currentPresent = material.uniforms.uMousePresent.value;
+      material.uniforms.uMousePresent.value += (targetMousePresent - currentPresent) * 0.1;
+
+      renderer.render(scene, camera);
+    }
+    animate();
+
+    window.addEventListener('resize', () => {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    });
+  </script>
+</body>
+</html>
