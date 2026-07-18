@@ -149,6 +149,18 @@
     }
     #top h1 { text-shadow: 0 2px 24px rgba(10,10,15,0.9), 0 1px 4px rgba(10,10,15,0.8); }
     #top p, #top .chip { text-shadow: 0 1px 10px rgba(10,10,15,0.95); }
+    /* hover: text brightens */
+    #top h1, #top p, #top .chip {
+      pointer-events: auto;
+      transition: color .35s ease, text-shadow .35s ease, filter .35s ease, border-color .35s ease;
+    }
+    #top h1:hover {
+      filter: brightness(1.12);
+      text-shadow: 0 0 38px rgba(202,255,4,0.28), 0 0 90px rgba(139,92,246,0.25),
+                   0 2px 24px rgba(10,10,15,0.9);
+    }
+    #top p:hover { color: var(--text-white); }
+    #top .chip:hover { border-color: var(--neon); filter: brightness(1.25); }
   </style>
   <header id="top" class="relative w-full min-h-[96vh] flex items-center overflow-hidden">
     <div id="fracture-hero" class="absolute inset-0 z-0 cursor-crosshair"></div>
