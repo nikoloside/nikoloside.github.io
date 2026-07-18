@@ -138,8 +138,21 @@
   </div>
 
   <!-- ───────── HERO (DeepFracture live scene behind) ───────── -->
+  <style>
+    .hero-scrim {
+      background: linear-gradient(100deg,
+        rgba(10,10,15,0.94) 0%, rgba(10,10,15,0.78) 34%,
+        rgba(10,10,15,0.35) 52%, rgba(10,10,15,0) 68%);
+    }
+    @media (max-aspect-ratio: 21/20) {
+      .hero-scrim { background: rgba(10,10,15,0.62); }
+    }
+    #top h1 { text-shadow: 0 2px 24px rgba(10,10,15,0.9), 0 1px 4px rgba(10,10,15,0.8); }
+    #top p, #top .chip { text-shadow: 0 1px 10px rgba(10,10,15,0.95); }
+  </style>
   <header id="top" class="relative w-full min-h-[96vh] flex items-center overflow-hidden">
     <div id="fracture-hero" class="absolute inset-0 z-0 cursor-crosshair"></div>
+    <div class="hero-scrim absolute inset-0 z-[1] pointer-events-none"></div>
     <div id="fracture-hint"
          class="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 pointer-events-none font-jetbrains text-[10px] tracking-[0.35em] text-[var(--text-dim)] transition-opacity duration-700">
       ⌖ CLICK THE SQUIRREL
