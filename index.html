@@ -92,7 +92,7 @@
     .work:hover .work-title { color: var(--neon); }
     .work-title { transition: color .18s ease; }
     .media { background: #0d0d12; border: 1px solid var(--border-dark); overflow: hidden; }
-    .media img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .media img, .media video { width: 100%; height: 100%; object-fit: cover; display: block; }
 
     .chip {
       display: inline-flex; align-items: center; gap: 6px;
@@ -266,7 +266,7 @@
           <a href="https://github.com/LudicDynamics/WorldLines" target="_blank" class="btn btn-ghost">GitHub</a>
         </div>
       </div>
-      <div class="media" style="height:280px"><img src="./assets/demo-worldlines.gif" alt="WorldLines terminal gameplay" loading="lazy" /></div>
+      <div class="media" style="height:280px"><video src="./assets/demo-worldlines.mp4" autoplay muted loop playsinline preload="metadata" aria-label="WorldLines cinematic gameplay"></video></div>
     </article>
 
     <!-- 02 Abyss -->
