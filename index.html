@@ -64,6 +64,20 @@
     }
     .nav a.navlink { color: var(--text-gray); transition: color .15s ease; }
     .nav a.navlink:hover { color: var(--neon); }
+    /* Pages dropdown */
+    .nav-dd { position: relative; }
+    .nav-dd > span { color: var(--text-gray); cursor: pointer; transition: color .15s ease; }
+    .nav-dd:hover > span, .nav-dd:focus-within > span { color: var(--neon); }
+    .nav-dd-menu { display: none; position: absolute; top: 100%; right: 0; padding-top: 14px; z-index: 300; }
+    .nav-dd:hover .nav-dd-menu, .nav-dd:focus-within .nav-dd-menu { display: block; }
+    .nav-dd-card { min-width: 300px; background: var(--bg-card); border: 1px solid var(--border-dark);
+      border-radius: 10px; padding: 8px; box-shadow: 0 18px 44px rgba(0,0,0,0.5); }
+    .nav-dd-card a { display: block; padding: 10px 12px; border-radius: 7px; text-decoration: none; }
+    .nav-dd-card a:hover { background: var(--bg-card-hover); }
+    .nav-dd-t { display: block; color: var(--text-white); font-family: 'Inter', sans-serif;
+      font-size: 13px; font-weight: 600; letter-spacing: 0; text-transform: none; }
+    .nav-dd-n { display: block; color: var(--text-dim); font-size: 10px; letter-spacing: .06em; margin-top: 2px; }
+    .nav-dd-sec { padding: 8px 12px 4px; color: var(--purple-glow); font-size: 9px; font-weight: 700; letter-spacing: .3em; }
     .lang-switch { background: rgba(255,255,255,0.03); }
     .lang-btn { border: 0; background: transparent; color: var(--text-gray); padding: 4px 9px; cursor: pointer; font-family: 'JetBrains Mono', monospace; font-size: 11px; }
     .lang-btn.active { background: var(--neon); color: var(--bg-dark); }
@@ -130,6 +144,35 @@
         <a href="#works" class="navlink" data-i18n="nav.works">WORKS</a>
         <a href="#blogs" class="navlink" data-i18n="nav.blogs">BLOGS</a>
         <a href="#publications" class="navlink" data-i18n="nav.papers">PAPERS</a>
+        <div class="nav-dd">
+          <span tabindex="0"><span data-i18n="nav.pages">PAGES</span> ▾</span>
+          <div class="nav-dd-menu">
+            <div class="nav-dd-card">
+              <div class="nav-dd-sec">DEMOS</div>
+              <a href="https://nikoloside.graphics/deepfracture-live/" target="_blank">
+                <span class="nav-dd-t">💥 DeepFracture — Live Runtime</span>
+                <span class="nav-dd-n">click-to-shatter · Three.js + Rapier</span>
+              </a>
+              <a href="https://huggingface.co/spaces/nikoloside/deepfracture-runtime" target="_blank">
+                <span class="nav-dd-t">🤗 DeepFracture Runtime — Space</span>
+                <span class="nav-dd-n">same demo on Hugging Face</span>
+              </a>
+              <div class="nav-dd-sec">PROJECT PAGES</div>
+              <a href="https://nikoloside.graphics/deepfracture/" target="_blank">
+                <span class="nav-dd-t">DeepFracture</span>
+                <span class="nav-dd-n">CGF 2025 · generative brittle fracture</span>
+              </a>
+              <a href="https://nikoloside.graphics/far-from-boundary-fields/" target="_blank">
+                <span class="nav-dd-t">Far-From-Boundary Fields</span>
+                <span class="nav-dd-n">SMI 2026 · segmented implicit solids</span>
+              </a>
+              <a href="https://ludicdynamics.com/orchestrated-reality/" target="_blank">
+                <span class="nav-dd-t">Orchestrated Reality</span>
+                <span class="nav-dd-n">arXiv 2026 · the framework behind WorldLines</span>
+              </a>
+            </div>
+          </div>
+        </div>
         <a href="#about" class="navlink" data-i18n="nav.about">ABOUT</a>
         <span class="lang-switch inline-flex border border-[var(--border-dark)]">
           <button class="lang-btn" data-lang="en">EN</button>
@@ -643,6 +686,7 @@
       'nav.works':   {en:'WORKS', zh:'作品', ja:'作品', ko:'작품'},
       'nav.blogs':   {en:'BLOGS', zh:'博客', ja:'ブログ', ko:'블로그'},
       'nav.papers':  {en:'PAPERS', zh:'论文', ja:'論文', ko:'논문'},
+      'nav.pages':   {en:'PAGES', zh:'页面', ja:'ページ', ko:'페이지'},
       'nav.about':   {en:'ABOUT', zh:'关于', ja:'概要', ko:'소개'},
       'hero.eyebrow':{en:'FOUNDER · RESEARCHER · ENGINEER', zh:'创始人 · 研究者 · 工程师', ja:'創業者 · 研究者 · エンジニア', ko:'창업자 · 연구자 · 엔지니어'},
       'hero.copy':   {
