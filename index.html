@@ -121,6 +121,29 @@
       .media { order: -1; }
     }
 
+    /* keep short labels from stacking vertically when space is tight */
+    .navlink, .nav-dd > span, .chip, .lang-btn { white-space: nowrap; }
+
+    /* mobile nav: two rows (brand on top, links wrap below) */
+    @media (max-width: 700px) {
+      .nav .wrap {
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 8px !important;
+        padding-top: 10px !important;
+        padding-bottom: 10px !important;
+      }
+      .nav nav {
+        flex-wrap: wrap !important;
+        justify-content: center !important;
+        gap: 10px 16px !important;
+        row-gap: 8px !important;
+      }
+      .navlink, .nav-dd > span { font-size: 10px; letter-spacing: 0.14em; }
+      .nav-dd-menu { position: fixed; left: 50%; right: auto; transform: translateX(-50%); }
+      .nav-dd-card { min-width: 280px; max-width: calc(100vw - 24px); }
+    }
+
     /* Hybrid scroll: top is continuous; the last 3 sections snap (proximity = top stays free) */
     html { scroll-snap-type: y proximity; }
     .snap-screen { scroll-snap-align: start; min-height: 100vh; }
