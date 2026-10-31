@@ -144,8 +144,16 @@
       .nav-dd-card { min-width: 280px; max-width: calc(100vw - 24px); }
     }
 
-    /* Section stops are driven by the scroll script at the end of the page */
-    .snap-screen { min-height: 100vh; }
+    body { height: auto !important; min-height: 100%; }   /* a body locked to one screen drops the sticky nav */
+    /* Each section fills exactly one screen under the nav; the scroll script stops on them */
+    :root { --nav-h: 61px; --works-head: 0px; --row: 0px; --room: calc(100vh - var(--nav-h)); }
+    #top, .snap-screen, #blogs, #works article.work { min-height: var(--room) !important; }
+    #works article.work { align-content: center; }
+    #works > article.work:first-of-type { min-height: calc(var(--room) - var(--works-head)) !important; }
+    #works > article.work:last-of-type { min-height: calc(var(--room) - var(--row)) !important; }
+    #publications { padding-top: 32px !important; padding-bottom: 32px !important; }
+    #blogs { display: flex; flex-direction: column; justify-content: center; padding-top: 0; padding-bottom: 0; }
+    @media (max-height: 800px) { #top > .wrap { padding-top: 32px; padding-bottom: 32px; } }
     /* Modal */
     .modal { display: none; opacity: 0; transition: opacity .3s ease-out; }
     .modal.active { display: flex; opacity: 1; }
@@ -215,7 +223,7 @@
             </div>
           </div>
         </div>
-        <a href="#about" class="navlink" data-i18n="nav.about">ABOUT</a>
+        <a href="#top" class="navlink" data-i18n="nav.about">ABOUT</a>
         <span class="lang-switch inline-flex border border-[var(--border-dark)]">
           <button class="lang-btn" data-lang="en">EN</button>
           <button class="lang-btn" data-lang="zh">中</button>
@@ -265,7 +273,7 @@
       <h1 class="text-[var(--text-white)] font-inter font-extrabold tracking-[-0.04em] leading-[0.95]" style="font-size: clamp(48px, 9vw, 92px);">Niko Huang</h1>
       <div class="w-[60px] h-[3px] bg-[var(--neon)] my-6"></div>
       <p class="text-[var(--text-gray)] font-inter text-[15px] font-normal leading-[1.9] max-w-[540px]" data-i18n="hero.copy">
-        I'm Niko, with a PhD in computer graphics from the University of Tokyo. My PhD was on fracture animation, using AI to predict how things break. The squirrel behind this text is that work; click it. Now I'm building world simulation for role-play: worlds that keep running by their own rules. We believe tabletop RPGs can become world simulation. From that idea we build AI character agents, and we open-sourced NeonRP, our Dungeon Master harness, which turns any game idea and rulebook into a DM harness of its own. We also make Panu, characters with personalities of their own: a friend from another world, who lives each day in their own world but chats with you like a real friend. I founded Ludic Dynamics; before that I was a game engineer at DeNA and tech lead at Butlr Japan.
+        I'm Niko, with a PhD in computer graphics from the University of Tokyo, advised by Prof. Takashi Kanai. My PhD was on fracture animation, using AI to predict how things break. The squirrel behind this text is that work; click it. Now I'm building world simulation for role-play: worlds that keep running by their own rules. We believe tabletop RPGs can become world simulation. From that idea we build AI character agents, and we open-sourced NeonRP, our Dungeon Master harness, which turns any game idea and rulebook into a DM harness of its own. We also make Panu, characters with personalities of their own: a friend from another world, who lives each day in their own world but chats with you like a real friend. I founded Ludic Dynamics; before that I was a game engineer at DeNA and an IoT full-stack engineer at Butlr Japan.
       </p>
       <!-- meta -->
       <div class="flex flex-wrap gap-2.5 mt-7 font-jetbrains">
@@ -355,7 +363,7 @@
 
     <!-- All Projects toggle: first 3 shown, rest revealed on click -->
     <div class="all-projects-row flex justify-center pt-12">
-      <button class="btn btn-ghost" onclick="const m=document.getElementById('more-works'); m.classList.remove('hidden'); m.querySelectorAll('.fade').forEach(function(e){e.classList.add('in');}); this.closest('.all-projects-row').style.display='none';" data-i18n="works.all">All Projects →</button>
+      <button class="btn btn-ghost" onclick="const m=document.getElementById('more-works'); m.classList.remove('hidden'); m.querySelectorAll('.fade').forEach(function(e){e.classList.add('in');}); this.closest('.all-projects-row').style.display='none'; window.fitSections && window.fitSections();" data-i18n="works.all">All Projects →</button>
     </div>
     <div id="more-works" class="hidden">
 
@@ -513,29 +521,6 @@
   </section>
 
   <!-- ───────── ABOUT ───────── -->
-  <section id="about" class="wrap pt-8 pb-12">
-    <div class="sec-label"><span class="text-[var(--neon)] font-jetbrains text-[11px] font-bold tracking-[0.4em]" data-i18n="about.label">ABOUT</span></div>
-    <div class="grid md:grid-cols-[1.3fr_0.7fr] gap-10 mt-6 fade">
-      <div>
-        <p class="text-[var(--text-gray)] font-inter text-[15px] leading-[1.85]" data-i18n="about.p1">My work sits between games, AI agents, and computer graphics research. Some of it is published research on physics-based animation; some is shipping, playable systems where autonomous agents drive narrative and play. WorldLines is where those two threads meet — an attempt to build worlds that remember.</p>
-        <p class="text-[var(--text-gray)] font-inter text-[15px] leading-[1.85] mt-4" data-i18n="about.p2">If we are standing at the early stage of agent-native games, I want to see that landscape clearly — and build the tools that let more people make worlds of their own.</p>
-      </div>
-      <div class="flex flex-col gap-4">
-        <div class="border border-[var(--border-dark)] bg-[var(--bg-card)] p-5">
-          <div class="text-[var(--neon)] font-jetbrains text-[10px] tracking-[0.2em] mb-2" data-i18n="about.edu">EDUCATION</div>
-          <div class="text-[var(--text-white)] font-inter text-[14px] leading-[1.6]" data-i18n="about.eduV">Ph.D. in Computer Graphics, University of Tokyo (advised by Prof. Takashi Kanai), 2026</div>
-        </div>
-        <div class="border border-[var(--border-dark)] bg-[var(--bg-card)] p-5">
-          <div class="text-[var(--neon)] font-jetbrains text-[10px] tracking-[0.2em] mb-2" data-i18n="about.prev">PREVIOUSLY</div>
-          <div class="text-[var(--text-white)] font-inter text-[14px] leading-[1.6]" data-i18n="about.prevV">Game Engineer at DeNA · IoT Full-Stack at Butlr</div>
-        </div>
-        <div class="border border-[var(--border-dark)] bg-[var(--bg-card)] p-5">
-          <div class="text-[var(--neon)] font-jetbrains text-[10px] tracking-[0.2em] mb-2" data-i18n="about.now">NOW</div>
-          <div class="text-[var(--text-white)] font-inter text-[14px] leading-[1.6]" data-i18n="about.nowV">Founder of WorldLines / Ludic Dynamics</div>
-        </div>
-      </div>
-    </div>
-  </section>
 
   <!-- ═══════════ OLD-STYLE SNAP SECTIONS (last 3: News · Publications · Contact) ═══════════ -->
 
@@ -845,10 +830,10 @@
       'nav.about':   {en:'ABOUT', zh:'关于', ja:'概要', ko:'소개'},
       'hero.eyebrow':{en:'FOUNDER · RESEARCHER · ENGINEER', zh:'创始人 · 研究者 · 工程师', ja:'創業者 · 研究者 · エンジニア', ko:'창업자 · 연구자 · 엔지니어'},
       'hero.copy':   {
-        en:'I\'m Niko, with a PhD in computer graphics from the University of Tokyo. My PhD was on fracture animation, using AI to predict how things break. The squirrel behind this text is that work; click it. Now I\'m building world simulation for role-play: worlds that keep running by their own rules. We believe tabletop RPGs can become world simulation. From that idea we build AI character agents, and we open-sourced NeonRP, our Dungeon Master harness, which turns any game idea and rulebook into a DM harness of its own. We also make Panu, characters with personalities of their own: a friend from another world, who lives each day in their own world but chats with you like a real friend. I founded Ludic Dynamics; before that I was a game engineer at DeNA and tech lead at Butlr Japan.',
-        zh:'我是 Niko,东京大学计算机图形学博士。博士期间做的是破碎动画,用 AI 预测物体怎么碎开,这段文字后面那只松鼠就是,可以点一下。现在我在做面向角色扮演的世界模拟,让世界按自己的规则运转下去。我们相信 TTRPG 可以成为一种世界模拟。基于这个想法,我们开发了 AI 角色 agent,我们开源了 NeonRP,它是我们的 Dungeon Master harness,能把任何游戏想法和规则书变成专属的 DM harness。我们还做了 Panu,一个个有自己人格的角色,是一个异世界的朋友,角色每天活在他/她/它自己的世界里,但会像一个真的朋友一样和你聊天。我是 Ludic Dynamics 的创始人,之前在 DeNA 做游戏工程师,在 Butlr Japan 做技术负责人。',
-        ja:'Niko です。東京大学で計算機グラフィックスの博士号を取りました。博士課程では破壊アニメーション、つまり物がどう壊れるかを AI で予測する研究をしていました。この文章の後ろにいるリスがそれです。クリックしてみてください。今はロールプレイのための世界シミュレーション、自分のルールで動き続ける世界を作っています。TTRPG は世界シミュレーションになれると信じています。その考えから AI キャラクターエージェントを開発し、NeonRP をオープンソースで公開しました。私たちの Dungeon Master ハーネスで、どんなゲームのアイデアやルールブックも専用の DM ハーネスに変えます。Panu も作っています。自分の人格を持つキャラクターたちで、異世界の友だちです。毎日それぞれの世界で暮らしながら、本当の友だちのようにあなたと話します。Ludic Dynamics の創業者で、以前は DeNA のゲームエンジニア、Butlr Japan のテックリードでした。',
-        ko:'저는 Niko이고, 도쿄대학에서 컴퓨터 그래픽스 박사 학위를 받았습니다. 박사 과정에서는 물체가 어떻게 부서지는지 AI로 예측하는 파괴 애니메이션을 연구했습니다. 이 글 뒤에 있는 다람쥐가 바로 그 연구입니다. 클릭해 보세요. 지금은 롤플레이를 위한 세계 시뮬레이션, 자기 규칙대로 계속 돌아가는 세계를 만들고 있습니다. 저희는 TTRPG가 세계 시뮬레이션이 될 수 있다고 믿습니다. 이 생각에서 AI 캐릭터 에이전트를 개발했고, NeonRP를 오픈소스로 공개했습니다. 저희의 Dungeon Master 하네스로, 어떤 게임 아이디어와 룰북이든 전용 DM 하네스로 바꿔 줍니다. Panu도 만들고 있습니다. 자기만의 인격을 가진 캐릭터들로, 이세계의 친구입니다. 매일 자기 세계에서 살아가면서, 진짜 친구처럼 당신과 이야기합니다. Ludic Dynamics 창업자이며, 이전에는 DeNA 게임 엔지니어, Butlr Japan 테크 리드였습니다.',
+        en:'I\'m Niko, with a PhD in computer graphics from the University of Tokyo, advised by Prof. Takashi Kanai. My PhD was on fracture animation, using AI to predict how things break. The squirrel behind this text is that work; click it. Now I\'m building world simulation for role-play: worlds that keep running by their own rules. We believe tabletop RPGs can become world simulation. From that idea we build AI character agents, and we open-sourced NeonRP, our Dungeon Master harness, which turns any game idea and rulebook into a DM harness of its own. We also make Panu, characters with personalities of their own: a friend from another world, who lives each day in their own world but chats with you like a real friend. I founded Ludic Dynamics; before that I was a game engineer at DeNA and an IoT full-stack engineer at Butlr Japan.',
+        zh:'我是 Niko,东京大学计算机图形学博士(导师金井崇教授)。博士期间做的是破碎动画,用 AI 预测物体怎么碎开,这段文字后面那只松鼠就是,可以点一下。现在我在做面向角色扮演的世界模拟,让世界按自己的规则运转下去。我们相信 TTRPG 可以成为一种世界模拟。基于这个想法,我们开发了 AI 角色 agent,我们开源了 NeonRP,它是我们的 Dungeon Master harness,能把任何游戏想法和规则书变成专属的 DM harness。我们还做了 Panu,一个个有自己人格的角色,是一个异世界的朋友,角色每天活在他/她/它自己的世界里,但会像一个真的朋友一样和你聊天。我是 Ludic Dynamics 的创始人,之前在 DeNA 做游戏工程师,在 Butlr Japan 做全栈 IoT 工程师。',
+        ja:'Niko です。東京大学で計算機グラフィックスの博士号を取りました(指導教員:金井崇教授)。博士課程では破壊アニメーション、つまり物がどう壊れるかを AI で予測する研究をしていました。この文章の後ろにいるリスがそれです。クリックしてみてください。今はロールプレイのための世界シミュレーション、自分のルールで動き続ける世界を作っています。TTRPG は世界シミュレーションになれると信じています。その考えから AI キャラクターエージェントを開発し、NeonRP をオープンソースで公開しました。私たちの Dungeon Master ハーネスで、どんなゲームのアイデアやルールブックも専用の DM ハーネスに変えます。Panu も作っています。自分の人格を持つキャラクターたちで、異世界の友だちです。毎日それぞれの世界で暮らしながら、本当の友だちのようにあなたと話します。Ludic Dynamics の創業者で、以前は DeNA のゲームエンジニア、Butlr Japan のフルスタック IoT エンジニアでした。',
+        ko:'저는 Niko이고, 도쿄대학에서 컴퓨터 그래픽스 박사 학위를 받았습니다(지도교수: 가나이 다카시 교수). 박사 과정에서는 물체가 어떻게 부서지는지 AI로 예측하는 파괴 애니메이션을 연구했습니다. 이 글 뒤에 있는 다람쥐가 바로 그 연구입니다. 클릭해 보세요. 지금은 롤플레이를 위한 세계 시뮬레이션, 자기 규칙대로 계속 돌아가는 세계를 만들고 있습니다. 저희는 TTRPG가 세계 시뮬레이션이 될 수 있다고 믿습니다. 이 생각에서 AI 캐릭터 에이전트를 개발했고, NeonRP를 오픈소스로 공개했습니다. 저희의 Dungeon Master 하네스로, 어떤 게임 아이디어와 룰북이든 전용 DM 하네스로 바꿔 줍니다. Panu도 만들고 있습니다. 자기만의 인격을 가진 캐릭터들로, 이세계의 친구입니다. 매일 자기 세계에서 살아가면서, 진짜 친구처럼 당신과 이야기합니다. Ludic Dynamics 창업자이며, 이전에는 DeNA 게임 엔지니어, Butlr Japan 테크 리드였습니다.',
       },
       'hero.baseL':  {en:'Base', zh:'常驻', ja:'拠点', ko:'거점'},
       'hero.baseV':  {en:'Tokyo', zh:'东京', ja:'東京', ko:'도쿄'},
@@ -863,25 +848,6 @@
       'blogs.sub':   {en:'Writing from the lab, plus conference talks and media.', zh:'来自实验室的写作，以及会议演讲与媒体报道。', ja:'ラボからの執筆、学会発表とメディア。', ko:'랩에서의 글, 학회 발표와 미디어.'},
       'blogs.writing':{en:'WRITING ARCHIVE', zh:'文章合集', ja:'記事アーカイブ', ko:'글 모음'},
       'blogs.research':{en:'RESEARCH DECK', zh:'研究档案', ja:'リサーチデック', ko:'리서치 덱'},
-      'about.label': {en:'ABOUT', zh:'关于', ja:'概要', ko:'소개'},
-      'about.p1':    {
-        en:'My work sits between games, AI agents, and computer graphics research. Some of it is published research on physics-based animation; some is shipping, playable systems where autonomous agents drive narrative and play. WorldLines is where those two threads meet — an attempt to build worlds that remember.',
-        zh:'我的工作介于游戏、AI agent 与计算机图形学研究之间。一部分是关于基于物理动画的已发表研究，一部分是真正上线、可玩的系统——让自主 agent 驱动叙事与玩法。WorldLines 正是这两条线交汇的地方，一次「构建会记住的世界」的尝试。',
-        ja:'私の仕事はゲーム、AI エージェント、計算機グラフィックス研究の間にある。物理ベースアニメーションに関する査読付き研究もあれば、自律エージェントが物語とプレイを駆動する、実際に動く遊べるシステムもある。WorldLines はその二つが交わる場所——「記憶する世界」を作ろうとする試みだ。',
-        ko:'내 작업은 게임, AI 에이전트, 컴퓨터 그래픽스 연구 사이에 있다. 일부는 물리 기반 애니메이션에 관한 발표된 연구이고, 일부는 자율 에이전트가 내러티브와 플레이를 이끄는, 실제로 동작하는 플레이 가능한 시스템이다. WorldLines는 그 두 갈래가 만나는 지점 — "기억하는 세계"를 만들려는 시도다.'
-      },
-      'about.p2':    {
-        en:'If we are standing at the early stage of agent-native games, I want to see that landscape clearly — and build the tools that let more people make worlds of their own.',
-        zh:'如果我们正站在 agent-native 游戏的早期，我想把这片风景看清楚，并造出让更多人创造自己世界的工具。',
-        ja:'もし私たちがエージェントネイティブなゲームの黎明期にいるのなら、その景色をはっきりと見届け、より多くの人が自分の世界を作れる道具を作りたい。',
-        ko:'우리가 에이전트 네이티브 게임의 초기에 서 있다면, 나는 그 풍경을 분명히 보고 — 더 많은 사람이 자신의 세계를 만들 수 있는 도구를 만들고 싶다.'
-      },
-      'about.edu':   {en:'EDUCATION', zh:'教育', ja:'学歴', ko:'학력'},
-      'about.eduV':  {en:'Ph.D. in Computer Graphics, University of Tokyo (advised by Prof. Takashi Kanai), 2026', zh:'东京大学 计算机图形学博士（导师 金井崇 教授），2026', ja:'東京大学 計算機グラフィックス 博士（金井崇教授に師事）、2026', ko:'도쿄대학 컴퓨터 그래픽스 박사(가나이 다카시 교수 지도), 2026'},
-      'about.prev':  {en:'PREVIOUSLY', zh:'曾任', ja:'経歴', ko:'경력'},
-      'about.prevV': {en:'Game Engineer at DeNA · IoT Full-Stack at Butlr', zh:'DeNA 游戏工程师 · Butlr 全栈 IoT 工程师', ja:'DeNA ゲームエンジニア · Butlr IoT フルスタック', ko:'DeNA 게임 엔지니어 · Butlr IoT 풀스택'},
-      'about.now':   {en:'NOW', zh:'现在', ja:'現在', ko:'현재'},
-      'about.nowV':  {en:'Founder of WorldLines / Ludic Dynamics', zh:'WorldLines / Ludic Dynamics 创始人', ja:'WorldLines / Ludic Dynamics 創業者', ko:'WorldLines / Ludic Dynamics 창업자'},
       'pub.label':   {en:'PUBLICATIONS', zh:'论文发表', ja:'論文', ko:'논문'},
       'pub.sub':     {en:'Peer-reviewed journals, conference papers, and posters in computer graphics.', zh:'计算机图形学领域的同行评审期刊、会议论文与海报。', ja:'計算機グラフィックス分野の査読付きジャーナル、会議論文、ポスター。', ko:'컴퓨터 그래픽스 분야의 동료 심사 저널, 학회 논문, 포스터.'},
       'contact.label':{en:'CONTACT', zh:'联系', ja:'連絡', ko:'연락'},
@@ -928,13 +894,30 @@
       applyLang(initial);
     })();
   </script>
-<script>(function(){var P=new URLSearchParams(location.search);if(P.has('shot')){document.querySelectorAll('.fade').forEach(function(e){e.classList.add('in')});var st=document.createElement('style');st.textContent='.snap-screen{min-height:auto!important}';document.head.appendChild(st);var hs=document.getElementById('top');if(hs)hs.style.display='none';}if(P.has('modal')){setTimeout(function(){openModal(P.get('modal'))},300);}var q=P.get('scrollto');if(q){setTimeout(function(){var el=document.getElementById(q);if(el)window.scrollTo(0,el.getBoundingClientRect().top+window.scrollY-60);},1200);}})();</script>
+<script>(function(){var P=new URLSearchParams(location.search);if(P.has('shot')){document.querySelectorAll('.fade').forEach(function(e){e.classList.add('in')});var st=document.createElement('style');st.textContent='.snap-screen,#blogs,#works article.work{min-height:auto!important}';document.head.appendChild(st);var hs=document.getElementById('top');if(hs)hs.style.display='none';}if(P.has('modal')){setTimeout(function(){openModal(P.get('modal'))},300);}var q=P.get('scrollto');if(q){setTimeout(function(){var el=document.getElementById(q);if(el)window.scrollTo(0,el.getBoundingClientRect().top+window.scrollY-60);},1200);}})();</script>
 <script>
-  // Section stops. Short sections centre under the nav; tall ones stop at their top with
-  // a margin and scroll freely inside, up to a stop at their bottom. Scrolling stays native,
-  // momentum included; when it settles, the page eases to the next stop in that direction.
-  // A wheel gesture starting at a stop first spends a small lead with the page holding still.
+  // Section stops. Every section fills one screen under the nav and has one stop; one that
+  // still does not fit gets a stop per screenful, so the page never rests partway. Scrolling
+  // stays native, momentum included; when it settles, the page eases to the next stop in that
+  // direction. A wheel gesture starting at a stop first spends a small lead, page holding still.
   (function () {
+    const nav = document.querySelector('.nav');
+    // Layout position, not getBoundingClientRect: cards are still translated while fading in.
+    function docTop(el) { let y = 0; for (; el; el = el.offsetParent) y += el.offsetTop; return y; }
+    function fitSections() {
+      const root = document.documentElement.style, works = document.getElementById('works');
+      const row = works.querySelector('.all-projects-row');
+      root.setProperty('--nav-h', `${nav.offsetHeight}px`);
+      root.setProperty('--works-head', `${docTop(works.querySelector('article.work')) - docTop(works)}px`);
+      root.setProperty('--row', `${row ? row.offsetHeight : 0}px`);
+    }
+    window.fitSections = fitSections;
+    fitSections();
+    addEventListener('load', fitSections);
+    addEventListener('resize', fitSections);
+    if (document.fonts) document.fonts.ready.then(fitSections);
+    new MutationObserver(fitSections).observe(document.documentElement, {attributes: true, attributeFilter: ['lang']});
+
     if (new URLSearchParams(location.search).has('shot')) return;
     if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     const WHEEL_LEAD = 24;  // wheel travel taken at a stop, page not moving, before it leaves
@@ -942,53 +925,48 @@
     const OVERSHOOT_PX = 60;    // a gesture ending this close past a stop it crossed returns to it
     const COMMIT = 0.18;    // after touch or keys: share of the way that commits to the next stop...
     const COMMIT_PX = 72;   // ...capped, so a long gap does not take a long scroll
-    const MARGIN = 24;      // gap kept above a tall section's top and below its bottom
     const SETTLE_MS = 120;  // scroll counts as settled after this long without events
-    const nav = document.querySelector('.nav');
     let raf = 0, timer = 0, restY = scrollY, pointerDown = false, touching = false;
     let lead = 0, holding = false, lastWheel = 0, lastDir = 1;
 
-    // Layout position, not getBoundingClientRect: cards are still translated while fading in.
-    function docTop(el) { let y = 0; for (; el; el = el.offsetParent) y += el.offsetTop; return y; }
     function sections() {
       const works = document.getElementById('works');
       const list = [document.getElementById('top')];
       works.querySelectorAll('article.work').forEach((a) => { if (a.offsetParent) list.push(a); });
-      ['blogs', 'about', 'news', 'publications', 'contact'].forEach((id) => list.push(document.getElementById(id)));
+      ['blogs', 'news', 'publications', 'contact'].forEach((id) => list.push(document.getElementById(id)));
       return list.filter(Boolean);
     }
-    function rangeFor(el, navH, max) {
-      if (el.id === 'top') return {a: 0, b: 0};
-      const bottom = docTop(el) + el.offsetHeight;
-      // The first card carries the section label above it.
-      const top = el === document.querySelector('#works article.work') ? docTop(document.getElementById('works')) : docTop(el);
-      const h = bottom - top, room = innerHeight - navH;
-      const clamp = (y) => Math.max(0, Math.min(max, y));
-      if (h <= room) { const y = clamp(top - navH - (room - h) / 2); return {a: y, b: y}; }
-      if (h <= innerHeight) { const y = clamp(top - navH); return {a: y, b: y}; }   // about a screen: one stop, no drift
-      return {a: clamp(top - navH - MARGIN), b: clamp(top + h - innerHeight + MARGIN)};
+    function stopsFor(el) {
+      const navH = nav.offsetHeight, room = innerHeight - navH;
+      const max = document.documentElement.scrollHeight - innerHeight;
+      const works = document.getElementById('works'), next = el.nextElementSibling;
+      // The first card carries the section label above it, the last visible one the All Projects row below it.
+      const top = el === works.querySelector('article.work') ? docTop(works) : docTop(el);
+      const below = next && next.matches('.all-projects-row') ? next : el;
+      const a = top - navH, h = docTop(below) + below.offsetHeight - top;
+      const out = [a];
+      if (h > room + 2) {
+        const b = top + h - innerHeight, n = Math.ceil((b - a) / (room * 0.85));
+        for (let i = 1; i <= n; i++) out.push(a + (b - a) * i / n);
+      }
+      return out.map((y) => Math.max(0, Math.min(max, Math.round(y))));
     }
     function stops() {
-      const navH = nav ? nav.offsetHeight : 0, max = document.documentElement.scrollHeight - innerHeight;
-      const out = [];
-      sections().map((el) => rangeFor(el, navH, max)).sort((p, q) => p.a - q.a).forEach((s) => {
-        const last = out[out.length - 1];
-        if (last && s.a <= last.b + 4) last.b = Math.max(last.b, s.b); else out.push({a: s.a, b: s.b});
-      });
-      return out;
+      return sections().flatMap(stopsFor).sort((p, q) => p - q).filter((y, i, s) => !i || y - s[i - 1] > 4);
     }
     function targetFor(y, dir) {
       const s = stops();
       if (!s.length) return null;
-      if (y <= s[0].a) return s[0].a;
-      if (y >= s[s.length - 1].b) return s[s.length - 1].b;
-      for (let i = 0; i < s.length; i++) {
-        if (y >= s[i].a - 2 && y <= s[i].b + 2) return null;   // already inside a stop
-        if (i + 1 < s.length && y > s[i].b && y < s[i + 1].a) {
-          const gap = s[i + 1].a - s[i].b, fromWheel = performance.now() - lastWheel < 600;
+      if (y <= s[0]) return s[0];
+      if (y >= s[s.length - 1]) return s[s.length - 1];
+      for (let i = 0; i + 1 < s.length; i++) {
+        if (Math.abs(y - s[i]) <= 2) return null;
+        if (y > s[i] && y < s[i + 1]) {
+          if (Math.abs(y - s[i + 1]) <= 2) return null;
+          const gap = s[i + 1] - s[i], fromWheel = performance.now() - lastWheel < 600;
           const need = (crossed) => (fromWheel ? (crossed ? OVERSHOOT_PX : 0) : Math.min(gap * COMMIT, COMMIT_PX));
-          if (dir >= 0) return y - s[i].b > need(s[i].b > restY + 2) ? s[i + 1].a : s[i].b;
-          return s[i + 1].a - y > need(s[i + 1].a < restY - 2) ? s[i].b : s[i + 1].a;
+          if (dir >= 0) return y - s[i] > need(s[i] > restY + 2) ? s[i + 1] : s[i];
+          return s[i + 1] - y > need(s[i + 1] < restY - 2) ? s[i] : s[i + 1];
         }
       }
       return null;
@@ -1009,7 +987,8 @@
       })(t0);
     }
     let gliding = false, glideDir = 1;
-    function stopGlide() { if (gliding) { cancelAnimationFrame(raf); gliding = false; restY = scrollY; } }
+    function armSettle() { clearTimeout(timer); timer = setTimeout(settle, SETTLE_MS); }
+    function stopGlide() { if (gliding) { cancelAnimationFrame(raf); gliding = false; restY = scrollY; armSettle(); } }
     function settle() {
       if (pointerDown || touching || document.body.style.overflow === 'hidden') return;
       const y = scrollY, to = targetFor(y, performance.now() - lastWheel < 600 ? lastDir : y - restY);
@@ -1017,11 +996,10 @@
       glide(to);
     }
     addEventListener('scroll', () => {
-      if (gliding) return;
-      clearTimeout(timer);
-      timer = setTimeout(settle, SETTLE_MS);
+      if (!gliding) armSettle();
     }, {passive: true});
     addEventListener('keydown', stopGlide, {passive: true});
+    addEventListener('resize', armSettle);
     addEventListener('touchstart', () => { touching = true; stopGlide(); }, {passive: true});
 
     function innerCanScroll(node, dy) {
@@ -1046,13 +1024,12 @@
         fresh = false; holding = false;
       }
       lastDir = dir;
-      clearTimeout(timer);
-      timer = setTimeout(settle, SETTLE_MS);
+      armSettle();
       if (fresh) {
         lead = 0;
         restY = scrollY;
-        const y = scrollY, cur = stops().find((s) => y >= s.a - 2 && y <= s.b + 2);
-        holding = !!cur && Math.abs((dir > 0 ? cur.b : cur.a) - y) <= 2 && !innerCanScroll(ev.target, dy);
+        const y = scrollY;
+        holding = stops().some((s) => Math.abs(s - y) <= 2) && !innerCanScroll(ev.target, dy);
       }
       if (!holding) return;
       lead += Math.abs(dy);
@@ -1060,17 +1037,16 @@
       else holding = false;
     }, {passive: false});
     addEventListener('mousedown', () => { pointerDown = true; stopGlide(); });
-    addEventListener('mouseup', () => { pointerDown = false; clearTimeout(timer); timer = setTimeout(settle, SETTLE_MS); });
-    addEventListener('touchend', () => { touching = false; clearTimeout(timer); timer = setTimeout(settle, SETTLE_MS); }, {passive: true});
+    addEventListener('mouseup', () => { pointerDown = false; armSettle(); });
+    ['touchend', 'touchcancel'].forEach((t) => addEventListener(t, () => { touching = false; armSettle(); }, {passive: true}));
     // In-page links land on the same stops instead of the raw anchor position.
     document.addEventListener('click', (ev) => {
       const a = ev.target.closest && ev.target.closest('a[href^="#"]');
       const el = a && a.getAttribute('href').length > 1 && document.querySelector(a.getAttribute('href'));
       if (!el) return;
       ev.preventDefault();
-      const navH = nav ? nav.offsetHeight : 0, max = document.documentElement.scrollHeight - innerHeight;
       const first = el.id === 'works' ? el.querySelector('article.work') : el;
-      glide(rangeFor(first, navH, max).a);
+      glide(stopsFor(first)[0]);
       history.replaceState(null, '', a.getAttribute('href'));
     });
   })();
