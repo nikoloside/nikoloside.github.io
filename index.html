@@ -330,7 +330,7 @@
           <a href="https://worldlines.gg/en/ludenia" target="_blank" class="btn btn-primary" data-i18n="btn.aboutpanu">About Panu →</a>
         </div>
       </div>
-      <div class="media" style="height:280px"><img src="./assets/demo-panu.webp" alt="Panu — a character's day, their moments, and their persona" loading="lazy" style="object-fit:contain"></div>
+      <div class="media" style="height:280px"><img data-lang-img="./assets/demo-panu" src="./assets/demo-panu-en.webp" alt="Panu — a character's day, their moments, and their persona" loading="lazy" style="object-fit:contain"></div>
     </article>
 
     <!-- 03 Living Canvas -->
@@ -902,6 +902,9 @@
         let v = t[l];
         if (!v && l === 'en') v = el.getAttribute('data-en0');
         if (v) el.textContent = v;
+      });
+      document.querySelectorAll('img[data-lang-img]').forEach((i) => {
+        i.src = `${i.getAttribute('data-lang-img')}-${l}.webp`;
       });
       document.querySelectorAll('video[data-lang-base]').forEach((v) => {
         const base = v.getAttribute('data-lang-base');
