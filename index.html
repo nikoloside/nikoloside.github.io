@@ -940,12 +940,12 @@
     if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     const WHEEL_LEAD = 24;  // wheel travel taken at a stop, page not moving, before it leaves
     const GESTURE_GAP_MS = 150; // wheel events closer than this belong to the same gesture
-    const OVERSHOOT_PX = 60;    // a gesture ending this close past a stop it crossed returns to it
-    const COMMIT = 0.18;    // after touch or keys: share of the way that commits to the next stop...
-    const COMMIT_PX = 72;   // ...capped, so a long gap does not take a long scroll
+    const COMMIT = 1 / 3;   // share of the way to the next stop that commits to it; less returns
+    const NOTCH_EVENTS = 2; // a gesture this short and strong is one click of a mouse wheel...
+    const NOTCH_DELTA = 50; // ...which cannot reach the share above, so it always takes a step
     const SETTLE_MS = 120;  // scroll counts as settled after this long without events
     let raf = 0, timer = 0, restY = scrollY, pointerDown = false, touching = false;
-    let lead = 0, holding = false, lastWheel = 0, lastDir = 1;
+    let lead = 0, holding = false, lastWheel = 0, lastDir = 1, gestureEvents = 0, gestureMax = 0;
 
     function sections() {
       const works = document.getElementById('works');
@@ -981,10 +981,10 @@
         if (Math.abs(y - s[i]) <= 2) return null;
         if (y > s[i] && y < s[i + 1]) {
           if (Math.abs(y - s[i + 1]) <= 2) return null;
-          const gap = s[i + 1] - s[i], fromWheel = performance.now() - lastWheel < 600;
-          const need = (crossed) => (fromWheel ? (crossed ? OVERSHOOT_PX : 0) : Math.min(gap * COMMIT, COMMIT_PX));
-          if (dir >= 0) return y - s[i] > need(s[i] > restY + 2) ? s[i + 1] : s[i];
-          return s[i + 1] - y > need(s[i + 1] < restY - 2) ? s[i] : s[i + 1];
+          const notch = performance.now() - lastWheel < 600 && gestureEvents <= NOTCH_EVENTS && gestureMax >= NOTCH_DELTA;
+          const need = notch ? 0 : (s[i + 1] - s[i]) * COMMIT;
+          if (dir >= 0) return y - s[i] > need ? s[i + 1] : s[i];
+          return s[i + 1] - y > need ? s[i] : s[i + 1];
         }
       }
       return null;
@@ -1045,10 +1045,14 @@
       armSettle();
       if (fresh) {
         lead = 0;
+        gestureEvents = 0;
+        gestureMax = 0;
         restY = scrollY;
         const y = scrollY;
         holding = stops().some((s) => Math.abs(s - y) <= 2) && !innerCanScroll(ev.target, dy);
       }
+      gestureEvents++;
+      gestureMax = Math.max(gestureMax, Math.abs(dy));
       if (!holding) return;
       lead += Math.abs(dy);
       if (lead < WHEEL_LEAD) ev.preventDefault();   // the page holds still while the lead builds
