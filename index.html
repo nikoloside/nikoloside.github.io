@@ -543,7 +543,7 @@
   <!-- News (old snap style) -->
   <section id="news" class="snap-screen w-full px-6 md:px-20 py-16 bg-[var(--neon)] flex flex-col justify-center fade">
     <h2 class="text-[var(--bg-dark)] font-jetbrains text-[11px] font-bold tracking-[0.4em] mb-8" data-i18n="news.label">NEWS</h2>
-    <div class="w-full flex flex-col mb-2 max-h-[64vh] overflow-y-auto pr-2">
+    <div class="w-full flex flex-col mb-2 max-h-[64vh] overflow-y-auto pr-2" style="overscroll-behavior:contain">
       <div class="w-full flex gap-6 py-3 border-b border-[rgba(10,10,15,0.125)]">
         <div class="w-[78px] text-[var(--bg-dark)] font-jetbrains text-[10px] font-bold tracking-wide flex-shrink-0">2026.10.05</div>
         <div class="flex-1 text-[var(--bg-dark)] font-inter text-[13px] font-medium leading-[1.5]">🎨 Living Canvas is live at canvas.worldlines.gg — a whole world laid out on one canvas, places and people as real files, the agent’s cursor at work. Open source in preparation.<a href="https://github.com/LudicDynamics/WorldLines/releases/tag/v0.4.2" target="_blank" rel="noopener noreferrer" class="underline underline-offset-4 hover:opacity-70 transition-opacity">neonrp / worldlines 0.4.2</a> on PyPI — the engine and the shell now update separately.</div>
@@ -931,15 +931,19 @@
   </script>
 <script>(function(){var P=new URLSearchParams(location.search);if(P.has('shot')){document.querySelectorAll('.fade').forEach(function(e){e.classList.add('in')});var st=document.createElement('style');st.textContent='.snap-screen{min-height:auto!important}';document.head.appendChild(st);var hs=document.getElementById('top');if(hs)hs.style.display='none';}if(P.has('modal')){setTimeout(function(){openModal(P.get('modal'))},300);}var q=P.get('scrollto');if(q){setTimeout(function(){var el=document.getElementById(q);if(el)window.scrollTo(0,el.getBoundingClientRect().top+window.scrollY-60);},1200);}})();</script>
 <script>
-  // Section stops: native scroll stays free, and when it settles the page eases to the
-  // stop that fits the section. Short sections centre under the nav; tall ones stop at
-  // their top with a margin and scroll freely inside, up to a stop at their bottom.
+  // Section stops. Short sections centre under the nav; tall ones stop at their top with
+  // a margin and scroll freely inside, up to a stop at their bottom. At a stop the wheel
+  // first builds up a lead while the page holds still; once it is spent, the page eases
+  // to the next stop. Touch, keyboard and scrollbar keep native scroll and settle after.
   (function () {
     if (new URLSearchParams(location.search).has('shot')) return;
     if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    const COMMIT = 0.18;    // lead: share of the way to the next stop that commits to it...
+    const WHEEL_LEAD = 140; // wheel travel taken at a stop, page not moving, before it leaves
+    const LEAD_IDLE_MS = 250;  // a pause this long forgets the lead built so far
+    const INERTIA_GAP_MS = 90; // wheel events closer than this belong to the same flick
+    const COMMIT = 0.18;    // after non-wheel scroll: share of the way that commits to the next stop...
     const COMMIT_PX = 72;   // ...capped, so a long gap does not take a long scroll
-    const MARGIN = 24;      // lead: gap kept above a tall section's top and below its bottom
+    const MARGIN = 24;      // gap kept above a tall section's top and below its bottom
     const SETTLE_MS = 140;  // scroll counts as settled after this long without events
     const nav = document.querySelector('.nav');
     let raf = 0, timer = 0, restY = scrollY, pointerDown = false;
@@ -954,6 +958,7 @@
       return list.filter(Boolean);
     }
     function rangeFor(el, navH, max) {
+      if (el.id === 'top') return {a: 0, b: 0};
       const bottom = docTop(el) + el.offsetHeight;
       // The first card carries the section label above it.
       const top = el === document.querySelector('#works article.work') ? docTop(document.getElementById('works')) : docTop(el);
@@ -1013,7 +1018,49 @@
       clearTimeout(timer);
       timer = setTimeout(settle, SETTLE_MS);
     }, {passive: true});
-    ['wheel', 'touchstart', 'keydown'].forEach((t) => addEventListener(t, stopGlide, {passive: true}));
+    ['touchstart', 'keydown'].forEach((t) => addEventListener(t, stopGlide, {passive: true}));
+
+    let lead = 0, lastWheel = 0, locked = false;
+    function innerCanScroll(node, dy) {
+      for (; node && node !== document.body && node.nodeType === 1; node = node.parentElement) {
+        const o = getComputedStyle(node).overflowY;
+        if ((o !== 'auto' && o !== 'scroll') || node.scrollHeight <= node.clientHeight) continue;
+        if (dy > 0 ? node.scrollTop + node.clientHeight < node.scrollHeight - 1 : node.scrollTop > 0) return true;
+      }
+      return false;
+    }
+    addEventListener('wheel', (ev) => {
+      if (ev.ctrlKey || document.body.style.overflow === 'hidden') return;
+      const dy = ev.deltaMode === 1 ? ev.deltaY * 16 : ev.deltaY;
+      if (!dy || Math.abs(ev.deltaX) > Math.abs(ev.deltaY)) return;
+      if (!gliding && !locked && innerCanScroll(ev.target, dy)) return;
+      ev.preventDefault();
+      const now = performance.now(), gap = now - lastWheel;
+      lastWheel = now;
+      if (gliding) { locked = true; return; }
+      if (locked) { if (gap < INERTIA_GAP_MS) return; locked = false; }   // the flick that caused the glide is spent
+      if (gap > LEAD_IDLE_MS || lead * dy < 0) lead = 0;
+
+      const list = stops(), y = scrollY, dir = dy > 0 ? 1 : -1;
+      const i = list.findIndex((s) => y >= s.a - 2 && y <= s.b + 2);
+      if (i < 0) {   // between stops (a scrollbar drag, say): go on to the next one this way
+        const next = dir > 0 ? list.find((s) => s.a > y) : [...list].reverse().find((s) => s.b < y);
+        if (next) { lead = 0; locked = true; glide(dir > 0 ? next.a : next.b); }
+        return;
+      }
+      const edge = dir > 0 ? list[i].b : list[i].a;
+      if ((edge - y) * dir > 2) {   // still inside a tall section: scroll it, up to its edge
+        lead = 0;
+        const to = y + dy;
+        window.scrollTo({top: dir > 0 ? Math.min(to, edge) : Math.max(to, edge), behavior: 'instant'});
+        return;
+      }
+      lead += dy;
+      if (Math.abs(lead) < WHEEL_LEAD) return;   // the page holds still while the lead builds
+      lead = 0;
+      const next = list[i + dir];
+      if (next) { locked = true; glide(dir > 0 ? next.a : next.b); }
+    }, {passive: false});
     addEventListener('mousedown', () => { pointerDown = true; stopGlide(); });
     addEventListener('mouseup', () => { pointerDown = false; clearTimeout(timer); timer = setTimeout(settle, SETTLE_MS); });
     addEventListener('touchend', () => { clearTimeout(timer); timer = setTimeout(settle, SETTLE_MS); }, {passive: true});
