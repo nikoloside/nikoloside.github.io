@@ -938,9 +938,9 @@
   (function () {
     if (new URLSearchParams(location.search).has('shot')) return;
     if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    const WHEEL_LEAD = 140; // wheel travel taken at a stop, page not moving, before it leaves
+    const WHEEL_LEAD = 30;  // wheel travel taken at a stop, page not moving, before it leaves
     const LEAD_IDLE_MS = 250;  // a pause this long forgets the lead built so far
-    const INERTIA_GAP_MS = 90; // wheel events closer than this belong to the same flick
+    const INERTIA_GAP_MS = 150; // wheel events closer than this belong to the same flick
     const COMMIT = 0.18;    // after non-wheel scroll: share of the way that commits to the next stop...
     const COMMIT_PX = 72;   // ...capped, so a long gap does not take a long scroll
     const MARGIN = 24;      // gap kept above a tall section's top and below its bottom
@@ -965,6 +965,7 @@
       const h = bottom - top, room = innerHeight - navH;
       const clamp = (y) => Math.max(0, Math.min(max, y));
       if (h <= room) { const y = clamp(top - navH - (room - h) / 2); return {a: y, b: y}; }
+      if (h <= innerHeight) { const y = clamp(top - navH); return {a: y, b: y}; }   // about a screen: one stop, no drift
       return {a: clamp(top - navH - MARGIN), b: clamp(top + h - innerHeight + MARGIN)};
     }
     function stops() {
@@ -994,15 +995,15 @@
     function glide(to) {
       cancelAnimationFrame(raf);
       const from = scrollY, dist = to - from;
-      const dur = Math.max(320, Math.min(800, 240 + 16 * Math.sqrt(Math.abs(dist))));
+      const dur = Math.max(220, Math.min(420, 160 + 8 * Math.sqrt(Math.abs(dist))));
       const t0 = performance.now();
       gliding = true;
       (function step(now) {
         const t = Math.min(1, (now - t0) / dur);
-        const e = t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;   // accelerate, then decelerate
+        const e = t < 0.3 ? 5 * t * t / 1.5 : 1 - Math.pow(1 - t, 3) * (0.7 / Math.pow(0.7, 3));   // brief acceleration, long deceleration
         window.scrollTo({top: from + dist * e, behavior: 'instant'});
         if (t < 1) raf = requestAnimationFrame(step);
-        else { gliding = false; restY = to; }
+        else { gliding = false; restY = to; glideEnd = performance.now(); }
       })(t0);
     }
     let gliding = false;
@@ -1020,7 +1021,8 @@
     }, {passive: true});
     ['touchstart', 'keydown'].forEach((t) => addEventListener(t, stopGlide, {passive: true}));
 
-    let lead = 0, lastWheel = 0, locked = false;
+    let lead = 0, lastWheel = 0, locked = false, glideEnd = 0, steadyRun = 0;
+    const wheelLog = [];
     function innerCanScroll(node, dy) {
       for (; node && node !== document.body && node.nodeType === 1; node = node.parentElement) {
         const o = getComputedStyle(node).overflowY;
@@ -1036,9 +1038,20 @@
       if (!gliding && !locked && innerCanScroll(ev.target, dy)) return;
       ev.preventDefault();
       const now = performance.now(), gap = now - lastWheel;
+      // Compare wheel travel over two windows: single deltas are unreliable, as the browser merges events when busy.
+      wheelLog.push([now, Math.abs(dy)]);
+      while (now - wheelLog[0][0] > 200) wheelLog.shift();
+      let recent = 0, before = 0;
+      wheelLog.forEach(([t, d]) => { if (now - t < 100) recent += d; else before += d; });
+      const rising = recent > before * 2.5 && recent > 100;
+      steadyRun = recent >= before * 0.95 && recent >= 150 ? steadyRun + 1 : 0;   // a spinning wheel, not a one-off blip
       lastWheel = now;
       if (gliding) { locked = true; return; }
-      if (locked) { if (gap < INERTIA_GAP_MS) return; locked = false; }   // the flick that caused the glide is spent
+      if (locked) {
+        // A fading tail belongs to the flick that caused the glide; a new push or a spinning wheel does not.
+        if (gap < INERTIA_GAP_MS && !rising && !(now - glideEnd > 500 && steadyRun >= 4)) return;
+        locked = false;
+      }
       if (gap > LEAD_IDLE_MS || lead * dy < 0) lead = 0;
 
       const list = stops(), y = scrollY, dir = dy > 0 ? 1 : -1;
