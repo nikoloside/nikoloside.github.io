@@ -353,6 +353,12 @@
       <div class="media" style="height:280px"><img src="./assets/living-canvas.webp" alt="Living Canvas — cards, places and people on one infinite canvas; the agent cursor at work" style="width:100%;height:100%;object-fit:cover;display:block"></div>
     </article>
 
+    <!-- All Projects toggle: first 3 shown, rest revealed on click -->
+    <div class="all-projects-row flex justify-center pt-12">
+      <button class="btn btn-ghost" onclick="const m=document.getElementById('more-works'); m.classList.remove('hidden'); m.querySelectorAll('.fade').forEach(function(e){e.classList.add('in');}); this.closest('.all-projects-row').style.display='none';" data-i18n="works.all">All Projects →</button>
+    </div>
+    <div id="more-works" class="hidden">
+
     <!-- 04 Alice — A Validated Replay -->
     <article class="work fade work-grid grid md:grid-cols-2 gap-10 py-14 items-center">
       <div>
@@ -373,13 +379,6 @@
       </div>
       <div class="media" style="height:280px"><video data-lang-base="./assets/demo-alice-replay" src="./assets/demo-alice-replay-en.mp4" poster="./assets/demo-alice-replay-en.jpg" autoplay muted loop playsinline preload="metadata" style="object-fit:contain" aria-label="Alice — a validated replay: the map grows, contradictions stay at 0.0"></video></div>
     </article>
-
-
-    <!-- All Projects toggle: first 3 shown, rest revealed on click -->
-    <div class="all-projects-row flex justify-center pt-12">
-      <button class="btn btn-ghost" onclick="const m=document.getElementById('more-works'); m.classList.remove('hidden'); m.querySelectorAll('.fade').forEach(function(e){e.classList.add('in');}); this.closest('.all-projects-row').style.display='none';" data-i18n="works.all">All Projects →</button>
-    </div>
-    <div id="more-works" class="hidden">
 
     <!-- 04 DeepFracture -->
     <article class="work fade work-grid grid md:grid-cols-2 gap-10 py-14 items-center">
@@ -932,21 +931,22 @@
 <script>(function(){var P=new URLSearchParams(location.search);if(P.has('shot')){document.querySelectorAll('.fade').forEach(function(e){e.classList.add('in')});var st=document.createElement('style');st.textContent='.snap-screen{min-height:auto!important}';document.head.appendChild(st);var hs=document.getElementById('top');if(hs)hs.style.display='none';}if(P.has('modal')){setTimeout(function(){openModal(P.get('modal'))},300);}var q=P.get('scrollto');if(q){setTimeout(function(){var el=document.getElementById(q);if(el)window.scrollTo(0,el.getBoundingClientRect().top+window.scrollY-60);},1200);}})();</script>
 <script>
   // Section stops. Short sections centre under the nav; tall ones stop at their top with
-  // a margin and scroll freely inside, up to a stop at their bottom. At a stop the wheel
-  // first builds up a lead while the page holds still; once it is spent, the page eases
-  // to the next stop. Touch, keyboard and scrollbar keep native scroll and settle after.
+  // a margin and scroll freely inside, up to a stop at their bottom. Scrolling stays native,
+  // momentum included; when it settles, the page eases to the next stop in that direction.
+  // A wheel gesture starting at a stop first spends a small lead with the page holding still.
   (function () {
     if (new URLSearchParams(location.search).has('shot')) return;
     if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    const WHEEL_LEAD = 30;  // wheel travel taken at a stop, page not moving, before it leaves
-    const LEAD_IDLE_MS = 250;  // a pause this long forgets the lead built so far
-    const INERTIA_GAP_MS = 150; // wheel events closer than this belong to the same flick
-    const COMMIT = 0.18;    // after non-wheel scroll: share of the way that commits to the next stop...
+    const WHEEL_LEAD = 24;  // wheel travel taken at a stop, page not moving, before it leaves
+    const GESTURE_GAP_MS = 150; // wheel events closer than this belong to the same gesture
+    const OVERSHOOT_PX = 60;    // a gesture ending this close past a stop it crossed returns to it
+    const COMMIT = 0.18;    // after touch or keys: share of the way that commits to the next stop...
     const COMMIT_PX = 72;   // ...capped, so a long gap does not take a long scroll
     const MARGIN = 24;      // gap kept above a tall section's top and below its bottom
-    const SETTLE_MS = 140;  // scroll counts as settled after this long without events
+    const SETTLE_MS = 120;  // scroll counts as settled after this long without events
     const nav = document.querySelector('.nav');
-    let raf = 0, timer = 0, restY = scrollY, pointerDown = false;
+    let raf = 0, timer = 0, restY = scrollY, pointerDown = false, touching = false;
+    let lead = 0, holding = false, lastWheel = 0, lastDir = 1;
 
     // Layout position, not getBoundingClientRect: cards are still translated while fading in.
     function docTop(el) { let y = 0; for (; el; el = el.offsetParent) y += el.offsetTop; return y; }
@@ -985,9 +985,10 @@
       for (let i = 0; i < s.length; i++) {
         if (y >= s[i].a - 2 && y <= s[i].b + 2) return null;   // already inside a stop
         if (i + 1 < s.length && y > s[i].b && y < s[i + 1].a) {
-          const gap = s[i + 1].a - s[i].b, lead = Math.min(gap * COMMIT, COMMIT_PX);
-          if (dir >= 0) return y - s[i].b > lead ? s[i + 1].a : s[i].b;
-          return s[i + 1].a - y > lead ? s[i].b : s[i + 1].a;
+          const gap = s[i + 1].a - s[i].b, fromWheel = performance.now() - lastWheel < 600;
+          const need = (crossed) => (fromWheel ? (crossed ? OVERSHOOT_PX : 0) : Math.min(gap * COMMIT, COMMIT_PX));
+          if (dir >= 0) return y - s[i].b > need(s[i].b > restY + 2) ? s[i + 1].a : s[i].b;
+          return s[i + 1].a - y > need(s[i + 1].a < restY - 2) ? s[i].b : s[i + 1].a;
         }
       }
       return null;
@@ -995,6 +996,7 @@
     function glide(to) {
       cancelAnimationFrame(raf);
       const from = scrollY, dist = to - from;
+      glideDir = dist > 0 ? 1 : -1;
       const dur = Math.max(220, Math.min(420, 160 + 8 * Math.sqrt(Math.abs(dist))));
       const t0 = performance.now();
       gliding = true;
@@ -1003,14 +1005,14 @@
         const e = t < 0.3 ? 5 * t * t / 1.5 : 1 - Math.pow(1 - t, 3) * (0.7 / Math.pow(0.7, 3));   // brief acceleration, long deceleration
         window.scrollTo({top: from + dist * e, behavior: 'instant'});
         if (t < 1) raf = requestAnimationFrame(step);
-        else { gliding = false; restY = to; glideEnd = performance.now(); }
+        else { gliding = false; restY = to; }
       })(t0);
     }
-    let gliding = false;
+    let gliding = false, glideDir = 1;
     function stopGlide() { if (gliding) { cancelAnimationFrame(raf); gliding = false; restY = scrollY; } }
     function settle() {
-      if (pointerDown || document.body.style.overflow === 'hidden') return;
-      const y = scrollY, to = targetFor(y, y - restY);
+      if (pointerDown || touching || document.body.style.overflow === 'hidden') return;
+      const y = scrollY, to = targetFor(y, performance.now() - lastWheel < 600 ? lastDir : y - restY);
       if (to === null || Math.abs(to - y) < 2) { restY = y; return; }
       glide(to);
     }
@@ -1019,10 +1021,9 @@
       clearTimeout(timer);
       timer = setTimeout(settle, SETTLE_MS);
     }, {passive: true});
-    ['touchstart', 'keydown'].forEach((t) => addEventListener(t, stopGlide, {passive: true}));
+    addEventListener('keydown', stopGlide, {passive: true});
+    addEventListener('touchstart', () => { touching = true; stopGlide(); }, {passive: true});
 
-    let lead = 0, lastWheel = 0, locked = false, glideEnd = 0, steadyRun = 0;
-    const wheelLog = [];
     function innerCanScroll(node, dy) {
       for (; node && node !== document.body && node.nodeType === 1; node = node.parentElement) {
         const o = getComputedStyle(node).overflowY;
@@ -1035,48 +1036,32 @@
       if (ev.ctrlKey || document.body.style.overflow === 'hidden') return;
       const dy = ev.deltaMode === 1 ? ev.deltaY * 16 : ev.deltaY;
       if (!dy || Math.abs(ev.deltaX) > Math.abs(ev.deltaY)) return;
-      if (!gliding && !locked && innerCanScroll(ev.target, dy)) return;
-      ev.preventDefault();
-      const now = performance.now(), gap = now - lastWheel;
-      // Compare wheel travel over two windows: single deltas are unreliable, as the browser merges events when busy.
-      wheelLog.push([now, Math.abs(dy)]);
-      while (now - wheelLog[0][0] > 200) wheelLog.shift();
-      let recent = 0, before = 0;
-      wheelLog.forEach(([t, d]) => { if (now - t < 100) recent += d; else before += d; });
-      const rising = recent > before * 2.5 && recent > 100;
-      steadyRun = recent >= before * 0.95 && recent >= 150 ? steadyRun + 1 : 0;   // a spinning wheel, not a one-off blip
+      const now = performance.now(), dir = dy > 0 ? 1 : -1;
+      let fresh = now - lastWheel > GESTURE_GAP_MS || dir !== lastDir;
       lastWheel = now;
-      if (gliding) { locked = true; return; }
-      if (locked) {
-        // A fading tail belongs to the flick that caused the glide; a new push or a spinning wheel does not.
-        if (gap < INERTIA_GAP_MS && !rising && !(now - glideEnd > 500 && steadyRun >= 4)) return;
-        locked = false;
+      if (gliding) {
+        // The fading end of a flick must not cut the glide short; a real push takes over at once.
+        if (dir === glideDir && Math.abs(dy) < 20) { ev.preventDefault(); return; }
+        stopGlide();
+        fresh = false; holding = false;
       }
-      if (gap > LEAD_IDLE_MS || lead * dy < 0) lead = 0;
-
-      const list = stops(), y = scrollY, dir = dy > 0 ? 1 : -1;
-      const i = list.findIndex((s) => y >= s.a - 2 && y <= s.b + 2);
-      if (i < 0) {   // between stops (a scrollbar drag, say): go on to the next one this way
-        const next = dir > 0 ? list.find((s) => s.a > y) : [...list].reverse().find((s) => s.b < y);
-        if (next) { lead = 0; locked = true; glide(dir > 0 ? next.a : next.b); }
-        return;
-      }
-      const edge = dir > 0 ? list[i].b : list[i].a;
-      if ((edge - y) * dir > 2) {   // still inside a tall section: scroll it, up to its edge
+      lastDir = dir;
+      clearTimeout(timer);
+      timer = setTimeout(settle, SETTLE_MS);
+      if (fresh) {
         lead = 0;
-        const to = y + dy;
-        window.scrollTo({top: dir > 0 ? Math.min(to, edge) : Math.max(to, edge), behavior: 'instant'});
-        return;
+        restY = scrollY;
+        const y = scrollY, cur = stops().find((s) => y >= s.a - 2 && y <= s.b + 2);
+        holding = !!cur && Math.abs((dir > 0 ? cur.b : cur.a) - y) <= 2 && !innerCanScroll(ev.target, dy);
       }
-      lead += dy;
-      if (Math.abs(lead) < WHEEL_LEAD) return;   // the page holds still while the lead builds
-      lead = 0;
-      const next = list[i + dir];
-      if (next) { locked = true; glide(dir > 0 ? next.a : next.b); }
+      if (!holding) return;
+      lead += Math.abs(dy);
+      if (lead < WHEEL_LEAD) ev.preventDefault();   // the page holds still while the lead builds
+      else holding = false;
     }, {passive: false});
     addEventListener('mousedown', () => { pointerDown = true; stopGlide(); });
     addEventListener('mouseup', () => { pointerDown = false; clearTimeout(timer); timer = setTimeout(settle, SETTLE_MS); });
-    addEventListener('touchend', () => { clearTimeout(timer); timer = setTimeout(settle, SETTLE_MS); }, {passive: true});
+    addEventListener('touchend', () => { touching = false; clearTimeout(timer); timer = setTimeout(settle, SETTLE_MS); }, {passive: true});
     // In-page links land on the same stops instead of the raw anchor position.
     document.addEventListener('click', (ev) => {
       const a = ev.target.closest && ev.target.closest('a[href^="#"]');
