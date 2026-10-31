@@ -144,9 +144,8 @@
       .nav-dd-card { min-width: 280px; max-width: calc(100vw - 24px); }
     }
 
-    /* Hybrid scroll: top is continuous; the last 3 sections snap (proximity = top stays free) */
-    html { scroll-snap-type: y proximity; }
-    .snap-screen { scroll-snap-align: start; min-height: 100vh; }
+    /* Section stops are driven by the scroll script at the end of the page */
+    .snap-screen { min-height: 100vh; }
     /* Modal */
     .modal { display: none; opacity: 0; transition: opacity .3s ease-out; }
     .modal.active { display: flex; opacity: 1; }
@@ -931,5 +930,105 @@
     })();
   </script>
 <script>(function(){var P=new URLSearchParams(location.search);if(P.has('shot')){document.querySelectorAll('.fade').forEach(function(e){e.classList.add('in')});var st=document.createElement('style');st.textContent='.snap-screen{min-height:auto!important}';document.head.appendChild(st);var hs=document.getElementById('top');if(hs)hs.style.display='none';}if(P.has('modal')){setTimeout(function(){openModal(P.get('modal'))},300);}var q=P.get('scrollto');if(q){setTimeout(function(){var el=document.getElementById(q);if(el)window.scrollTo(0,el.getBoundingClientRect().top+window.scrollY-60);},1200);}})();</script>
+<script>
+  // Section stops: native scroll stays free, and when it settles the page eases to the
+  // stop that fits the section. Short sections centre under the nav; tall ones stop at
+  // their top with a margin and scroll freely inside, up to a stop at their bottom.
+  (function () {
+    if (new URLSearchParams(location.search).has('shot')) return;
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const COMMIT = 0.18;    // lead: share of the way to the next stop that commits to it...
+    const COMMIT_PX = 72;   // ...capped, so a long gap does not take a long scroll
+    const MARGIN = 24;      // lead: gap kept above a tall section's top and below its bottom
+    const SETTLE_MS = 140;  // scroll counts as settled after this long without events
+    const nav = document.querySelector('.nav');
+    let raf = 0, timer = 0, restY = scrollY, pointerDown = false;
+
+    // Layout position, not getBoundingClientRect: cards are still translated while fading in.
+    function docTop(el) { let y = 0; for (; el; el = el.offsetParent) y += el.offsetTop; return y; }
+    function sections() {
+      const works = document.getElementById('works');
+      const list = [document.getElementById('top')];
+      works.querySelectorAll('article.work').forEach((a) => { if (a.offsetParent) list.push(a); });
+      ['blogs', 'about', 'news', 'publications', 'contact'].forEach((id) => list.push(document.getElementById(id)));
+      return list.filter(Boolean);
+    }
+    function rangeFor(el, navH, max) {
+      const bottom = docTop(el) + el.offsetHeight;
+      // The first card carries the section label above it.
+      const top = el === document.querySelector('#works article.work') ? docTop(document.getElementById('works')) : docTop(el);
+      const h = bottom - top, room = innerHeight - navH;
+      const clamp = (y) => Math.max(0, Math.min(max, y));
+      if (h <= room) { const y = clamp(top - navH - (room - h) / 2); return {a: y, b: y}; }
+      return {a: clamp(top - navH - MARGIN), b: clamp(top + h - innerHeight + MARGIN)};
+    }
+    function stops() {
+      const navH = nav ? nav.offsetHeight : 0, max = document.documentElement.scrollHeight - innerHeight;
+      const out = [];
+      sections().map((el) => rangeFor(el, navH, max)).sort((p, q) => p.a - q.a).forEach((s) => {
+        const last = out[out.length - 1];
+        if (last && s.a <= last.b + 4) last.b = Math.max(last.b, s.b); else out.push({a: s.a, b: s.b});
+      });
+      return out;
+    }
+    function targetFor(y, dir) {
+      const s = stops();
+      if (!s.length) return null;
+      if (y <= s[0].a) return s[0].a;
+      if (y >= s[s.length - 1].b) return s[s.length - 1].b;
+      for (let i = 0; i < s.length; i++) {
+        if (y >= s[i].a - 2 && y <= s[i].b + 2) return null;   // already inside a stop
+        if (i + 1 < s.length && y > s[i].b && y < s[i + 1].a) {
+          const gap = s[i + 1].a - s[i].b, lead = Math.min(gap * COMMIT, COMMIT_PX);
+          if (dir >= 0) return y - s[i].b > lead ? s[i + 1].a : s[i].b;
+          return s[i + 1].a - y > lead ? s[i].b : s[i + 1].a;
+        }
+      }
+      return null;
+    }
+    function glide(to) {
+      cancelAnimationFrame(raf);
+      const from = scrollY, dist = to - from;
+      const dur = Math.max(320, Math.min(800, 240 + 16 * Math.sqrt(Math.abs(dist))));
+      const t0 = performance.now();
+      gliding = true;
+      (function step(now) {
+        const t = Math.min(1, (now - t0) / dur);
+        const e = t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;   // accelerate, then decelerate
+        window.scrollTo({top: from + dist * e, behavior: 'instant'});
+        if (t < 1) raf = requestAnimationFrame(step);
+        else { gliding = false; restY = to; }
+      })(t0);
+    }
+    let gliding = false;
+    function stopGlide() { if (gliding) { cancelAnimationFrame(raf); gliding = false; restY = scrollY; } }
+    function settle() {
+      if (pointerDown || document.body.style.overflow === 'hidden') return;
+      const y = scrollY, to = targetFor(y, y - restY);
+      if (to === null || Math.abs(to - y) < 2) { restY = y; return; }
+      glide(to);
+    }
+    addEventListener('scroll', () => {
+      if (gliding) return;
+      clearTimeout(timer);
+      timer = setTimeout(settle, SETTLE_MS);
+    }, {passive: true});
+    ['wheel', 'touchstart', 'keydown'].forEach((t) => addEventListener(t, stopGlide, {passive: true}));
+    addEventListener('mousedown', () => { pointerDown = true; stopGlide(); });
+    addEventListener('mouseup', () => { pointerDown = false; clearTimeout(timer); timer = setTimeout(settle, SETTLE_MS); });
+    addEventListener('touchend', () => { clearTimeout(timer); timer = setTimeout(settle, SETTLE_MS); }, {passive: true});
+    // In-page links land on the same stops instead of the raw anchor position.
+    document.addEventListener('click', (ev) => {
+      const a = ev.target.closest && ev.target.closest('a[href^="#"]');
+      const el = a && a.getAttribute('href').length > 1 && document.querySelector(a.getAttribute('href'));
+      if (!el) return;
+      ev.preventDefault();
+      const navH = nav ? nav.offsetHeight : 0, max = document.documentElement.scrollHeight - innerHeight;
+      const first = el.id === 'works' ? el.querySelector('article.work') : el;
+      glide(rangeFor(first, navH, max).a);
+      history.replaceState(null, '', a.getAttribute('href'));
+    });
+  })();
+</script>
 </body>
 </html>
